@@ -1,0 +1,35 @@
+.udemyIntro {
+    background: linear-gradient(to left, $color-yellow-0, $color-red-1);
+    background-size: cover;
+    .udemyIntro__content {
+        @include width70 ($w-70, $mg-auto);
+        .udemyIntro__item {
+            .udemyIntro__icon {
+                @include text-style($color-white-0 ,$fs-4 + 10, $fw-bold-1);
+                margin: $mg-2;
+            }
+            .udemyIntro__content {
+                padding-top: $pd-2 - 5;
+                p:first-child {
+                    @include text-style($color-white-0 ,$fs-0 + 2, $fw-bold-1);
+                    margin-bottom: 0;
+                }
+                p:last-child {
+                    @include text-style($color-white-0 ,$fs-0, $fw-normal);
+                }
+            }
+        }
+    }
+    
+    // RESPONSIVES
+      @include mediaQuery('large') {
+        .udemyIntro__content {
+            text-align: center;
+            .udemyIntro__item {
+                i {
+                    display: none;
+                }   
+            }
+        }
+      } 
+}

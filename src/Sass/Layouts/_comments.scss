@@ -1,0 +1,123 @@
+.udemyInfo {
+    background-color: $color-white-cream;
+    height: auto;
+    .udemyComments__top {
+        .udemyComments__text {
+            @include width70 ($w-70, $mg-auto);
+            @include text-style($color-black-0, $fs-3, $fw-bold-0);
+            padding: $pd-2 0;
+        }
+        .udemyComments__sliders {
+            @include width70 ($w-70, $mg-auto);
+            .card {
+                border: none;
+                width: 100%;
+                height: 250px; 
+                .userInfo {
+                    img {
+                        border-radius: 50%;
+                        width: 50px;
+                        margin-right: $mg-2;
+                        margin-bottom: $mg-1 + 5;
+                    }
+                    h3 {
+                        align-self: center;
+                        @include text-style($color-black-0, $fs-0 + 1, $fw-bold-0);
+                    }
+                    p {
+                        @include text-style($color-black-0, $fs-0 + 1, $fw-normal);
+                    }
+    
+                }
+            }
+        }
+        
+    }
+    .udemySponsors__middle {
+        text-align: center;
+        padding-bottom: $pd-2+4;
+    
+        img {
+            padding: 0 $pd-2 + 10;
+            max-width: none;
+            height: auto;
+        }
+    }
+    .udemyMoreinfo__bottom {
+        padding: $pd-2*2.2 0;
+        .group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 50%;
+            
+            a {
+                @include text-style($color-black-0, $fs-2 + 1, $fw-bold-0);
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+            p {
+                @include text-style($color-black-0, $fs-0, $fw-normal);
+            }
+        }
+        .group__border {
+            border-bottom: none;
+            border-right: 1px solid $color-gray-3; 
+        }
+    }
+
+    // RESPONSIVES
+
+    @include mediaQuery('small') {
+        .udemyMoreinfo__bottom {
+            .group {
+                a {
+                    @include text-style($color-black-0, $fs-2 - 4, $fw-bold-0);
+                }
+                p {
+                    @include text-style($color-black-0, $fs-1 - 3, $fw-normal);
+                }
+            }
+            
+        }
+    }
+
+    @include mediaQuery('medium') {
+        .udemyMoreinfo__bottom {
+            .group {
+                a {
+                    @include text-style($color-black-0, $fs-2 - 6, $fw-bold-0);
+                }
+                p {
+                    @include text-style($color-black-0, $fs-1 - 2, $fw-normal);
+                }
+                .btn-udi-red {
+                    @include text-style($color-white-0, $fs-1 - 3, $fw-normal);
+                }
+            }
+            
+        }
+    } 
+
+    @include mediaQuery('large') {
+        .udemyMoreinfo__bottom {
+            .group {
+                a {
+                    @include text-style($color-black-0, $fs-2 - 3, $fw-bold-0);
+                }
+                p {
+                    @include text-style($color-black-0, $fs-1 - 1, $fw-normal);
+                }
+                .btn-udi-red {
+                    @include text-style($color-white-0, $fs-1, $fw-normal);
+                }
+            }
+            
+        }
+    } 
+
+}
+
+

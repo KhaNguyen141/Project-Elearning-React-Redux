@@ -1,0 +1,56 @@
+.footer__container { 
+    .footer__top {
+        @include width70 ($w-70, $mg-auto);
+        margin: $mg-2 + 5 auto;
+        a {
+            @include text-style($color-blue, $fs-1, $fw-normal);
+            &:hover {
+                @include text-style($color-black-0, $fs-1, $fw-normal);
+                text-decoration: none;
+            }
+        }
+        .bold {
+                @include text-style($color-blue, $fs-1, $fw-bold);
+                &:hover {
+                    @include text-style($color-black-0, $fs-1, $fw-bold);
+                    text-decoration: none;
+                }
+            }
+    }
+    .footer__bottom {
+        margin: $mg-2 + 5 auto;
+        .footer__left {
+            img {
+            max-width: 110px;
+            height: auto;
+        }
+        span {
+            align-self: center;
+        }
+        }
+        
+        .footer__right {
+            text-align: right;
+            a {
+                @include text-style($color-blue, $fs-1, $fw-normal);
+                &:hover {
+                    @include text-style($color-black-0, $fs-1, $fw-normal);
+                    text-decoration: none;
+                }
+            }
+            
+        }
+    }  
+    
+    // RESPONSIVES
+    @include mediaQuery('medium') {
+        .footer__bottom {
+            .footer__left {
+                @include text-style($color-black-0, $fs-1 - 2, $fw-normal);
+
+            }
+    }
+
+}
+
+}

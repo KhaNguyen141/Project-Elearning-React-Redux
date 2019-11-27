@@ -1,0 +1,56 @@
+.udemyCarousel{
+    background-image: url(https://i.udemycdn.com/notices/home_banner/image/d7e6d35a-861a-4bbb-8468-b9e882798ea3.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    position: relative;
+    .udemyCarousel__content {
+        position: absolute;
+        top: 30%;
+        left: 10%;
+        h1 {
+            @include text-style($color-white-0, $fs-4, $fw-normal);
+            width: 50%;
+        }
+        p {
+            @include text-style($color-white-0, $fs-2 - 2, $fw-normal);
+            width: 50%;
+        }
+    }
+
+    .formSearch{
+        @include inputSearch($color-white-0,
+        $color-white-0,$color-white-0,$color-white-0,$color-white-0,$color-white-0);
+        width: 50%;
+        .form-control {
+            padding: $pd-2 $pd-1;
+            &::placeholder {
+                @include text-style($color-gray-2, $fs-2, $fw-normal);
+            }
+        }
+    }
+
+    // RESPONSIVES
+
+    @include mediaQuery('medium') {
+        .udemyCarousel__content {
+            h1 {
+                @include text-style($color-white-0, $fs-4, $fw-normal);
+            }
+            p {
+                @include text-style($color-white-0, $fs-1, $fw-normal);
+            }
+        }
+        .formSearch {
+            .form-control {
+                &::placeholder {
+                    @include text-style($color-gray-2, $fs-1 - 1, $fw-normal);
+                }
+            }
+            
+        }
+
+    } 
+    
+}

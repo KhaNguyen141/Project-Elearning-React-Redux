@@ -1,0 +1,91 @@
+.udemyCourse {
+    margin-top: $mg-2;
+    .udemyCourse__content {
+        @include width70 ($w-70, $mg-auto);
+        .udemyCourse__text {
+            background: $color-white-cream;
+            padding-left: $pd-2 + 10;
+            padding-right: $pd-2 + 10;
+            padding-top: 8rem;
+            h1 {
+                @include text-style($color-black-0, $fs-2 - 1, $fw-bold-0);
+            }
+            p {
+                @include text-style($color-black-0, $fs-0 + 1, $fw-normal);
+            }
+        }
+        .udemyCourse__tabs {
+                .nav {
+                    justify-content: space-between;
+                    border: none;
+                    .nav-link {
+                        &:hover {
+                            border: none;
+                            @include text-style($color-blue, $fs-0, $fw-normal);
+                            transition: 0.5s all;
+                        }
+                    }
+                    .nav-item.active {
+                        border: none;
+                        border-bottom: 5px solid $color-blue;
+                    }
+
+                    .nav-item {
+                        @include text-style($color-black-0, $fs-0, $fw-normal);
+                        border: none;
+                    }
+                }
+
+                .tab-content {
+                    margin-top: $mg-2;
+                    position: relative;
+                    .card-title {
+                        @include text-style($color-black-0, $fs-0, $fw-bold-0);
+                    }
+                    .card-text {
+                        @include text-style($color-black-0, $fs-1 - 1, $fw-normal);
+                    }
+                    .rating {
+                        display: flex;
+                        .rating__star {
+                            @include text-style($color-yellow-0, $fs-1 - 1, $fw-normal);
+                            margin-right: $mg-0 + 3;
+                        }
+                        span:nth-child(2) {
+                            @include text-style($color-gray-4, $fs-1 - 1, $fw-bold);
+                            margin-right: $mg-0 + 3;
+                        }
+                        span:last-child(2) {
+                            @include text-style($color-gray-4, $fs-1 - 1, $fw-normal);
+                        }
+                    }
+                    .price {
+                        text-align: right;
+                        .oldPrice {
+                            @include text-style($color-gray-4, $fs-0, $fw-normal);
+                            text-decoration: line-through;
+                        }
+                        .newPrice {
+                            @include text-style($color-black-0, $fs-0, $fw-bold);
+                        }
+            
+                    }
+                    .card-body {
+                        h4 {
+                            @include card-format ($sp-1, $o-1, $text-o-1);
+                        }
+                        p {
+                            @include card-format ($sp-1, $o-1, $text-o-1);
+                        }
+                    
+                    }
+                }
+               
+            }
+        }
+    }
+
+    // &:hover {
+    //     border: none;
+    //     @include text-style($color-blue, $fs-0, $fw-normal);
+    // }
