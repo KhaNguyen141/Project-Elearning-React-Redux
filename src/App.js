@@ -11,6 +11,7 @@ import { restConnector } from "./Services";
 import HeaderComponent from "./Layouts/Header";
 import Login from "./Screens/Login/Login";
 import FooterComponent from './Layouts/Footer';
+import Register from "./Layouts/Register";
 
 import { LOGIN } from "./Redux/Action/type";
 
@@ -27,6 +28,7 @@ class App extends Component {
             component={CourseDetail}
           />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
           <Route exact path="/" component={HomeScreen} />
         </Switch>
         <FooterComponent />

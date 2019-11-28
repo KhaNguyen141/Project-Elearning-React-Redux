@@ -48,6 +48,11 @@ class HeaderComponent extends Component {
                 className="nav-link"
                 to="/login">
                   <button className="btn btn-udi-white mr-2" data-toggle="modal" data-target="#modalLogin">Đăng nhập</button>
+                </NavLink>
+
+                <NavLink 
+                className="nav-link"
+                to="/register">
                   <button className="btn btn-udi-yellow" data-toggle="modal" data-target="#modalRegister">Đăng ký</button>
                 </NavLink>
                 </li>

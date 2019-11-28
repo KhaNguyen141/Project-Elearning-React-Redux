@@ -72,11 +72,12 @@ function Login(props) { //<= function
                                 </div>
 
                                 <div className="form-group">
-                                    <input name="matKhau" type="text" className="form-control matKhau" placeholder="Mật khẩu" onChange={handleChange}/>
+                                    <input name="matKhau" type="password" className="form-control matKhau" placeholder="Mật khẩu" onChange={handleChange}/>
                                     <span className="text text-danger">{state.errors.matKhau}</span>
                                 </div>
 
-                                <button type="submit" className="btn btn-udi-yellow  ">Đăng nhập</button>
+                                <button type="submit" className="btn btn-udi-yellow">Đăng nhập</button>
+                                <p className="mt-4">Bạn chưa có tài khoản? <a href="/register">Đăng ký</a></p>
                         </div>
                     </div>
                 </div>
@@ -97,4 +98,4 @@ function Login(props) { //<= function
 // }];
 // thongTinSinhVien();
 
-export default connect(null)(Login)
+export default connect(null)(Login);

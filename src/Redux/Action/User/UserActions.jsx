@@ -1,4 +1,4 @@
-import { type, LOGIN } from "../type";
+import { type, LOGIN, REGISTER } from "../type";
 import reduxAction from "../action";
 
 import { settings } from "../../../Config/settings";
@@ -34,3 +34,19 @@ export const userLoginAction = userLogin => {
       });
   };
 };
+
+export const userRegisterAction = userRegister => {
+  return dispatch => {
+    restConnector({
+      method: "POST",
+      url: "/api/QuanLyNguoiDung/DangKy",
+      data: userRegister
+      
+    }).then(res => {
+      dispatch(reduxAction(REGISTER, res.data));
+      console.log(res.data);
+    }).catch(error => {
+      console.log(error.response.data)
+    });
+  }
+}
