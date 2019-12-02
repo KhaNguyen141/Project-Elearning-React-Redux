@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom"; //Thư viện thẻ link (thay thế thẻ <a></a>)
 import { connect } from "react-redux";
+import Login from "../Screens/Login/Login";
+import Register from "./Register";
 
 class HeaderComponent extends Component {
   render() {
@@ -35,27 +37,36 @@ class HeaderComponent extends Component {
                   </a>
                 </li>
               {this.props.credentials ? (
-              
-              <li className="nav-item">
-                <span className="nav-link text-black">
-                  Hello, {this.props.credentials.hoTen}
-                </span>
+            
+              <li className="nav-item dropdown">
+                  <div class="dropdown">
+                  <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Hello, {this.props.credentials.hoTen}
+                  </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <button class="dropdown-item" >Profile</button>
+                  <button class="dropdown-item" onClick={handleLogout}>Đăng xuất</button>
+                </div>
+              </div>
               </li> 
               ) : (
                 
                 <li className="button-group d-flex">
-                <NavLink 
+                <Login />
+                <div 
                 className="nav-link"
-                to="/login">
+                >
                   <button className="btn btn-udi-white mr-2" data-toggle="modal" data-target="#modalLogin">Đăng nhập</button>
-                </NavLink>
-
-                <NavLink 
+                </div>
+             
+                <Register />
+                <div 
                 className="nav-link"
-                to="/register">
+                >
                   <button className="btn btn-udi-yellow" data-toggle="modal" data-target="#modalRegister">Đăng ký</button>
-                </NavLink>
+                </div>
                 </li>
+
               )}
               </ul>
             </div>
@@ -133,6 +144,12 @@ class HeaderComponent extends Component {
       // </nav>
     );
   }
+}
+
+const handleLogout = (e) => {
+  e.preventDefault();
+  localStorage.clear();
+  window.location.reload();
 }
 
 const mapStateToProps = state => ({

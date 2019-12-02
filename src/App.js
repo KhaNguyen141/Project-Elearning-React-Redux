@@ -27,8 +27,6 @@ class App extends Component {
             path="/coursedetail/:courseid"
             component={CourseDetail}
           />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
           <Route exact path="/" component={HomeScreen} />
         </Switch>
         <FooterComponent />

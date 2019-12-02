@@ -41,12 +41,14 @@ function Login(props) { //<= function
             if(state.errors[errorName] != '') //1 trong các thuộc tính state.errors ! rổng => lỗi không cho submit api
             {
                 valid = false;
+                
             }
         }
         if(valid)
         {
             props.dispatch(userLoginAction(state.userLogin)); //khi submit gọi action (ajax) truyền vào data là userLogin từ người dùng
-        }else {
+              
+        } else {
             alert('Dữ liệu không hợp lệ!');
         }
         
@@ -77,7 +79,9 @@ function Login(props) { //<= function
                                 </div>
 
                                 <button type="submit" className="btn btn-udi-yellow">Đăng nhập</button>
-                                <p className="mt-4">Bạn chưa có tài khoản? <a href="/register">Đăng ký</a></p>
+                                
+                                <p className="mt-4">Bạn chưa có tài khoản? <a href="#modalRegister" data-toggle="modal" data-target="#modalRegister" data-dismiss="modal">Đăng ký</a></p>
+                                
                         </div>
                     </div>
                 </div>
@@ -85,17 +89,5 @@ function Login(props) { //<= function
         </form>
     )
 }
-// let {maSV,tenSV,thongTinSinhVien} = {
-//     maSV: 1,
-//     tenSV: 'Nguyễn văn a',
-//     thongTinSinhVien: function () {
-//         console.log("ma", sv.maSV)
-//     }
-// };
-
-// let [masv,tensv,thongTinSinhVien] = [1, 'Nguyễn văn a',function (){
-//     console.log("ma", 1)
-// }];
-// thongTinSinhVien();
 
 export default connect(null)(Login);

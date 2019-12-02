@@ -5,6 +5,9 @@ import { settings } from "../../../Config/settings";
 
 import { restConnector } from "../../../Services";
 
+import axios from 'axios';
+import Swal from 'sweetalert2';
+
 export const userLoginAction = userLogin => {
   return dispatch => {
     restConnector({
@@ -28,9 +31,22 @@ export const userLoginAction = userLogin => {
         //bỏ token lên header của tất cả request
         restConnector.defaults.headers['Authorization'] = "Bearer " + res.data.accessToken
 
+        Swal.fire (
+          'Đăng nhập thành công!',
+          '',
+          'success'
+        ).then(() => {
+          window.location.reload();
+      })
+
       })
       .catch(error => {
-        console.log(error.response.data);
+          console.log(error.response.data);
+          Swal.fire({
+            icon: 'error',
+            title: 'Đăng nhập thất bại',
+            text: 'Vui lòng thử lại'
+        })
       });
   };
 };
@@ -45,8 +61,20 @@ export const userRegisterAction = userRegister => {
     }).then(res => {
       dispatch(reduxAction(REGISTER, res.data));
       console.log(res.data);
+      Swal.fire(
+        'Đăng ký thành công!',
+        '',
+        'success'
+    ).then(() => {
+        window.location.reload();
+    })
     }).catch(error => {
       console.log(error.response.data)
+      Swal.fire({
+        icon: 'error',
+        title: 'Đăng ký thất bại',
+        text: 'Tài khoản hoặc email đã tồn tại!',
+      })
     });
   }
 }
