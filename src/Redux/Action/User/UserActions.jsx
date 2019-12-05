@@ -1,4 +1,4 @@
-import { type, LOGIN, REGISTER } from "../type";
+import { type, LOGIN, REGISTER, CHECK_PROFILE } from "../type";
 import reduxAction from "../action";
 
 import { settings } from "../../../Config/settings";
@@ -76,5 +76,26 @@ export const userRegisterAction = userRegister => {
         text: 'Tài khoản hoặc email đã tồn tại!',
       })
     });
+  }
+}
+
+export const userProfileAction = userProfile => {
+  return dispatch => {
+    restConnector({
+      method: "POST",
+      url: "/api/QuanLyNguoiDung/ThongTinTaiKhoan",
+      header: { 
+        'Authorization': "Bearer " + settings.token },
+      data: userProfile,
+
+    }).then(res => {
+      if (settings.userLogin in localStorage) {
+        
+        dispatch(reduxAction(CHECK_PROFILE, res.data));
+        console.log(res.data);
+      }
+    }).catch(error => {
+      console.log(error.response.data)
+    })
   }
 }

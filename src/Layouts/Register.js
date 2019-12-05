@@ -56,16 +56,16 @@ class Register extends Component {
             validationSchema={validationSchema}
             onSubmit={values  => {
                 this.props.dispatch(userRegisterAction(values))
-          
+                
             }}
             >
             {({values, errors, touched, handleChange}) => (
                     <Form className="formSearch">
-                        <div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title pt-2">Đăng ký</h4>
+                        <div className="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                            <div className="modal-dialog" role="document">
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h4 className="modal-title pt-2">Đăng ký</h4>
 
                                         <button type="button" className="close modalClose" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span>
@@ -73,12 +73,12 @@ class Register extends Component {
 
                                     </div>
 
-                                    <div class="modal-body">
+                                    <div className="modal-body">
                                         <div className="form-group">
                                             <Field 
                                             name="taiKhoan" 
                                             type="text" 
-                                            onchange={handleChange}
+                                            onChange={handleChange}
                                             className="form-control taiKhoan" 
                                             placeholder="Tài khoản" />
                                             {errors.taiKhoan && touched.taiKhoan ? <div>{errors.taiKhoan}</div> : ''}
@@ -88,7 +88,7 @@ class Register extends Component {
                                             <Field 
                                             name="matKhau" 
                                             type="text" 
-                                            onchange={handleChange}
+                                            onChange={handleChange}
                                             className="form-control matKhau" 
                                             placeholder="Mật khẩu" />
                                             {errors.matKhau && touched.matKhau ? <div>{errors.matKhau}</div> : ''}
@@ -98,7 +98,7 @@ class Register extends Component {
                                             <Field 
                                             name="hoTen" 
                                             type="text" 
-                                            onchange={handleChange}
+                                            onChange={handleChange}
                                             className="form-control hoTen" 
                                             placeholder="Họ Tên" />
                                             {errors.hoTen && touched.hoTen ? <div>{errors.hoTen}</div> : ''}
@@ -108,7 +108,7 @@ class Register extends Component {
                                             <Field 
                                             name="soDT" 
                                             type="text" 
-                                            onchange={handleChange}
+                                            onChange={handleChange}
                                             className="form-control soDT" 
                                             placeholder="Số điện thoại" />
                                             {errors.soDT && touched.soDT ? <div>{errors.soDT}</div> : ''}
@@ -118,7 +118,7 @@ class Register extends Component {
                                             <label htmlFor>Loại Người Dùng: </label>
                                             <div>
                                                 <Field 
-                                                onchange={handleChange} 
+                                                onChange={handleChange} 
                                                 type="radio" 
                                                 name="maLoaiNguoiDung" 
                                                 value="HV"
@@ -129,7 +129,7 @@ class Register extends Component {
                                             </div>
                                             <div>
                                                 <Field 
-                                                onchange={handleChange} 
+                                                onChange={handleChange} 
                                                 type="radio" 
                                                 name="maLoaiNguoiDung" 
                                                 value="GV"/>
@@ -144,7 +144,7 @@ class Register extends Component {
                                             <Field 
                                             name="maNhom" 
                                             type="text" 
-                                            onchange={handleChange}
+                                            onChange={handleChange}
                                             className="form-control soDT" 
                                             placeholder="mã nhóm người dùng" />
                                             {errors.maNhom && touched.maNhom ? <div>{errors.maNhom}</div> : ''}

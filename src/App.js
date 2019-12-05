@@ -14,6 +14,7 @@ import FooterComponent from './Layouts/Footer';
 import Register from "./Layouts/Register";
 
 import { LOGIN } from "./Redux/Action/type";
+import ProfileDetail from "./Screens/Profile/ProfileDetail";
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
             path="/coursedetail/:courseid"
             component={CourseDetail}
           />
+          <Route exact path="/profile" component={ProfileDetail} />
           <Route exact path="/" component={HomeScreen} />
         </Switch>
         <FooterComponent />

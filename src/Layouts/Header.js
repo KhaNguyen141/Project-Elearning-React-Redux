@@ -4,8 +4,14 @@ import { connect } from "react-redux";
 import Login from "../Screens/Login/Login";
 import Register from "./Register";
 
+import { userProfileAction } from "../Redux/Action/User/UserActions";
+import ProfileDetailComponent from "../Screens/Profile/ProfileDetail";
+
+
 class HeaderComponent extends Component {
+
   render() {
+  
     return (
 
       <header className="udemyNavbar container">
@@ -44,7 +50,7 @@ class HeaderComponent extends Component {
                       Hello, {this.props.credentials.hoTen}
                   </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <button class="dropdown-item" >Profile</button>
+                  <NavLink to="/profile" class="dropdown-item">Profile</NavLink>
                   <button class="dropdown-item" onClick={handleLogout}>Đăng xuất</button>
                 </div>
               </div>
@@ -149,11 +155,11 @@ class HeaderComponent extends Component {
 const handleLogout = (e) => {
   e.preventDefault();
   localStorage.clear();
-  window.location.reload();
+  window.location.href = "/home";
 }
 
 const mapStateToProps = state => ({
-  credentials: state.user.credentials
+  credentials: state.user.credentials,
 });
 
 export default connect(mapStateToProps)(HeaderComponent);

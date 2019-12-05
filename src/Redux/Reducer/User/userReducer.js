@@ -1,7 +1,7 @@
-import { LOGIN } from "../../Action/type";
+import { LOGIN, CHECK_PROFILE } from "../../Action/type";
 
 let initialState = {
-  // users: [],
+  userProfile: [],
   // userDetail: {},
   credentials: null
 };
@@ -12,6 +12,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
         state.credentials = payload;
         return {...state}
     }
+
     default:
       return state;
   }

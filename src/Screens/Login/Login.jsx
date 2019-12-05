@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {userLoginAction} from '../../Redux/Action/User/UserActions';
 
@@ -53,13 +53,14 @@ function Login(props) { //<= function
         }
         
     }
+
     return (
         <form className="formSearch" onSubmit={handleSubmit}>
-            <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title pt-2">Đăng nhập</h4>
+            <div className="modal fade" id="modalLogin" tabIndex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h4 className="modal-title pt-2">Đăng nhập</h4>
                             
                             <button type="button" className="close modalClose" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
