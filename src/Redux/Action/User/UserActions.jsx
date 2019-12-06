@@ -1,4 +1,4 @@
-import { type, LOGIN, REGISTER, CHECK_PROFILE } from "../type";
+import { type, LOGIN, REGISTER, CHECK_PROFILE, UPDATE_USER } from "../type";
 import reduxAction from "../action";
 
 import { settings } from "../../../Config/settings";
@@ -79,21 +79,43 @@ export const userRegisterAction = userRegister => {
   }
 }
 
-export const userProfileAction = userProfile => {
+export const userProfileUpdate = userProfileUpdate => {
   return dispatch => {
     restConnector({
-      method: "POST",
-      url: "/api/QuanLyNguoiDung/ThongTinTaiKhoan",
+      method: "PUT",
+      url: "/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
       header: { 
         'Authorization': "Bearer " + settings.token },
-      data: userProfile,
+      data: userProfileUpdate,
 
     }).then(res => {
-      if (settings.userLogin in localStorage) {
-        
-        dispatch(reduxAction(CHECK_PROFILE, res.data));
-        console.log(res.data);
-      }
+      dispatch(reduxAction(UPDATE_USER, res.data));
+      console.log(res.data);
+      Swal.fire(
+        'Cập nhật thành công!',
+        '',
+        'success'
+      )
+    }).catch(error => {
+      console.log(error.response.data)
+      Swal.fire({
+        icon: 'error',
+        title: 'Cập nhật thất bại',
+        text: 'Vui lòng thử lại!'
+      })
+    })
+  }
+}
+
+export const courseUser = course => {
+  return dispatch => {
+    restConnector({
+      method: "GET",
+      url: "/api/QuanLyKhoaHoc/LayThongTinHocVienKhoaHoc?maKhoaHoc=LTC_GP01",
+      data: course,
+
+    }).then(res => {
+      console.log(res.data);
     }).catch(error => {
       console.log(error.response.data)
     })

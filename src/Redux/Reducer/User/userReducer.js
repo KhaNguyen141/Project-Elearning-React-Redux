@@ -1,7 +1,6 @@
-import { LOGIN, CHECK_PROFILE } from "../../Action/type";
+import { LOGIN, UPDATE_USER } from "../../Action/type";
 
 let initialState = {
-  userProfile: [],
   // userDetail: {},
   credentials: null
 };
@@ -11,6 +10,11 @@ const UserReducer = (state = initialState, { type, payload }) => {
     case LOGIN: {
         state.credentials = payload;
         return {...state}
+    }
+
+    case UPDATE_USER: {
+      state.credentials = payload;
+      return {...state}
     }
 
     default:

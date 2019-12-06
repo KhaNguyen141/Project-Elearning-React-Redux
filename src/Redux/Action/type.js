@@ -4,5 +4,5 @@ export const FETCH_COURSE_DETAIL = "FETCH_COURSE_DETAIL";
 //User
 export const LOGIN = 'LOGIN';
 export const REGISTER = 'REGISTER';
-export const CHECK_PROFILE = 'CHECK_PROFILE';
+export const UPDATE_USER = 'UPDATE_USER';
 

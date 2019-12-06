@@ -1,7 +1,31 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { userProfileAction } from '../../Redux/Action/User/UserActions';
-import Axios from 'axios';
+import { userProfileUpdate } from '../../Redux/Action/User/UserActions';
+
+import { Formik, Field, Form } from 'formik';
+import * as Yup from 'yup';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+
+const validationSchema = Yup.object().shape({
+    matKhau: Yup.string()
+    .min(6, "Mật khẩu phải có ít nhất 6 kí tự")
+    .max(255, "Mật khẩu chỉ được phép tối đa 255 kí tự")
+    .required("Mật khẩu không được để trống"),
+
+    hoTen: Yup.string()
+    .min(6, "Họ tên phải có ít nhất 6 kí tự")
+    .max(255, "Họ tên chỉ được phép tối đa 255 kí tự")
+    .required("Họ tên không được để trống"),
+    
+    email: Yup.string()
+    .email("Email phải đúng định dạng")
+    .max(255, "Email chỉ được phép tối đa 255 kí tự")
+    .required("Email không được để trống"),
+
+    soDT: Yup.string().matches(/^\+?(?:[0-9]??).{5,14}[0-9]$/, 'Số điện thoại phải đúng định dạng')
+    .min(10, 'Số điện thoại phải đúng định dạng')
+    .required("Số điện thoại không được để trống"),
+})
 
 class ProfileDetailComponent extends Component {
 
@@ -15,9 +39,27 @@ class ProfileDetailComponent extends Component {
 
     render() {
         
-        const {taiKhoan, matKhau, hoTen, soDT, email} = this.state.userProfile;
+        const {taiKhoan, hoTen, soDT, email, matKhau} = this.state.userProfile;
 
         return (
+            <Formik 
+            initialValues = {{
+                taiKhoan: taiKhoan,
+                matKhau: "",
+                hoTen: "",
+                soDT: "",
+                maLoaiNguoiDung: "HV",
+                maNhom: "GP06",
+                email: ""
+            }}
+
+            validationSchema={validationSchema}
+            onSubmit={values  => {
+                this.props.dispatch(userProfileUpdate(values))
+                
+            }}
+            >
+            {({values, errors, touched, handleChange}) => (
             <div className="container">
                 <div className="row">
                     <div className="col-3">
@@ -37,7 +79,8 @@ class ProfileDetailComponent extends Component {
                     </div>
                     <div className="col-9">
                         <div class="card text-center">
-                        <form>
+                        
+                        <Form className="formSearch">
                             <div>
                                 <div className="card-header">
                                     <h2>Public profile</h2>
@@ -48,39 +91,82 @@ class ProfileDetailComponent extends Component {
                                     
                                         <div>
                                             <div className="form-group">
-                                                <label>Họ tên: </label>
-                                                <input name="hoTen" type="text" value={hoTen} className="form-control" placeholder="Họ tên" />
-                                            </div>
-                                            <div className="form-group">
-                                                <label>Email: </label>
-                                                <input name="email" type="email" value={email} className="form-control" placeholder="Email" />
-                                            </div>
-                                            <div className="form-group">
-                                                <label>Số điện thoại: </label>
-                                                <input name="soDT" type="text" value={soDT} className="form-control" placeholder="Số điện thoại" />
-                                            </div>
-                                            <div className="form-group">
                                                 <label>Tài khoản: </label>
-                                                <input name="taiKhoan" type="text" value={taiKhoan} className="form-control" placeholder="Tài khoản" />
+                                                <Field 
+                                                name="taiKhoan" 
+                                                type="text" 
+                                                value={taiKhoan} 
+                                                onChange={handleChange}
+                                                className="form-control" 
+                                                placeholder="Tài khoản"
+                                                disabled={true}
+                                                />
+                                                <ErrorMessage touched={touched.taiKhoan} message={errors.taiKhoan}/>
+                                                {/* {errors.taiKhoan && touched.taiKhoan ? <div>{errors.taiKhoan}</div> : ''} */}
                                             </div>
                                             <div className="form-group">
                                                 <label>Mật khẩu: </label>
-                                                <input name="matKhau" type="text" className="form-control" placeholder="Mật khẩu" />
+                                                <Field 
+                                                name="matKhau" 
+                                                type="password" 
+                                                value={values.matKhau} 
+
+                                                onChange={handleChange}
+                                                className="form-control" 
+                                                placeholder="Mật khẩu" />
+                                                <ErrorMessage touched={touched.matKhau} message={errors.matKhau}/>
+                                                {/* {errors.matKhau && touched.matKhau ? <div>{errors.matKhau}</div> : ''} */}
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Họ tên: </label>
+                                                <Field 
+                                                name="hoTen" type="text" 
+                                                value={values.hoTen} 
+                                                onChange={handleChange}
+                                                className="form-control" placeholder="Họ tên" />
+                                                <ErrorMessage touched={touched.hoTen} message={errors.hoTen}/>
+                                                {/* {errors.hoTen && touched.hoTen ? <div>{errors.hoTen}</div> : ''} */}
+                                            </div>
+                                        
+                                            <div className="form-group">
+                                                <label>Số điện thoại: </label>
+                                                <Field 
+                                                name="soDT" 
+                                                type="text" 
+                                                value={values.soDT}
+                                                onChange={handleChange}
+                                                className="form-control" 
+                                                placeholder="Số điện thoại" />
+                                                <ErrorMessage touched={touched.soDT} message={errors.soDT}/>
+                                                {/* {errors.soDT && touched.soDT ? <div>{errors.soDT}</div> : ''} */}
+                                            </div>
+                                        
+                                            <div className="form-group">
+                                                <label>Email: </label>
+                                                <Field name="email" 
+                                                type="email" 
+                                                value={values.email} 
+                                                onChange={handleChange}
+                                                className="form-control" 
+                                                placeholder="Email" />
+                                                <ErrorMessage touched={touched.email} message={errors.email}/>
+                                                {/* {errors.email && touched.email ? <div>{errors.email}</div> : ''} */}
                                             </div>
                                         </div>
-                                    
                                 </div>
-                                        <div className="card-footer text-muted">
-                                            <button className="btn btn-udi-yellow">Update profile</button>    
-                                        </div>
-                                </div>
-                            </form>
+                                            <div className="card-footer text-muted">
+                                                <button type="submit" className="btn btn-udi-yellow">Update profile</button>    
+                                            </div>
+                            </div>
+                        </Form>
                         </div>
                 </div>
             </div>
-        </div>
+        </div> 
+        )}
+        </Formik>
         )
     }
 }
 
-export default (ProfileDetailComponent);
+export default connect(null)(ProfileDetailComponent);

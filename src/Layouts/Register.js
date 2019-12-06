@@ -4,27 +4,28 @@ import { Formik, Field, Form, RadioButtonGroup } from 'formik';
 import * as Yup from 'yup';
 import {connect} from 'react-redux';
 import { userRegisterAction } from '../Redux/Action/User/UserActions';
+import ErrorMessage from '../Screens/ErrorMessage/ErrorMessage';
  
 const validationSchema = Yup.object().shape({
     taiKhoan: Yup.string()
-    .min(1, "Tài khoản phải có ít nhất 1 kí tự")
+    .min(6, "Tài khoản phải có ít nhất 6 kí tự")
     .max(255, "Tài khoản chỉ được phép tối đa 255 kí tự")
     .required("Tài khoản không được để trống"),
 
     matKhau: Yup.string()
-    .min(1, "Mật khẩu phải có ít nhất 1 kí tự")
+    .min(6, "Mật khẩu phải có ít nhất 6 kí tự")
     .max(255, "Mật khẩu chỉ được phép tối đa 255 kí tự")
     .required("Mật khẩu không được để trống"),
 
     hoTen: Yup.string()
-    .min(1, "Họ tên phải có ít nhất 1 kí tự")
+    .min(6, "Họ tên phải có ít nhất 6 kí tự")
     .max(255, "Họ tên chỉ được phép tối đa 255 kí tự")
     .required("Họ tên không được để trống"),
 
     maLoaiNguoiDung: Yup.string().required("Vui lòng chọn loại người dùng"),
 
     maNhom: Yup.string()
-    .min(1, "Mã nhóm phải có ít nhất 1 kí tự")
+    .min(4, "Mã nhóm phải có ít nhất 4 kí tự")
     .max(255, "Mã nhóm chỉ được phép tối đa 255 kí tự")
     .required("Mã nhóm không được để trống"),
     
@@ -81,7 +82,7 @@ class Register extends Component {
                                             onChange={handleChange}
                                             className="form-control taiKhoan" 
                                             placeholder="Tài khoản" />
-                                            {errors.taiKhoan && touched.taiKhoan ? <div>{errors.taiKhoan}</div> : ''}
+                                            <ErrorMessage touched={touched.taiKhoan} message={errors.taiKhoan}/>
                                         </div>
 
                                         <div className="form-group">
@@ -91,7 +92,7 @@ class Register extends Component {
                                             onChange={handleChange}
                                             className="form-control matKhau" 
                                             placeholder="Mật khẩu" />
-                                            {errors.matKhau && touched.matKhau ? <div>{errors.matKhau}</div> : ''}
+                                            <ErrorMessage touched={touched.matKhau} message={errors.matKhau}/>
                                         </div>
 
                                         <div className="form-group">
@@ -101,7 +102,7 @@ class Register extends Component {
                                             onChange={handleChange}
                                             className="form-control hoTen" 
                                             placeholder="Họ Tên" />
-                                            {errors.hoTen && touched.hoTen ? <div>{errors.hoTen}</div> : ''}
+                                            <ErrorMessage touched={touched.hoTen} message={errors.hoTen}/>
                                         </div>
 
                                         <div className="form-group">
@@ -111,7 +112,7 @@ class Register extends Component {
                                             onChange={handleChange}
                                             className="form-control soDT" 
                                             placeholder="Số điện thoại" />
-                                            {errors.soDT && touched.soDT ? <div>{errors.soDT}</div> : ''}
+                                            <ErrorMessage touched={touched.soDT} message={errors.soDT}/>
                                         </div>
 
                                         <div>
@@ -124,7 +125,7 @@ class Register extends Component {
                                                 value="HV"
                                                 />
                                                 Học viên 
-                                                {errors.maLoaiNguoiDung && touched.maLoaiNguoiDung ? <div>{errors.maLoaiNguoiDung}</div> : ''}
+                                                <ErrorMessage touched={touched.maLoaiNguoiDung} message={errors.maLoaiNguoiDung}/>
                                                 
                                             </div>
                                             <div>
@@ -134,7 +135,7 @@ class Register extends Component {
                                                 name="maLoaiNguoiDung" 
                                                 value="GV"/>
                                                 Giáo Vụ 
-                                                {errors.maLoaiNguoiDung && touched.maLoaiNguoiDung ? <div>{errors.maLoaiNguoiDung}</div> : ''}
+                                                <ErrorMessage touched={touched.maLoaiNguoiDung} message={errors.maLoaiNguoiDung}/>
                                             </div>
                                         </div>
 
@@ -147,7 +148,7 @@ class Register extends Component {
                                             onChange={handleChange}
                                             className="form-control soDT" 
                                             placeholder="mã nhóm người dùng" />
-                                            {errors.maNhom && touched.maNhom ? <div>{errors.maNhom}</div> : ''}
+                                            <ErrorMessage touched={touched.maNhom} message={errors.maNhom}/>
                                         </div>
 
                                         <div className="form-group">
@@ -157,7 +158,7 @@ class Register extends Component {
                                             onchange={handleChange}
                                             className="form-control email" 
                                             placeholder="Email" />
-                                            {errors.email && touched.email ? <div>{errors.email}</div> : ''}
+                                            <ErrorMessage touched={touched.email} message={errors.email}/>
                                         </div>
 
                                         <div className="form-group">

@@ -4,10 +4,6 @@ import { connect } from "react-redux";
 import Login from "../Screens/Login/Login";
 import Register from "./Register";
 
-import { userProfileAction } from "../Redux/Action/User/UserActions";
-import ProfileDetailComponent from "../Screens/Profile/ProfileDetail";
-
-
 class HeaderComponent extends Component {
 
   render() {
