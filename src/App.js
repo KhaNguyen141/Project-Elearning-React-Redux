@@ -9,9 +9,7 @@ import { restConnector } from "./Services";
 
 // import Layout
 import HeaderComponent from "./Layouts/Header";
-import Login from "./Screens/Login/Login";
 import FooterComponent from './Layouts/Footer';
-import Register from "./Layouts/Register";
 
 import { LOGIN } from "./Redux/Action/type";
 import ProfileDetail from "./Screens/Profile/ProfileDetail";

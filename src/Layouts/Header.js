@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom"; //Thư viện thẻ link (thay thế thẻ <a></a>)
 import { connect } from "react-redux";
 import Login from "../Screens/Login/Login";
-import Register from "./Register";
+import Register from "../Screens/Register/Register";
 
 class HeaderComponent extends Component {
 

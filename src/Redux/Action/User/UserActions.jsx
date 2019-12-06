@@ -1,4 +1,4 @@
-import { type, LOGIN, REGISTER, CHECK_PROFILE, UPDATE_USER } from "../type";
+import { type, LOGIN, REGISTER, UPDATE_USER } from "../type";
 import reduxAction from "../action";
 
 import { settings } from "../../../Config/settings";
@@ -103,21 +103,6 @@ export const userProfileUpdate = userProfileUpdate => {
         title: 'Cập nhật thất bại',
         text: 'Vui lòng thử lại!'
       })
-    })
-  }
-}
-
-export const courseUser = course => {
-  return dispatch => {
-    restConnector({
-      method: "GET",
-      url: "/api/QuanLyKhoaHoc/LayThongTinHocVienKhoaHoc?maKhoaHoc=LTC_GP01",
-      data: course,
-
-    }).then(res => {
-      console.log(res.data);
-    }).catch(error => {
-      console.log(error.response.data)
     })
   }
 }

@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import { Formik, Field, Form, RadioButtonGroup } from 'formik';
 import * as Yup from 'yup';
 import {connect} from 'react-redux';
-import { userRegisterAction } from '../Redux/Action/User/UserActions';
-import ErrorMessage from '../Screens/ErrorMessage/ErrorMessage';
+import { userRegisterAction } from '../../Redux/Action/User/UserActions';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
  
 const validationSchema = Yup.object().shape({
     taiKhoan: Yup.string()
@@ -35,7 +35,8 @@ const validationSchema = Yup.object().shape({
     .required("Email không được để trống"),
 
     soDT: Yup.string().matches(/^\+?(?:[0-9]??).{5,14}[0-9]$/, 'Số điện thoại phải đúng định dạng')
-    .min(10, 'Số điện thoại phải đúng định dạng'),
+    .min(10, 'Số điện thoại phải đúng định dạng')
+    .required("Số điện thoại không được để trống"),
 
 })
 
@@ -115,31 +116,31 @@ class Register extends Component {
                                             <ErrorMessage touched={touched.soDT} message={errors.soDT}/>
                                         </div>
 
-                                        <div>
+                                        <div className="form-group">
                                             <label htmlFor>Loại Người Dùng: </label>
                                             <div>
-                                                <Field 
-                                                onChange={handleChange} 
-                                                type="radio" 
-                                                name="maLoaiNguoiDung" 
-                                                value="HV"
-                                                />
-                                                Học viên 
-                                                <ErrorMessage touched={touched.maLoaiNguoiDung} message={errors.maLoaiNguoiDung}/>
+                                                <span>
+                                                    <Field 
+                                                    onChange={handleChange} 
+                                                    type="radio" 
+                                                    name="maLoaiNguoiDung" 
+                                                    value="HV"
+                                                    />
+                                                    Học viên 
                                                 
+                                                </span>
+                                                <span className="ml-2">
+                                                    <Field 
+                                                    onChange={handleChange} 
+                                                    type="radio" 
+                                                    name="maLoaiNguoiDung" 
+                                                    value="GV"/>
+                                                    Giáo Vụ 
+        
+                                                </span>
                                             </div>
-                                            <div>
-                                                <Field 
-                                                onChange={handleChange} 
-                                                type="radio" 
-                                                name="maLoaiNguoiDung" 
-                                                value="GV"/>
-                                                Giáo Vụ 
-                                                <ErrorMessage touched={touched.maLoaiNguoiDung} message={errors.maLoaiNguoiDung}/>
-                                            </div>
+                                            <ErrorMessage touched={touched.maLoaiNguoiDung} message={errors.maLoaiNguoiDung}/>
                                         </div>
-
-                                        
 
                                         <div className="form-group">
                                             <Field 
