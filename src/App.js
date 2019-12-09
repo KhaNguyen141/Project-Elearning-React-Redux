@@ -27,6 +27,7 @@ class App extends Component {
             component={CourseDetail}
           />
           <Route exact path="/profile" component={ProfileDetail} />
+          <Route exact path="/:maNhom" component={HomeScreen} />
           <Route exact path="/" component={HomeScreen} />
         </Switch>
         <FooterComponent />

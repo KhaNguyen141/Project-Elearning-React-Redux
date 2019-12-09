@@ -1,6 +1,5 @@
 import { restConnector } from ".";
 
-
 class CourseService {
   fetchCourseDetail(courseid) {
     return restConnector({
@@ -13,8 +12,8 @@ class CourseService {
   fetchCourses() {
     return restConnector({
       url:
-        "/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01",
-      method: "GET"
+        `/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc`,
+      method: "GET",
     });
   }
 
