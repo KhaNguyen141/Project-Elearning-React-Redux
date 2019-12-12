@@ -1,4 +1,4 @@
-import { type, LOGIN, REGISTER, UPDATE_USER, USER_ADD_COURSE } from "../type";
+import { LOGIN, REGISTER, UPDATE_USER, USER_ADD_COURSE } from "../type";
 import reduxAction from "../action";
 
 import { settings } from "../../../Config/settings";
@@ -95,13 +95,15 @@ export const userProfileUpdate = (userProfileUpdate) => {
   }
 }
 
-export const userAddCourse = (userAddCourse) => {
+export const userAddCourse = (addCourse) => {
   return dispatch => {
     userService
-    .userAddCourse(userAddCourse)
+    .userAddCourse(addCourse)
     .then(res => {
-      dispatch(reduxAction(USER_ADD_COURSE, res.data));
-      console.log(res.data);
+        dispatch(reduxAction(USER_ADD_COURSE, res.data));
+        console.log(res.data);
+      
+      
       Swal.fire(
         'Đăng ký khoá học thành công!',
         '',

@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {userLoginAction} from '../../Redux/Action/User/UserActions';
 import { Formik, Field, Form } from 'formik';
-import * as Yup from 'yup';
 
 //Component không có lifecycle 
 function Login(props) { //<= function
@@ -16,10 +15,11 @@ function Login(props) { //<= function
             }}
             onSubmit={values  => {
                 props.dispatch(userLoginAction(values))
+                console.log(values)
                 
             }}
         >
-        {({values, errors, touched, handleChange}) => (
+        {({values, handleChange}) => (
         <Form className="formSearch">
             <div className="modal fade" id="modalLogin" tabIndex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                 <div className="modal-dialog" role="document">

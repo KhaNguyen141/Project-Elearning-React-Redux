@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Formik, Field, Form, RadioButtonGroup } from 'formik';
+import { Formik, Field, Form } from 'formik';
 
 import {validationSchema} from '../Validation/ValidationForm';
 import {connect} from 'react-redux';

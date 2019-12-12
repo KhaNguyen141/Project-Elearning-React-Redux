@@ -1,7 +1,6 @@
-import { LOGIN, UPDATE_USER } from "../../Action/type";
+import { LOGIN, UPDATE_USER, USER_ADD_COURSE } from "../../Action/type";
 
 let initialState = {
-  // userDetail: {},
   credentials: null,
 };
 
@@ -13,6 +12,11 @@ const UserReducer = (state = initialState, { type, payload }) => {
     }
 
     case UPDATE_USER: {
+      state.credentials = payload;
+      return {...state}
+    }
+
+    case USER_ADD_COURSE: {
       state.credentials = payload;
       return {...state}
     }

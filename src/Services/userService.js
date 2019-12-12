@@ -28,13 +28,14 @@ class UserService {
         });
     }
 
-    userAddCourse(userAddCourse) {
+    userAddCourse(addCourse) {
         return restConnector({
-            method: "PUT",
+            method: "POST",
             url: "/api/QuanLyKhoaHoc/DangKyKhoaHoc",
             header: { 
               'Authorization': "Bearer " + settings.token },
-            data: userAddCourse,
+            data: addCourse,
+                
         });
     }
     

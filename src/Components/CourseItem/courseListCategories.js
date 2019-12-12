@@ -50,7 +50,7 @@ class CourseListCategoriesComponent extends Component {
 
     const mapStateToProps = state => ({
         courseList: state.courseList,
-        courseCategory: state.courseCategory
+        
 
     });
 
