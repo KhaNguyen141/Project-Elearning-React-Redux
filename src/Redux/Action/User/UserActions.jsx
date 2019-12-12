@@ -7,18 +7,14 @@ import { restConnector } from "../../../Services";
 
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import UserService from "../../../Services/userService";
 
-export const userLoginAction = userLogin => {
+const userService = new UserService();
+
+export const userLoginAction = (userLogin) => {
   return dispatch => {
-    restConnector({
-      method: "POST",
-      url: "/api/quanlynguoidung/dangnhap",
-      data: userLogin,
-    //   headers: {
-    //     Authorization:
-    //       "Bearer" + JSON.parse(localStorage.getItem(settings.token))
-    //   }
-    })
+      userService
+      .userLoginAction(userLogin)
       .then(res => {
         //1.luu local
         localStorage.setItem(settings.userLogin, JSON.stringify(res.data));
@@ -51,14 +47,11 @@ export const userLoginAction = userLogin => {
   };
 };
 
-export const userRegisterAction = userRegister => {
+export const userRegisterAction = (userRegister) => {
   return dispatch => {
-    restConnector({
-      method: "POST",
-      url: "/api/QuanLyNguoiDung/DangKy",
-      data: userRegister
-      
-    }).then(res => {
+      userService
+      .userRegisterAction(userRegister)
+      .then(res => {
       dispatch(reduxAction(REGISTER, res.data));
       console.log(res.data);
       Swal.fire(
@@ -79,16 +72,11 @@ export const userRegisterAction = userRegister => {
   }
 }
 
-export const userProfileUpdate = userProfileUpdate => {
+export const userProfileUpdate = (userProfileUpdate) => {
   return dispatch => {
-    restConnector({
-      method: "PUT",
-      url: "/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
-      header: { 
-        'Authorization': "Bearer " + settings.token },
-      data: userProfileUpdate,
-
-    }).then(res => {
+    userService
+    .userProfileUpdate(userProfileUpdate)
+    .then(res => {
       dispatch(reduxAction(UPDATE_USER, res.data));
       console.log(res.data);
       Swal.fire(
@@ -107,16 +95,11 @@ export const userProfileUpdate = userProfileUpdate => {
   }
 }
 
-export const userAddCourse = userAddCourse => {
+export const userAddCourse = (userAddCourse) => {
   return dispatch => {
-    restConnector({
-      method: "PUT",
-      url: "/api/QuanLyKhoaHoc/DangKyKhoaHoc",
-      header: { 
-        'Authorization': "Bearer " + settings.token },
-      data: userAddCourse,
-
-    }).then(res => {
+    userService
+    .userAddCourse(userAddCourse)
+    .then(res => {
       dispatch(reduxAction(USER_ADD_COURSE, res.data));
       console.log(res.data);
       Swal.fire(

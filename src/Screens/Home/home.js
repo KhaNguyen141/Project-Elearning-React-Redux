@@ -2,9 +2,9 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import CourseService from "../../Services/courseService";
-import reduxAction from "../../Redux/Action/action";
+import reduxAction, { fetchCourse } from "../../Redux/Action/action";
 
-import { FETCH_COURSES, USER_ADD_COURSE } from "../../Redux/Action/type";
+import { USER_ADD_COURSE } from "../../Redux/Action/type";
 
 // import Component
 import CourseItemComponent from "../../Components/CourseItem/courseItem";
@@ -154,16 +154,7 @@ class HomeScreen extends Component {
 
   componentDidMount() {
     if (this.props.credentials) {
-      courseService
-        .fetchCourses()
-        .then(res => {
-          this.props.dispatch(reduxAction(FETCH_COURSES, res.data));
-          
-        })
-        .catch(err => {
-          console.log(err);
-        });
-        
+        this.props.dispatch( fetchCourse() )
     }
   }
   
@@ -171,15 +162,8 @@ class HomeScreen extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.credentials && !prevProps.credentials) {
       //call api lấy danh sách khoá học
-      // const {maNhom} = this.props.match.params;
-      courseService
-        .fetchCourses()
-        .then(res => {
-          this.props.dispatch(reduxAction(FETCH_COURSES, res.data));
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      
+      this.props.dispatch( fetchCourse() )
     }
   }
 

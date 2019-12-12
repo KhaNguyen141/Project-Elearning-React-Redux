@@ -1,4 +1,4 @@
-import { FETCH_COURSE_DETAIL, FETCH_COURSE_CATEGORIES, FETCH_LIST_CATEGORY } from "./type";
+import { FETCH_COURSES, FETCH_COURSE_DETAIL, FETCH_COURSE_CATEGORIES, FETCH_LIST_CATEGORY } from "./type";
 import CourseService from "../../Services/courseService";
 
 const courseService = new CourseService();
@@ -12,6 +12,20 @@ const reduxAction = (type, payload) => {
 };
 
 //async action
+// COURSE 
+export const fetchCourse = () => {
+  return dispatch => {
+    courseService
+    .fetchCourses()
+    .then(res => {
+      dispatch(reduxAction(FETCH_COURSES, res.data));
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+}
+
 export const fetchCourseDetail = (courseid) => {
   return dispatch => {
     courseService
@@ -50,5 +64,8 @@ export const fetchListCategory = (maDanhMuc) => {
       });
   };
 };
+
+// USER 
+
 
 export default reduxAction;
