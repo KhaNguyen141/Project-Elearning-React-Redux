@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
-import CourseService from "../../Services/courseService";
-import reduxAction, { fetchCourse } from "../../Redux/Action/action";
-
-import { USER_ADD_COURSE } from "../../Redux/Action/type";
+import { fetchCourse } from "../../Redux/Action/Course/CourseAction";
 
 // import Component
 import CourseItemComponent from "../../Components/CourseItem/courseItem";
@@ -20,8 +17,6 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 // import layout
 import CarouselComponent from '../../Layouts/Carousel';
 import IntroductionComponent from '../../Layouts/Introduction';
-
-const courseService = new CourseService();
 
 class HomeScreen extends Component {
   render() {

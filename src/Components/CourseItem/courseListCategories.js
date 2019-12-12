@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import CourseService from "../../Services/courseService";
-import reduxAction, { fetchCourseCategories, fetchListCategory } from "../../Redux/Action/action";
+import { fetchListCategory } from "../../Redux/Action/Course/CourseAction";
 
 // import Component
 import CourseItemComponent from "../../Components/CourseItem/courseItem";
@@ -15,8 +15,6 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-
-const courseService = new CourseService();
 
 class CourseListCategoriesComponent extends Component {
 

@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom"; //Thư viện thẻ link (thay thế thẻ <a></a>)
 import { connect } from "react-redux";
-import CourseService from "../Services/courseService";
 
 // Import function layout
 import Login from "../Screens/Login/Login";
 import Register from "../Screens/Register/Register";
-import { FETCH_LIST_CATEGORY } from "../Redux/Action/type";
-import reduxAction from "../Redux/Action/action";
 import CartModal from "./CartModal";
 
-const courseService = new CourseService();
+import {fetchListCategory} from "../Redux/Action/Course/CourseAction"
+import reduxAction from "../Redux/Action/action";
+import { settings } from "../Config/settings";
 
 class HeaderComponent extends Component {
 
@@ -174,36 +173,15 @@ class HeaderComponent extends Component {
   }
 
   componentDidMount() {
-    courseService
-      .fetchListCategory()
-      .then(res => {
-        this.props.dispatch(reduxAction(FETCH_LIST_CATEGORY, res.data));
-        
-      })
-      .catch(err => {
-        console.log(err);
-      });
-      
+      this.props.dispatch( fetchListCategory() )
   }
-
-  componentDidUpdate(prevProps) {
-      //call api lấy danh sách khoá học
-      
-      courseService
-        .fetchListCategory()
-        .then(res => {
-          this.props.dispatch(reduxAction(FETCH_LIST_CATEGORY, res.data));
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
 }
 
 const handleLogout = (e) => {
   e.preventDefault();
-  localStorage.clear();
-  window.location.href = "/home";
+  localStorage.removeItem(settings.userLogin);
+  window.location.replace("/home");
+ 
 }
 
 const mapStateToProps = state => ({

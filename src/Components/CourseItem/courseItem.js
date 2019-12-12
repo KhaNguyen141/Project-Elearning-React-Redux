@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from 'react-router-dom';
 
-import CartModal from '../../Layouts/CartModal';
 import { connect } from "react-redux";
-import { userAddCourse } from "../../Redux/Action/User/UserActions";
 
 class CourseItemComponent extends Component {
   render() {

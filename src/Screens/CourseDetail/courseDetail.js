@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CourseService from "../../Services/courseService";
 
-import { fetchCourseDetail } from "../../Redux/Action/action";
+import { fetchCourseDetail } from "../../Redux/Action/Course/CourseAction";
 
 const courseService = new CourseService();
 

@@ -2,14 +2,14 @@ import { type, LOGIN, REGISTER, UPDATE_USER, USER_ADD_COURSE } from "../type";
 import reduxAction from "../action";
 
 import { settings } from "../../../Config/settings";
-
 import { restConnector } from "../../../Services";
 
-import axios from 'axios';
 import Swal from 'sweetalert2';
 import UserService from "../../../Services/userService";
 
 const userService = new UserService();
+
+// Async Action User
 
 export const userLoginAction = (userLogin) => {
   return dispatch => {
