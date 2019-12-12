@@ -1,44 +1,10 @@
 import React, { Component } from 'react';
-import { NavLink } from "react-router-dom";
 import { Formik, Field, Form, RadioButtonGroup } from 'formik';
-import * as Yup from 'yup';
+
+import {validationSchema} from '../Validation/ValidationForm';
 import {connect} from 'react-redux';
 import { userRegisterAction } from '../../Redux/Action/User/UserActions';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
- 
-const validationSchema = Yup.object().shape({
-    taiKhoan: Yup.string()
-    .min(6, "Tài khoản phải có ít nhất 6 kí tự")
-    .max(255, "Tài khoản chỉ được phép tối đa 255 kí tự")
-    .required("Tài khoản không được để trống"),
-
-    matKhau: Yup.string()
-    .min(6, "Mật khẩu phải có ít nhất 6 kí tự")
-    .max(255, "Mật khẩu chỉ được phép tối đa 255 kí tự")
-    .required("Mật khẩu không được để trống"),
-
-    hoTen: Yup.string()
-    .min(6, "Họ tên phải có ít nhất 6 kí tự")
-    .max(255, "Họ tên chỉ được phép tối đa 255 kí tự")
-    .required("Họ tên không được để trống"),
-
-    maLoaiNguoiDung: Yup.string().required("Vui lòng chọn loại người dùng"),
-
-    maNhom: Yup.string()
-    .min(4, "Mã nhóm phải có ít nhất 4 kí tự")
-    .max(255, "Mã nhóm chỉ được phép tối đa 255 kí tự")
-    .required("Mã nhóm không được để trống"),
-    
-    email: Yup.string()
-    .email("Email phải đúng định dạng")
-    .max(255, "Email chỉ được phép tối đa 255 kí tự")
-    .required("Email không được để trống"),
-
-    soDT: Yup.string().matches(/^\+?(?:[0-9]??).{5,14}[0-9]$/, 'Số điện thoại phải đúng định dạng')
-    .min(10, 'Số điện thoại phải đúng định dạng')
-    .required("Số điện thoại không được để trống"),
-
-})
 
 class Register extends Component {
 
@@ -49,7 +15,6 @@ class Register extends Component {
                 matKhau: "",
                 hoTen: "",
                 soDT: "",
-                maLoaiNguoiDung: "",
                 maNhom: "",
                 email: "",
                 
@@ -63,7 +28,7 @@ class Register extends Component {
             >
             {({values, errors, touched, handleChange}) => (
                     <Form className="formSearch">
-                        <div className="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div className="modal fade" id="modalRegister" tabIndex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                             <div className="modal-dialog" role="document">
                                 <div className="modal-content">
                                     <div className="modal-header">
@@ -117,32 +82,6 @@ class Register extends Component {
                                         </div>
 
                                         <div className="form-group">
-                                            <label htmlFor>Loại Người Dùng: </label>
-                                            <div>
-                                                <span>
-                                                    <Field 
-                                                    onChange={handleChange} 
-                                                    type="radio" 
-                                                    name="maLoaiNguoiDung" 
-                                                    value="HV"
-                                                    />
-                                                    Học viên 
-                                                
-                                                </span>
-                                                <span className="ml-2">
-                                                    <Field 
-                                                    onChange={handleChange} 
-                                                    type="radio" 
-                                                    name="maLoaiNguoiDung" 
-                                                    value="GV"/>
-                                                    Giáo Vụ 
-        
-                                                </span>
-                                            </div>
-                                            <ErrorMessage touched={touched.maLoaiNguoiDung} message={errors.maLoaiNguoiDung}/>
-                                        </div>
-
-                                        <div className="form-group">
                                             <Field 
                                             name="maNhom" 
                                             type="text" 
@@ -156,7 +95,7 @@ class Register extends Component {
                                             <Field 
                                             name="email" 
                                             type="text" 
-                                            onchange={handleChange}
+                                            onChange={handleChange}
                                             className="form-control email" 
                                             placeholder="Email" />
                                             <ErrorMessage touched={touched.email} message={errors.email}/>

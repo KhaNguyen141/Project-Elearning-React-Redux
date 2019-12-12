@@ -8,6 +8,7 @@ const CourseReducer = (state = initialState, { type, payload }) => {
         state = payload;
         return [...state]
     }
+
     default:
       return state;
   }

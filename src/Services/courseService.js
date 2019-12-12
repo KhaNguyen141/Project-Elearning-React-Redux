@@ -17,5 +17,21 @@ class CourseService {
     });
   }
 
+  fetchCoursesCategories(maDanhMuc) {
+    return restConnector({
+      url:
+        `/api/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc?maDanhMuc=${maDanhMuc}`,
+      method: "GET",
+    });
+  }
+
+  fetchListCategory() {
+    return restConnector({
+      url:
+        `/api/QuanLyKhoaHoc/LayDanhMucKhoaHoc`,
+      method: "GET",
+    });
+  }
+
 }
 export default CourseService;

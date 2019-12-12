@@ -1,4 +1,4 @@
-import { type, LOGIN, REGISTER, UPDATE_USER } from "../type";
+import { type, LOGIN, REGISTER, UPDATE_USER, USER_ADD_COURSE } from "../type";
 import reduxAction from "../action";
 
 import { settings } from "../../../Config/settings";
@@ -102,6 +102,34 @@ export const userProfileUpdate = userProfileUpdate => {
         icon: 'error',
         title: 'Cập nhật thất bại',
         text: 'Vui lòng thử lại!'
+      })
+    })
+  }
+}
+
+export const userAddCourse = userAddCourse => {
+  return dispatch => {
+    restConnector({
+      method: "PUT",
+      url: "/api/QuanLyKhoaHoc/DangKyKhoaHoc",
+      header: { 
+        'Authorization': "Bearer " + settings.token },
+      data: userAddCourse,
+
+    }).then(res => {
+      dispatch(reduxAction(USER_ADD_COURSE, res.data));
+      console.log(res.data);
+      Swal.fire(
+        'Đăng ký khoá học thành công!',
+        '',
+        'success'
+      )
+    }).catch(error => {
+      console.log(error.response.data)
+      Swal.fire({
+        icon: 'error',
+        title: 'Khoá học đã tồn tại',
+        text: ''
       })
     })
   }

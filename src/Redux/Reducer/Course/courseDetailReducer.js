@@ -7,6 +7,7 @@ const CourseDetailReducer = (state = initialState, { type, payload }) => {
     case FETCH_COURSE_DETAIL: {
       return payload;
     }
+
     default:
       return state;
   }

@@ -4,8 +4,7 @@ import { connect } from "react-redux";
 import CourseService from "../../Services/courseService";
 import reduxAction from "../../Redux/Action/action";
 
-import { FETCH_COURSES } from "../../Redux/Action/type";
-import { fetchCourses } from "../../Redux/Action/action"
+import { FETCH_COURSES, USER_ADD_COURSE } from "../../Redux/Action/type";
 
 // import Component
 import CourseItemComponent from "../../Components/CourseItem/courseItem";
@@ -47,17 +46,14 @@ class HomeScreen extends Component {
               <div className="udemyCourse__tabs">
                 <nav>
                   <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#latestCourse" role="tab" aria-controls="nav-home" aria-selected="true">Các khóa học mới nhất</a>
+                 
+                      <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#latestCourse" role="tab" aria-controls="nav-home" aria-selected="true">Các khóa học mới nhất</a>
+                      <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#frontEndCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Front End</a>
+                      <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#backEndCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Back End</a>
+                      <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#designCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Design</a>
+                      <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#mobileCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Di động</a>
+                      <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#thinkingCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Tư Duy</a>
 
-                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#frontEndCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Front End</a>
-
-                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#backEndCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Back End</a>
-
-                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#designCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Design</a>
-
-                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#mobileCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Di động</a>
-
-                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#thinkingCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Tư Duy</a>
                     
                   </div>
                 </nav>
@@ -67,10 +63,11 @@ class HomeScreen extends Component {
                       
                         {this.props.courseList.length && (
                           <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                            {this.props.courseList.sort((a, b) => b.ngayTao.split('/').reverse().join().localeCompare(a.ngayTao.split('/').reverse().join()))
-                              .map((item, index) => (
-                                <CourseItemComponent className="item" item={item} key={index} />
-                              ))}
+                            {this.props.courseList
+                            .sort((a, b) => b.ngayTao.split('/').reverse().join().localeCompare(a.ngayTao.split('/').reverse().join()))
+                            .map((item, index) => {
+                                return <CourseItemComponent className="item" item={item} key={index} />
+                              })}
                           </OwlCarousel>
                         )}
                     </div>
@@ -79,7 +76,9 @@ class HomeScreen extends Component {
                       
                       {this.props.courseList.length && (
                         <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                          {this.props.courseList.sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc)).map((item, index) => {
+                          {this.props.courseList
+                          .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
+                          .map((item, index) => {
                             if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "FrontEnd") 
                               return <CourseItemComponent className="item" item={item} key={index} />
                           })}
@@ -91,7 +90,9 @@ class HomeScreen extends Component {
                       
                       {this.props.courseList.length && (
                         <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                          {this.props.courseList.sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc)).map((item, index) => {
+                          {this.props.courseList
+                          .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
+                          .map((item, index) => {
                             if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "BackEnd")
                               return <CourseItemComponent className="item" item={item} key={index} />
                             })}
@@ -103,7 +104,9 @@ class HomeScreen extends Component {
                       
                       {this.props.courseList.length && (
                         <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                          {this.props.courseList.sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc)).map((item, index) => {
+                          {this.props.courseList
+                          .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
+                          .map((item, index) => {
                             if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "Design")
                               return <CourseItemComponent className="item" item={item} key={index} />
                             })}
@@ -115,7 +118,9 @@ class HomeScreen extends Component {
                       
                       {this.props.courseList.length && (
                         <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                          {this.props.courseList.sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc)).map((item, index) => {
+                          {this.props.courseList
+                          .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
+                          .map((item, index) => {
                             if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "DiDong")
                               return <CourseItemComponent className="item" item={item} key={index} />
                             })}
@@ -127,7 +132,9 @@ class HomeScreen extends Component {
                       
                       {this.props.courseList.length && (
                         <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                          {this.props.courseList.map((item, index) => {
+                          {this.props.courseList
+                          .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
+                          .map((item, index) => {
                             if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "TuDuy")
                               return <CourseItemComponent className="item" item={item} key={index} />
                             })}
@@ -147,18 +154,19 @@ class HomeScreen extends Component {
 
   componentDidMount() {
     if (this.props.credentials) {
-      // const {maNhom} = this.props.match.params;
       courseService
         .fetchCourses()
         .then(res => {
           this.props.dispatch(reduxAction(FETCH_COURSES, res.data));
+          
         })
         .catch(err => {
           console.log(err);
         });
+        
     }
   }
-
+  
   //chạy sau render
   componentDidUpdate(prevProps) {
     if (this.props.credentials && !prevProps.credentials) {
@@ -174,11 +182,12 @@ class HomeScreen extends Component {
         });
     }
   }
+
 }
 
-const mapStateToProps = state => ({
-  courseList: state.courseList,
-  credentials: state.user.credentials
-});
+  const mapStateToProps = state => ({
+    courseList: state.courseList,
+    credentials: state.user.credentials
+  });
 
 export default connect(mapStateToProps)(HomeScreen);

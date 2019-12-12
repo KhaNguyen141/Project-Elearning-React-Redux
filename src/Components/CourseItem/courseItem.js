@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { NavLink } from 'react-router-dom';
 
+import CartModal from '../../Layouts/CartModal';
+import { connect } from "react-redux";
+import { userAddCourse } from "../../Redux/Action/User/UserActions";
+
 class CourseItemComponent extends Component {
   render() {
     const { hinhAnh, tenKhoaHoc, moTa, luotXem, maKhoaHoc } = this.props.item;
@@ -24,6 +28,7 @@ class CourseItemComponent extends Component {
                         </div>
                         <div className="price">
                             <button className="btn btn-udi-yellow mt-2">Đăng ký</button>
+                            {/* <button onClick={() => this.addToCart(course)} className="btn btn-udi-yellow mt-2">Đăng ký</button> */}
                             <NavLink to={`/coursedetail/${maKhoaHoc}`} className="btn btn-udi-white ml-2 mt-2">Xem Chi Tiêt</NavLink>
                         </div>
                     </div>
@@ -36,6 +41,20 @@ class CourseItemComponent extends Component {
     }
     return string;
   }
+
+  // addToCart = (course) => {
+
+  // }
+
 }
 
-export default CourseItemComponent;
+const mapStateToProps = (state) => ({
+  courseList: state.CourseReducer,
+  courseDetail: state.CourseDetailReducer,
+  user: state.UserReducer,
+  userAction: state.UserActionReducer
+})
+
+
+
+export default connect(mapStateToProps, null)(CourseItemComponent);

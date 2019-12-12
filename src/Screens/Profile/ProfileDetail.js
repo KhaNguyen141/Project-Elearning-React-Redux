@@ -2,30 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { userProfileUpdate } from '../../Redux/Action/User/UserActions';
 
+import {validationSchema} from '../Validation/ValidationForm';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-
-const validationSchema = Yup.object().shape({
-    matKhau: Yup.string()
-    .min(6, "Mật khẩu phải có ít nhất 6 kí tự")
-    .max(255, "Mật khẩu chỉ được phép tối đa 255 kí tự")
-    .required("Mật khẩu không được để trống"),
-
-    hoTen: Yup.string()
-    .min(6, "Họ tên phải có ít nhất 6 kí tự")
-    .max(255, "Họ tên chỉ được phép tối đa 255 kí tự")
-    .required("Họ tên không được để trống"),
-    
-    email: Yup.string()
-    .email("Email phải đúng định dạng")
-    .max(255, "Email chỉ được phép tối đa 255 kí tự")
-    .required("Email không được để trống"),
-
-    soDT: Yup.string().matches(/^\+?(?:[0-9]??).{5,14}[0-9]$/, 'Số điện thoại phải đúng định dạng')
-    .min(10, 'Số điện thoại phải đúng định dạng')
-    .required("Số điện thoại không được để trống"),
-})
 
 class ProfileDetailComponent extends Component {
 
@@ -49,7 +29,7 @@ class ProfileDetailComponent extends Component {
                 hoTen: "",
                 soDT: "",
                 maLoaiNguoiDung: "HV",
-                maNhom: "GP06",
+                maNhom: "GP01",
                 email: ""
             }}
 

@@ -1,9 +1,12 @@
 // Course
 export const FETCH_COURSES = "FETCH_COURSES";
 export const FETCH_COURSE_DETAIL = "FETCH_COURSE_DETAIL";
+export const FETCH_COURSE_CATEGORIES = "FETCH_COURSE_CATEGORIES";
+export const FETCH_LIST_CATEGORY = "FETCH_LIST_CATEGORY";
 
 //User
 export const LOGIN = 'LOGIN';
 export const REGISTER = 'REGISTER';
 export const UPDATE_USER = 'UPDATE_USER';
+export const USER_ADD_COURSE = 'USER_ADD_COURSE';
 

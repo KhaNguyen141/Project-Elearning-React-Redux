@@ -2,7 +2,7 @@ import { LOGIN, UPDATE_USER } from "../../Action/type";
 
 let initialState = {
   // userDetail: {},
-  credentials: null
+  credentials: null,
 };
 
 const UserReducer = (state = initialState, { type, payload }) => {
@@ -16,7 +16,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
       state.credentials = payload;
       return {...state}
     }
-
+    
     default:
       return state;
   }

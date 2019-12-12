@@ -33,7 +33,7 @@ function Login(props) { //<= function
 
                         </div>
 
-                        <div class="modal-body">
+                        <div className="modal-body">
                                 <div className="form-group">
                                     <Field 
                                     name="taiKhoan" 

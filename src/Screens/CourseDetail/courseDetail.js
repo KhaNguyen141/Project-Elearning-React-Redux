@@ -11,18 +11,34 @@ class CourseDetail extends Component {
 
   render() {
 
-    const {tenKhoaHoc, moTa, hinhAnh} = this.props.course;
+    const {tenKhoaHoc, moTa, hinhAnh, ngayTao, luotXem} = this.props.course;
     return (
-      <div>
-        <img src={hinhAnh} style={{width: "100%", height: "50rem"}} />
+      <div className="courseDetailContainer">
+        
+        {/* <img src={hinhAnh} style={{width: "100%", height: "50rem"}} /> */}
         
         <h1>Chi tiết khóa học {tenKhoaHoc}</h1>
         <div>
           <p>Mô tả chi tiết khóa học {moTa}</p>
         </div>
+        <div>
+          <div className="rating__star">
+              <i className="fa fa-star" />
+              <i className="fa fa-star" />
+              <i className="fa fa-star" />
+              <i className="fa fa-star" />
+              <i className="fa fa-star-half-o" aria-hidden="true" />
+              <span> 4.6 </span>
+              <span> (25,554)</span>
+              <span> Số lượng học viên đăng ký: {luotXem}</span>
+          </div>
+          <p>Ngày tạo: {ngayTao}</p>
+        </div>
+
       </div>
     );
   }
+  
   componentDidMount() {
     //Lấy tham số mã khóa học từ url
     const {courseid} = this.props.match.params;

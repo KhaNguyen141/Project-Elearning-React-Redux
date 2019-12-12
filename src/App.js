@@ -13,6 +13,7 @@ import FooterComponent from './Layouts/Footer';
 
 import { LOGIN } from "./Redux/Action/type";
 import ProfileDetail from "./Screens/Profile/ProfileDetail";
+import CourseListCategoriesComponent from "./Components/CourseItem/courseListCategories";
 
 class App extends Component {
   render() {
@@ -21,13 +22,10 @@ class App extends Component {
         <HeaderComponent />
         <Switch>
           <Route exact path="/home" component={HomeScreen} />
-          <Route
-            exact
-            path="/coursedetail/:courseid"
-            component={CourseDetail}
+          <Route exact path="/coursedetail/:courseid" component={CourseDetail}
           />
           <Route exact path="/profile" component={ProfileDetail} />
-          <Route exact path="/:maNhom" component={HomeScreen} />
+          <Route exact path="/coursecategories/:maDanhMuc" component={CourseListCategoriesComponent} />
           <Route exact path="/" component={HomeScreen} />
         </Switch>
         <FooterComponent />
