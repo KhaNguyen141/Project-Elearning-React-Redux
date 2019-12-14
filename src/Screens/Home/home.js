@@ -19,7 +19,9 @@ import CarouselComponent from '../../Layouts/Carousel';
 import IntroductionComponent from '../../Layouts/Introduction';
 
 class HomeScreen extends Component {
+
   render() {
+
     return (
       <section className="udemyCourse">
         <div>
@@ -55,7 +57,7 @@ class HomeScreen extends Component {
          
                 <div className="tab-content" id="nav-tabContent">
                     <div className="tab-pane fade show active" id="latestCourse" role="tabpanel">
-                      
+
                         {this.props.courseList.length && (
                           <OwlCarousel className="udemyCourse__items" margin={10} nav>
                             {this.props.courseList
@@ -165,8 +167,9 @@ class HomeScreen extends Component {
 }
 
   const mapStateToProps = state => ({
-    courseList: state.courseList,
-    credentials: state.user.credentials
+    courseList: state.courseReducer.courses,
+    credentials: state.UserReducer.credentials,
+
   });
 
 export default connect(mapStateToProps)(HomeScreen);

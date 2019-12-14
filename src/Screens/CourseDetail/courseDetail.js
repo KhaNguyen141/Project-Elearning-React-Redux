@@ -11,7 +11,7 @@ class CourseDetail extends Component {
 
   render() {
 
-    const {tenKhoaHoc, moTa, hinhAnh, ngayTao, luotXem} = this.props.course;
+    const {tenKhoaHoc, moTa, hinhAnh, ngayTao, luotXem} = this.props.courseDetail;
     return (
       <div className="courseDetailContainer">
         
@@ -60,7 +60,7 @@ http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKho
  */
 
 const mapStateToProps = state => ({
-  course: state.courseDetail
+  courseDetail: state.courseReducer.detail
 });
 
 export default connect(mapStateToProps)(CourseDetail);

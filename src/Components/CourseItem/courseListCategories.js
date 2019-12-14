@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import CourseService from "../../Services/courseService";
-import { fetchListCategory } from "../../Redux/Action/Course/CourseAction";
+import { fetchCoursesByID } from "../../Redux/Action/Course/CourseAction";
 
 // import Component
 import CourseItemComponent from "../../Components/CourseItem/courseItem";
@@ -19,17 +18,16 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 class CourseListCategoriesComponent extends Component {
 
     render() {
-    
+
+    console.log(this.props.courseByID)
     return (
         <div className="container">
-            <div>
-                Front End Courses
-            </div>
-            <h1>Các khoá học phổ biến</h1>
+            <h1> Khoá học:</h1>
+            <h4> Các khoá học phổ biến</h4>
             <div className="tab-pane fade show" id="frontEndCourse" role="tabpanel">
                 <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                    {this.props.courseList.map((item, index) => {
-                        return <CourseItemComponent className="item" item={item} key={index} />
+                    {this.props.courseListByID.map((item, index) => {
+                        return <CourseItemComponent className="item" item={item} key={index}/>
                     })}
                 </OwlCarousel>
               
@@ -43,15 +41,14 @@ class CourseListCategoriesComponent extends Component {
         const {maDanhMuc} = this.props.match.params;
     
         //call api lấy chi tiết khoá học
-        this.props.dispatch( fetchListCategory(maDanhMuc) )
+        this.props.dispatch( fetchCoursesByID(maDanhMuc) )
   
     }
+
 }
 
-    const mapStateToProps = state => ({
-        courseList: state.courseList,
-        
-
-    });
+const mapStateToProps = (state, ownProps) => ({
+    courseListByID: state.courseReducer.courses,
+})
 
 export default connect(mapStateToProps)(CourseListCategoriesComponent);

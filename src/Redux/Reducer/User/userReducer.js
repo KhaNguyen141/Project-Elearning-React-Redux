@@ -1,4 +1,4 @@
-import { LOGIN, UPDATE_USER, USER_ADD_COURSE } from "../../Action/type";
+import { LOGIN, UPDATE_USER, USER_ADD_COURSE, FETCH_COURSE_PENDING } from "../../Action/type";
 
 let initialState = {
   credentials: null,

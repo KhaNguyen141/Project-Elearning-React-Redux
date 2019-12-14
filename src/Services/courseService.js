@@ -1,4 +1,5 @@
 import { restConnector } from ".";
+import { settings } from "../Config/settings";
 
 class CourseService {
   fetchCourseDetail(courseid) {
@@ -17,7 +18,7 @@ class CourseService {
     });
   }
 
-  fetchCoursesCategories(maDanhMuc) {
+  fetchCoursesByID(maDanhMuc) {
     return restConnector({
       url:
         `/api/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc?maDanhMuc=${maDanhMuc}`,
@@ -33,5 +34,16 @@ class CourseService {
     });
   }
 
+  fetchCoursePending(coursePending) {
+    return restConnector({
+      url:
+        `/api/QuanLyNguoiDung/LayDanhSachKhoaHocChoXetDuyet`,
+      method: "POST",
+      header: { 
+        'Authorization': "Bearer " + settings.token },
+      data: coursePending,
+    });
+  }
 }
 export default CourseService;
+
