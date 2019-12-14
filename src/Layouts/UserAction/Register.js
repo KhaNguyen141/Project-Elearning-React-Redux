@@ -4,7 +4,7 @@ import { Formik, Field, Form } from 'formik';
 import {validationSchema} from '../Validation/ValidationForm';
 import {connect} from 'react-redux';
 import { userRegisterAction } from '../../Redux/Action/User/UserActions';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import ErrorMessage from '../../Screens/ErrorMessage/ErrorMessage';
 
 class Register extends Component {
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { userProfileUpdate } from '../../Redux/Action/User/UserActions';
 
-import {validationSchema} from '../Validation/ValidationForm';
+import {validationSchema} from '../../Layouts/Validation/ValidationForm';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
@@ -90,7 +90,6 @@ class ProfileDetailComponent extends Component {
                                                 name="matKhau" 
                                                 type="password" 
                                                 value={values.matKhau} 
-
                                                 onChange={handleChange}
                                                 className="form-control" 
                                                 placeholder="Mật khẩu" />
@@ -149,4 +148,4 @@ class ProfileDetailComponent extends Component {
     }
 }
 
-export default connect(null)(ProfileDetailComponent);
+export default (ProfileDetailComponent);

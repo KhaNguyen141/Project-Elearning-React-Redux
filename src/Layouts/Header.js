@@ -4,12 +4,11 @@ import { connect } from "react-redux";
 import { Formik, Field, Form } from 'formik';
 
 // Import function layout
-import Login from "../Screens/Login/Login";
-import Register from "../Screens/Register/Register";
+import Login from "./UserAction/Login";
+import Register from "./UserAction/Register";
 import CartModal from "./CartModal";
 
 import {fetchListCategory, fetchCoursePending} from "../Redux/Action/Course/CourseAction"
-import reduxAction from "../Redux/Action/action";
 import { settings } from "../Config/settings";
 
 class HeaderComponent extends Component {
