@@ -18,8 +18,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 class CourseListCategoriesComponent extends Component {
 
     render() {
-
-    console.log(this.props.courseByID)
+    
     return (
         <div className="container">
             <h1> Khoá học:</h1>
@@ -39,16 +38,14 @@ class CourseListCategoriesComponent extends Component {
 
     componentDidMount() {
         const {maDanhMuc} = this.props.match.params;
-    
         //call api lấy chi tiết khoá học
         this.props.dispatch( fetchCoursesByID(maDanhMuc) )
-  
     }
 
 }
 
-const mapStateToProps = (state, ownProps) => ({
-    courseListByID: state.courseReducer.courses,
+const mapStateToProps = (state) => ({
+    courseListByID: state.courseReducer.courseByID,
 })
 
 export default connect(mapStateToProps)(CourseListCategoriesComponent);

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, Component } from "react";
 
 import { connect } from "react-redux";
 import { fetchCourse } from "../../Redux/Action/Course/CourseAction";
@@ -18,12 +18,16 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import CarouselComponent from '../../Layouts/Carousel';
 import IntroductionComponent from '../../Layouts/Introduction';
 
-class HomeScreen extends Component {
+const HomeScreen = (props) => {
 
-  render() {
+  useEffect(() => {
+    if (props.credentials) {
+      props.dispatch( fetchCourse() )
+    }
+  }, [props.credentials])
 
-    return (
-      <section className="udemyCourse">
+  return (
+    <section className="udemyCourse">
         <div>
           <CarouselComponent />
         </div>
@@ -58,22 +62,22 @@ class HomeScreen extends Component {
                 <div className="tab-content" id="nav-tabContent">
                     <div className="tab-pane fade show active" id="latestCourse" role="tabpanel">
 
-                        {this.props.courseList.length && (
+                      {props.courseList.length && (
                           <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                            {this.props.courseList
+                            {props.courseList
                             .sort((a, b) => b.ngayTao.split('/').reverse().join().localeCompare(a.ngayTao.split('/').reverse().join()))
                             .map((item, index) => {
                                 return <CourseItemComponent className="item" item={item} key={index} />
                               })}
                           </OwlCarousel>
-                        )}
+                         )}
                     </div>
 
                     <div className="tab-pane fade show" id="frontEndCourse" role="tabpanel">
                       
-                      {this.props.courseList.length && (
+                      {props.courseList.length && (
                         <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                          {this.props.courseList
+                          {props.courseList
                           .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
                           .map((item, index) => {
                             if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "FrontEnd") 
@@ -85,9 +89,9 @@ class HomeScreen extends Component {
 
                   <div className="tab-pane fade show" id="backEndCourse" role="tabpanel">
                       
-                      {this.props.courseList.length && (
+                      {props.courseList.length && (
                         <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                          {this.props.courseList
+                          {props.courseList
                           .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
                           .map((item, index) => {
                             if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "BackEnd")
@@ -99,9 +103,9 @@ class HomeScreen extends Component {
 
                   <div className="tab-pane fade show" id="designCourse" role="tabpanel">
                       
-                      {this.props.courseList.length && (
+                      {props.courseList.length && (
                         <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                          {this.props.courseList
+                          {props.courseList
                           .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
                           .map((item, index) => {
                             if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "Design")
@@ -113,9 +117,9 @@ class HomeScreen extends Component {
 
                   <div className="tab-pane fade show" id="mobileCourse" role="tabpanel">
                       
-                      {this.props.courseList.length && (
+                      {props.courseList.length && (
                         <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                          {this.props.courseList
+                          {props.courseList
                           .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
                           .map((item, index) => {
                             if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "DiDong")
@@ -127,9 +131,9 @@ class HomeScreen extends Component {
 
                   <div className="tab-pane fade show" id="thinkingCourse" role="tabpanel">
                       
-                      {this.props.courseList.length && (
+                      {props.courseList.length && (
                         <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                          {this.props.courseList
+                          {props.courseList
                           .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
                           .map((item, index) => {
                             if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "TuDuy")
@@ -144,32 +148,14 @@ class HomeScreen extends Component {
           </div>
         </div>
       </section>
-    );
-  }
-
-  //hàm tự động chạy 1 lần duy nhất khi component khởi tạo
-
-  componentDidMount() {
-    if (this.props.credentials) {
-        this.props.dispatch( fetchCourse() )
-    }
-  }
-  
-  //chạy sau render
-  componentDidUpdate(prevProps) {
-    if (this.props.credentials && !prevProps.credentials) {
-      //call api lấy danh sách khoá học
-      
-      this.props.dispatch( fetchCourse() )
-    }
-  }
-
-}
+  );
+};
 
   const mapStateToProps = state => ({
     courseList: state.courseReducer.courses,
-    credentials: state.UserReducer.credentials,
+    credentials: state.userReducer.credentials,
 
   });
 
 export default connect(mapStateToProps)(HomeScreen);
+

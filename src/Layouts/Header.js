@@ -8,7 +8,7 @@ import Login from "./UserAction/Login";
 import Register from "./UserAction/Register";
 import CartModal from "./CartModal";
 
-import {fetchListCategory, fetchCoursePending} from "../Redux/Action/Course/CourseAction"
+import {fetchListCategory, fetchCoursePending, fetchCoursesByID} from "../Redux/Action/Course/CourseAction"
 import { settings } from "../Config/settings";
 
 class HeaderComponent extends Component {
@@ -34,7 +34,12 @@ class HeaderComponent extends Component {
                     .map((list, index) => {
                    
                       return (
-                        <NavLink to={`/coursecategories/${list.maDanhMuc}`} key={index} list={list} className="dropdown-item">{list.tenDanhMuc}</NavLink>
+                        <NavLink 
+                        to={`/coursecategories/${list.maDanhMuc}`} 
+                        handleShowCourseByID={handleShowCourseByID} 
+                        key={index} 
+                        list={list} 
+                        className="dropdown-item">{list.tenDanhMuc}</NavLink>
                       )
                     })}
                   </div>
@@ -105,7 +110,13 @@ class HeaderComponent extends Component {
 
   componentDidMount() {
     this.props.dispatch( fetchListCategory() )
+
   }
+}
+
+const handleShowCourseByID = (maDanhMuc, e) => {
+  e.preventDefault();
+  this.props.dispatch( fetchCoursesByID(maDanhMuc) )
 
 }
 
@@ -117,7 +128,7 @@ const handleLogout = (e) => {
 }
 
 const mapStateToProps = (state) => ({
-  credentials: state.UserReducer.credentials,
+  credentials: state.userReducer.credentials,
   courseCategory: state.courseReducer.courseListCategory
 });
 

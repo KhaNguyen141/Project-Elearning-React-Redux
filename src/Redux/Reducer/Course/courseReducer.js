@@ -4,33 +4,7 @@ let initialState = {
   courses: [],
   detail: [],
   courseListCategory: [],
-
-  category: [
-    {
-      "maDanhMuc": "BackEnd",
-      "tenDanhMuc": "Lập trình Backend"
-    },
-    {
-      "maDanhMuc": "Design",
-      "tenDanhMuc": "Thiết kế Web"
-    },
-    {
-      "maDanhMuc": "DiDong",
-      "tenDanhMuc": "Lập trình di động"
-    },
-    {
-      "maDanhMuc": "FrontEnd",
-      "tenDanhMuc": "Lập trình Front end"
-    },
-    {
-      "maDanhMuc": "FullStack",
-      "tenDanhMuc": "Lập trình Full Stack"
-    },
-    {
-      "maDanhMuc": "TuDuy",
-      "tenDanhMuc": "Tư duy lập trình"
-    }
-  ],
+  courseByID: []
 
 };
 
@@ -52,12 +26,14 @@ const CourseReducer = (state = initialState, { type, payload }) => {
     }
 
     case FETCH_COURSE_BY_ID: {
-      state.courses = payload;
+      state.courseByID = payload;
       return {...state};
+     
     }
 
     default:
       return state;
   }
 };
+
 export default CourseReducer;

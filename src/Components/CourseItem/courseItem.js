@@ -39,7 +39,6 @@ class CourseItemComponent extends Component {
             <span> ({luotXem})</span>
           </div>
           <div className="price">
-            {/* <button className="btn btn-udi-yellow mt-2">Đăng ký</button> */}
             <Form className="formSearch FormCheck">
             
               <span><Field name="taiKhoan" type="hidden"/></span>
@@ -67,7 +66,7 @@ class CourseItemComponent extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  credentials: state.UserReducer.credentials 
+  credentials: state.userReducer.credentials 
 })
 
 export default connect(mapStateToProps)(CourseItemComponent);

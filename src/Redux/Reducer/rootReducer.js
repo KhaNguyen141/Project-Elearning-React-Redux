@@ -9,7 +9,7 @@ import UserReducer from "./User/userReducer";
 const RootReducer = combineReducers({
   //toàn bộ state
   courseReducer: CourseReducer,
-  UserReducer: UserReducer,
+  userReducer: UserReducer,
 });
 
 export default RootReducer;

@@ -74,48 +74,54 @@ export const userRegisterAction = (userRegister) => {
 
 export const userProfileUpdate = (userProfileUpdate) => {
   return dispatch => {
-    userService
-    .userProfileUpdate(userProfileUpdate)
-    .then(res => {
-      dispatch(reduxAction(UPDATE_USER, res.data));
-      console.log(res.data);
-      Swal.fire(
-        'Cập nhật thành công!',
-        '',
-        'success'
-      )
-    }).catch(error => {
-      console.log(error.response.data)
-      Swal.fire({
-        icon: 'error',
-        title: 'Cập nhật thất bại',
-        text: 'Vui lòng thử lại!'
+    
+      userService
+      .userProfileUpdate(userProfileUpdate)
+      .then(res => {
+        dispatch(reduxAction(UPDATE_USER, res.data));
+        console.log(res.data);
+        Swal.fire(
+          'Cập nhật thành công!',
+          '',
+          'success'
+        )
+      }).catch(error => {
+        console.log(error.response.data)
+        Swal.fire({
+          icon: 'error',
+          title: 'Cập nhật thất bại',
+          text: 'Vui lòng thử lại!'
+        })
       })
-    })
+
+
   }
 }
 
 export const userAddCourse = (addCourse) => {
   return dispatch => {
-    userService
-    .userAddCourse(addCourse)
-    .then(res => {
-        dispatch(reduxAction(USER_ADD_COURSE, res.data));
-        console.log(res.data);
-      
-      
-      Swal.fire(
-        'Đăng ký khoá học thành công!',
-        '',
-        'success'
-      )
-    }).catch(error => {
-      console.log(error.response.data)
-      Swal.fire({
-        icon: 'error',
-        title: 'Khoá học đã tồn tại',
-        text: ''
+   
+      userService
+      .userAddCourse(addCourse)
+      .then(res => {
+          dispatch(reduxAction(USER_ADD_COURSE, res.data));
+          console.log(res.data);
+        
+        
+        Swal.fire(
+          'Đăng ký khoá học thành công!',
+          '',
+          'success'
+        )
+      }).catch(error => {
+        console.log(error.response.data)
+        Swal.fire({
+          icon: 'error',
+          title: 'Khoá học đã tồn tại',
+          text: ''
+        })
       })
-    })
+    
+
   }
 }
