@@ -11,7 +11,7 @@ import { restConnector } from "./Services";
 import HeaderComponent from "./Layouts/Header";
 import FooterComponent from './Layouts/Footer';
 
-import { LOGIN } from "./Redux/Action/type";
+import { LOGIN, FETCH_COURSE_DETAIL, FETCH_COURSE_BY_ID } from "./Redux/Action/type";
 import ProfileDetail from "./Screens/Profile/ProfileDetail";
 import CourseListCategoriesComponent from "./Components/CourseItem/courseListCategories";
 
@@ -22,8 +22,7 @@ class App extends Component {
         <HeaderComponent />
         <Switch>
           <Route exact path="/home" component={HomeScreen} />
-          <Route exact path="/coursedetail/:courseid" component={CourseDetail}
-          />
+          <Route exact path="/coursedetail/:courseid" component={CourseDetail}/>
           <Route exact path="/profile" component={ProfileDetail} />
           <Route exact path="/coursecategories/:maDanhMuc" component={CourseListCategoriesComponent} />
           <Route exact path="/" component={HomeScreen} />
@@ -38,7 +37,7 @@ class App extends Component {
     if (userLoginStr && userAccessToken) {
       restConnector.defaults.headers['Authorization'] = "Bearer " + userAccessToken
       
-      this.props.dispatch(  reduxAction( LOGIN, JSON.parse(userLoginStr) )  );
+      this.props.dispatch( reduxAction( LOGIN, JSON.parse(userLoginStr) )  );
 
     }
   }

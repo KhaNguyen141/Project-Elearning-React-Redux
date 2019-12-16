@@ -13,7 +13,7 @@ class CourseService {
   fetchCourses() {
     return restConnector({
       url:
-        `/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc`,
+        `/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP09`,
       method: "GET",
     });
   }
@@ -21,7 +21,7 @@ class CourseService {
   fetchCoursesByID(maDanhMuc) {
     return restConnector({
       url:
-        `/api/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc?maDanhMuc=${maDanhMuc}`,
+        `/api/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc?maDanhMuc=${maDanhMuc}&MaNhom=GP09`,
       method: "GET",
     });
   }

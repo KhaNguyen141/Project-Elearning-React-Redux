@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom"; //Thư viện thẻ link (thay thế thẻ <a></a>)
+import { NavLink, Link, Redirect } from "react-router-dom"; //Thư viện thẻ link (thay thế thẻ <a></a>)
 import { connect } from "react-redux";
 import { Formik, Field, Form } from 'formik';
 
@@ -34,12 +34,13 @@ class HeaderComponent extends Component {
                     .map((list, index) => {
                    
                       return (
-                        <NavLink 
-                        to={`/coursecategories/${list.maDanhMuc}`} 
-                        handleShowCourseByID={handleShowCourseByID} 
+                        <Link 
+                        to = {{
+                          pathname:`coursecategories/${list.maDanhMuc}`, courseID: list.tenDanhMuc
+                          
+                        }}
                         key={index} 
-                        list={list} 
-                        className="dropdown-item">{list.tenDanhMuc}</NavLink>
+                        className="dropdown-item">{list.tenDanhMuc}</Link>
                       )
                     })}
                   </div>
@@ -110,13 +111,7 @@ class HeaderComponent extends Component {
 
   componentDidMount() {
     this.props.dispatch( fetchListCategory() )
-
   }
-}
-
-const handleShowCourseByID = (maDanhMuc, e) => {
-  e.preventDefault();
-  this.props.dispatch( fetchCoursesByID(maDanhMuc) )
 
 }
 
@@ -129,7 +124,8 @@ const handleLogout = (e) => {
 
 const mapStateToProps = (state) => ({
   credentials: state.userReducer.credentials,
-  courseCategory: state.courseReducer.courseListCategory
+  courseCategory: state.courseReducer.courseListCategory,
+  course: state.courseReducer.courses
 });
 
 export default connect(mapStateToProps)(HeaderComponent);

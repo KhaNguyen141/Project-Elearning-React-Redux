@@ -74,7 +74,6 @@ export const userRegisterAction = (userRegister) => {
 
 export const userProfileUpdate = (userProfileUpdate) => {
   return dispatch => {
-    
       userService
       .userProfileUpdate(userProfileUpdate)
       .then(res => {

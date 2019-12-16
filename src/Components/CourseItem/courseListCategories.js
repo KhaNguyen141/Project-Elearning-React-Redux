@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component, useEffect, useState } from "react";
+import { connect, useSelector, useDispatch } from "react-redux";
 
 import { fetchCoursesByID } from "../../Redux/Action/Course/CourseAction";
 
@@ -15,37 +15,37 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
-class CourseListCategoriesComponent extends Component {
+const CourseListCategoriesComponent = (props) => {
 
-    render() {
-    
+    const courseListByID = useSelector(
+        state => state.courseReducer.courseByID,
+        
+        );
+
+    const dispatch = useDispatch();
+
+    useEffect (() => {
+        const {maDanhMuc} = props.match.params;
+        dispatch( fetchCoursesByID(maDanhMuc) );
+        
+    }, [])
     return (
         <div className="container">
-            <h1> Khoá học:</h1>
+            <h1> Khoá học: {props.location.courseID}</h1>
             <h4> Các khoá học phổ biến</h4>
             <div className="tab-pane fade show" id="frontEndCourse" role="tabpanel">
-                <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                    {this.props.courseListByID.map((item, index) => {
+            {courseListByID.length && (
+                <OwlCarousel className="udemyCourse__items" margin={10} nav={true}>
+                    {courseListByID.map((item, index) => {
                         return <CourseItemComponent className="item" item={item} key={index}/>
                     })}
                 </OwlCarousel>
-              
+            )}
             </div>
 
         </div>
-        );
-    }
+    );
+};
 
-    componentDidMount() {
-        const {maDanhMuc} = this.props.match.params;
-        //call api lấy chi tiết khoá học
-        this.props.dispatch( fetchCoursesByID(maDanhMuc) )
-    }
+export default (CourseListCategoriesComponent);
 
-}
-
-const mapStateToProps = (state) => ({
-    courseListByID: state.courseReducer.courseByID,
-})
-
-export default connect(mapStateToProps)(CourseListCategoriesComponent);

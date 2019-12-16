@@ -1,10 +1,13 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {userLoginAction} from '../../Redux/Action/User/UserActions';
 import { Formik, Field, Form } from 'formik';
 
 //Component không có lifecycle 
-function Login(props) { //<= function
+
+const Login = () => {
+
+    const dispatch = useDispatch();
 
     return (
         <Formik 
@@ -14,12 +17,12 @@ function Login(props) { //<= function
 
             }}
             onSubmit={values  => {
-                props.dispatch(userLoginAction(values))
+                dispatch(userLoginAction(values))
                 console.log(values)
                 
             }}
         >
-        {({values, handleChange}) => (
+        {({handleChange}) => (
         <Form className="formSearch">
             <div className="modal fade" id="modalLogin" tabIndex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                 <div className="modal-dialog" role="document">
@@ -64,7 +67,7 @@ function Login(props) { //<= function
         </Form>
         )}
         </Formik>
-    )
-}
+    );
+};
 
-export default connect(null)(Login);
+export default Login;
