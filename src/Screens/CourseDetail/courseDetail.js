@@ -18,6 +18,8 @@ class CourseDetail extends Component {
         {/* <img src={hinhAnh} style={{width: "100%", height: "50rem"}} /> */}
         
         <h1>Chi tiết khóa học {tenKhoaHoc}</h1>
+
+        <img src={hinhAnh} />
         <div>
           <p>Mô tả chi tiết khóa học {moTa}</p>
         </div>

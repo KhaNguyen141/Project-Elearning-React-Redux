@@ -38,24 +38,12 @@ const HomeScreen = (props) => {
         
 
         <div className="udemyCourse__content">
-          <div className="row">
-            <div className="col-md-4 udemyCourse__text">
-              <h2>Sự lựa chọn tốt nhất dành cho bạn</h2>
-              <p>Với hơn hàng trăm khóa học mỗi tháng</p>
-            </div>
-            <div className="col-md-8 udemyCourse__containerBox">
+      
+            <div className="udemyCourse__containerBox">
               <div className="udemyCourse__tabs">
                 <nav>
                   <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                 
-                      <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#latestCourse" role="tab" aria-controls="nav-home" aria-selected="true">Các khóa học mới nhất</a>
-                      <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#frontEndCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Front End</a>
-                      <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#backEndCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Back End</a>
-                      <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#designCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Design</a>
-                      <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#mobileCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Di động</a>
-                      <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#thinkingCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Tư Duy</a>
-
-                    
+                      <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#latestCourse" role="tab" aria-controls="nav-home" aria-selected="true">Các khóa học mới nhất </a>
                   </div>
                 </nav>
          
@@ -63,7 +51,7 @@ const HomeScreen = (props) => {
                     <div className="tab-pane fade show active" id="latestCourse" role="tabpanel">
 
                       {props.courseList.length && (
-                          <OwlCarousel className="udemyCourse__items" margin={10} nav>
+                          <OwlCarousel className="udemyCourse__items" margin={10} items={5} nav>
                             {props.courseList
                             .sort((a, b) => b.ngayTao.split('/').reverse().join().localeCompare(a.ngayTao.split('/').reverse().join()))
                             .map((item, index) => {
@@ -72,81 +60,110 @@ const HomeScreen = (props) => {
                           </OwlCarousel>
                          )}
                     </div>
-
-                    <div className="tab-pane fade show" id="frontEndCourse" role="tabpanel">
-                      
-                      {props.courseList.length && (
-                        <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                          {props.courseList
-                          .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
-                          .map((item, index) => {
-                            if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "FrontEnd") 
-                              return <CourseItemComponent className="item" item={item} key={index} />
-                          })}
-                        </OwlCarousel>
-                      )}
+                </div>
+                <nav>
+                  <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a className="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#frontEndCourse" role="tab" aria-controls="nav-profile" aria-selected="true">Front End</a>
+                  </div>
+                </nav>
+                  <div className="tab-content" id="nav-tabContent">
+                      <div className="tab-pane fade show active" id="frontEndCourse" role="tabpanel">
+                          
+                          {props.courseList.length && (
+                            <OwlCarousel className="udemyCourse__items" margin={10} items={5} nav>
+                              {props.courseList
+                              .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
+                              .map((item, index) => {
+                                if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "FrontEnd") 
+                                  return <CourseItemComponent className="item" item={item} key={index} />
+                              })}
+                            </OwlCarousel>
+                          )}
+                      </div>
+                  </div>
+                  
+                  <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a className="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#backEndCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Back End</a>
                   </div>
 
-                  <div className="tab-pane fade show" id="backEndCourse" role="tabpanel">
-                      
-                      {props.courseList.length && (
-                        <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                          {props.courseList
-                          .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
-                          .map((item, index) => {
-                            if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "BackEnd")
-                              return <CourseItemComponent className="item" item={item} key={index} />
-                            })}
-                        </OwlCarousel>
-                      )}
+                  <div className="tab-content" id="nav-tabContent">
+                      <div className="tab-pane fade show active" id="backEndCourse" role="tabpanel">
+                          
+                          {props.courseList.length && (
+                            <OwlCarousel className="udemyCourse__items" margin={10} items={5} nav>
+                              {props.courseList
+                              .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
+                              .map((item, index) => {
+                                if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "BackEnd")
+                                  return <CourseItemComponent className="item" item={item} key={index} />
+                                })}
+                            </OwlCarousel>
+                          )}
+                      </div>
                   </div>
 
-                  <div className="tab-pane fade show" id="designCourse" role="tabpanel">
-                      
-                      {props.courseList.length && (
-                        <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                          {props.courseList
-                          .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
-                          .map((item, index) => {
-                            if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "Design")
-                              return <CourseItemComponent className="item" item={item} key={index} />
-                            })}
-                        </OwlCarousel>
-                      )}
+                  <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a className="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#designCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Design</a>
                   </div>
 
-                  <div className="tab-pane fade show" id="mobileCourse" role="tabpanel">
-                      
-                      {props.courseList.length && (
-                        <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                          {props.courseList
-                          .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
-                          .map((item, index) => {
-                            if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "DiDong")
-                              return <CourseItemComponent className="item" item={item} key={index} />
-                            })}
-                        </OwlCarousel>
-                      )}
+                  <div className="tab-content" id="nav-tabContent">
+                    <div className="tab-pane fade show active" id="designCourse" role="tabpanel">
+                        
+                        {props.courseList.length && (
+                          <OwlCarousel className="udemyCourse__items" margin={10} items={5} nav>
+                            {props.courseList
+                            .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
+                            .map((item, index) => {
+                              if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "Design")
+                                return <CourseItemComponent className="item" item={item} key={index} />
+                              })}
+                          </OwlCarousel>
+                        )}
+                    </div>
                   </div>
 
-                  <div className="tab-pane fade show" id="thinkingCourse" role="tabpanel">
-                      
-                      {props.courseList.length && (
-                        <OwlCarousel className="udemyCourse__items" margin={10} nav>
-                          {props.courseList
-                          .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
-                          .map((item, index) => {
-                            if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "TuDuy")
-                              return <CourseItemComponent className="item" item={item} key={index} />
-                            })}
-                        </OwlCarousel>
-                      )}
+                  <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                      <a className="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#mobileCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Di động</a>
+                  </div>
+                  
+                  <div className="tab-content" id="nav-tabContent">
+                      <div className="tab-pane fade show active" id="mobileCourse" role="tabpanel">
+                          
+                          {props.courseList.length && (
+                            <OwlCarousel className="udemyCourse__items" margin={10} items={5} nav>
+                              {props.courseList
+                              .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
+                              .map((item, index) => {
+                                if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "DiDong")
+                                  return <CourseItemComponent className="item" item={item} key={index} />
+                                })}
+                            </OwlCarousel>
+                          )}
+                      </div>
+                  </div>
+
+                  <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                      <a className="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#thinkingCourse" role="tab" aria-controls="nav-profile" aria-selected="false">Tư Duy</a>
+                  </div>
+
+                  <div className="tab-content" id="nav-tabContent">
+                    <div className="tab-pane fade show active" id="thinkingCourse" role="tabpanel">
+                         
+                        {props.courseList.length && (
+                          <OwlCarousel className="udemyCourse__items" margin={10} items={5} nav>
+                            {props.courseList
+                            .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
+                            .map((item, index) => {
+                              if (item.danhMucKhoaHoc.maDanhMucKhoahoc === "TuDuy")
+                                return <CourseItemComponent className="item" item={item} key={index} />
+                              })}
+                          </OwlCarousel>
+                        )}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
       </section>
   );
 };

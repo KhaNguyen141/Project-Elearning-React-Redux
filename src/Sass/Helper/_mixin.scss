@@ -13,13 +13,14 @@
     border-radius:$bd-radius;
 }
 
-@mixin inputSearch($bg-color-form,$bd-color-form,$bg-color-input,$bd-color-input,$bg-color-button,$bd-color-button) {
+@mixin inputSearch($bg-color-form, $bd-color-form, $bg-color-input, $bd-color-input, $bg-color-button, $bd-color-button) {
     background-color: $bg-color-form;
     border: 1px solid $bd-color-form;
     .form-control {
       background-color: transparent;
       border-color: transparent;
       transition: none;
+      padding: $pd-2;
       &:focus {
         background-color: $bg-color-input;
         border-top-color: $bd-color-input;
@@ -28,9 +29,6 @@
         box-shadow: none;
       }
       &:focus + .input-group-append {
-        // border-top-color: $color-gray-1;
-        // border-bottom-color: $color-gray-1;
-        // border-right-color: $color-gray-1;
         .input-group-text {
           background-color: $bg-color-button;
           border-top-color: $bd-color-button;
@@ -48,7 +46,6 @@
       }
     }
     .input-group-append {
-      // border-color: transparent;
       margin-left: -2px;
       .input-group-text {
         background-color: transparent;
@@ -58,7 +55,6 @@
         padding-right: $pd-1 + 4;
         &:hover {
           background-color: $color-yellow-1;
-          // border-color: transparent;
           color: $color-white-0;
         }
       }

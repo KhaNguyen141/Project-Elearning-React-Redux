@@ -27,6 +27,7 @@ export const fetchCourseDetail = (courseid) => {
       courseService
         .fetchCourseDetail(courseid)
         .then(res => {
+          localStorage.setItem(settings.courseDetail, JSON.stringify(res.data))
           dispatch(reduxAction(FETCH_COURSE_DETAIL, res.data));
         })
         .catch(err => {
@@ -40,6 +41,7 @@ export const fetchCourseDetail = (courseid) => {
       courseService
         .fetchCoursesByID(maDanhMuc)
         .then(res => {
+          localStorage.setItem(settings.courseStoring, JSON.stringify(res.data))
           dispatch(reduxAction(FETCH_COURSE_BY_ID, res.data));
         })
         .catch(err => {

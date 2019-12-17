@@ -7,7 +7,7 @@ class FooterComponent extends Component {
                     <div className="row footer__bottom pt-4">
                         <div className="footer__left d-flex col-md-7 col-xl-6">
                             <a>
-                                <img src="./img/CybersoftLogo.png" alt="logoFooter" />
+                                <img src="/img/CybersoftLogo.png" alt="logoFooter" />
                             </a>
                             <span className="ml-4 text-license">Bản quyền © 2019 Cybersoft.</span>
                         </div>

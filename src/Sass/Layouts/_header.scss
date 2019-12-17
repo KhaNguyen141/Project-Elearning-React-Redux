@@ -1,55 +1,57 @@
 .udemyNavbar {
-  max-width: 70%;
-  margin: auto;
-  justify-content: space-between;
-  align-items: center;
-  
-}
-.header__navbar {
-  .navbar-brand {
-    img {
-      width: 110px;
-    }
-  }
+  .header__navbar {
+  align-items: none!important;
   .header__left {
+    flex-grow: 1;
     .categories {
       cursor: pointer;
       align-self: center;
       // flex-grow: 2;
       @include text-style($color-black-light, $fs-1, $fw-normal);
       padding: $pd-0 0;
-       &:hover {
-          background-color: $color-gray-1;
-          color: $color-gray-4;
-       }
+      &:hover {
+        background-color: $color-gray-1;
+        color: $color-gray-4;
+      }
     }
     .navbar-brand {
+      flex-grow: 1;
       img {
         width: 110px;
       }
     }
     .formSearch {
-        flex-grow: 1;
-        @include inputSearch($color-white-cream,$color-white-cream,$color-white-0,$color-gray-4,$color-white-0,$color-gray-4);
+        flex-grow: 5;
+        @include inputSearch($color-white-cream, $color-white-cream, $color-white-0, $color-gray-6, $color-white-0, $color-gray-6);
+        
         .input-group-text {
           cursor: pointer;
         }
     }
   }
+
   .header__right{
+    padding: $pd-1 $pd-2 - 5;
+    .shopingCart {
+      line-height: 34px;
+      cursor: pointer;
+      @include text-style($color-black-light, $fs-2, $fw-normal);
+      padding: $pd-0 $pd-2;
+        &:hover {
+          background-color: $color-gray-1;
+          color: $color-gray-4;
+        }
+    }
       .navbar-nav {
+        
           .nav-item {
             .nav-link {
               @include text-style($color-black-light, $fs-1, $fw-normal);
-              padding: $pd-2 $pd-2;
+              padding: $pd-1 + 2.5 $pd-2;
               cursor: pointer;
   
             }
-            .icon-shopping {
-              @include text-style($color-black-light, $fs-2, $fw-normal);
-              line-height: 55px;
-              padding: $pd-0 $pd-2;
-            }
+
             &:hover {
               background-color: $color-gray-1;
               color: $color-gray-4;
@@ -59,8 +61,9 @@
               border-radius: 50%;
           }
       }
-
-  }
+      
+    }
+  } 
 }
         // RESPONSIVES
         

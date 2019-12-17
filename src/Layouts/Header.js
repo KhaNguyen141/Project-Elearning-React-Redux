@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { NavLink, Link, Redirect } from "react-router-dom"; //Thư viện thẻ link (thay thế thẻ <a></a>)
 import { connect } from "react-redux";
 import { Formik, Field, Form } from 'formik';
+import "../App.scss";
 
 // Import function layout
 import Login from "./UserAction/Login";
@@ -15,68 +16,72 @@ class HeaderComponent extends Component {
 
   render() {
     return (
-      <header className="udemyNavbar">
-        <nav className="header__navbar navbar navbar-expand-lg navbar-light">
-         
-          <div className="header__left col-11 col-sm-11 col-md-9 col-lg-8 col-xl-9">
-            <div className="row">
-              <NavLink className="navbar-brand" to="/home">
-                <img src="./img/CybersoftLogo.png" />
-              </NavLink>
-              <div className="nav-item navbar-toggle mr-3 categories">
+      <header className="udemyNavbar container">
+          <nav className="header__navbar navbar navbar-expand-lg navbar-light">
+
+            <div className="header__left col-md-7">
+              <div className="row">
+                <NavLink className="navbar-brand" to="/home">
+                  <img src="./img/CybersoftLogo.png" />
+                </NavLink>
+                <div className="nav-item navbar-toggle mr-3 categories">
                   <div className="dropdown">
-                  <a className="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="fa fa-th mr-2" />
+                    <a className="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="fa fa-th mr-2" />
                       Danh sách khoá học
                   </a>
-                  <div className="dropdown-menu">
-                    {this.props.courseCategory
-                    .sort((a, b) => a.tenDanhMuc.localeCompare(b.tenDanhMuc))
-                    .map((list, index) => {
-                   
-                      return (
-                        <Link 
-                        to = {{
-                          pathname:`coursecategories/${list.maDanhMuc}`, courseID: list.tenDanhMuc
-                          
-                        }}
-                        key={index} 
-                        className="dropdown-item">{list.tenDanhMuc}</Link>
-                      )
-                    })}
-                  </div>
-                  
-              </div>
-              </div> 
-              <form className="formSearch">
-                <div className="input-group">
-                  <input type="text" className="form-control" placeholder="Tìm khóa học" aria-label="Recipient's username" aria-describedby="basic-addon2" />
-                  <div className="input-group-append">
-                    <span className="input-group-text" id="basic-addon2">
-                      <i className="fa fa-search" />
-                    </span>
+                    <div className="dropdown-menu">
+                      {this.props.courseCategory
+                        .sort((a, b) => a.tenDanhMuc.localeCompare(b.tenDanhMuc))
+                        .map((list, index) => {
+
+                          return (
+                            <Link
+                              to={{
+                                pathname: `coursecategories/${list.maDanhMuc}`, courseID: list.tenDanhMuc
+
+                              }}
+                              key={index}
+                              className="dropdown-item">{list.tenDanhMuc}</Link>
+                          )
+                        })}
+                    </div>
+
                   </div>
                 </div>
-              </form>
+                <form className="formSearch">
+                  <div className="input-group">
+                    <input type="text" className="form-control" placeholder="Tìm khóa học" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                    <div className="input-group-append">
+                      <span className="input-group-text" id="basic-addon2">
+                        <i className="fa fa-search" />
+                      </span>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
-          </div>
-          <div className="header__right col-1 col-sm-1 col-md-3 col-lg-4 col-xl-3">
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item mr-2">
-                  <a type="submit" className="icon-shopping">
-                    
-                    <i className="fa fa-shopping-cart" data-toggle="modal" data-target="#cartModal"/>
-                  </a>
-                </li>
 
+            <div className="header__right col-md-5 ml-3" style={{marginTop: "-3px"}}>
+              <div className="row">
+                <div className="nav-item navbar-toggle mr-3">
+                  <div className="shopingCart">
+                      <a type="submit" className="icon-shopping">
+                          <i className="fa fa-shopping-cart" data-toggle="modal" data-target="#cartModal" />
+                      </a>
+                  </div>
+                </div>
+              <ul className="navbar-nav mr-auto">
               {this.props.credentials ? (
+              
               <li className="nav-item dropdown">
-                  <div className="dropdown">
+                <div className="dropdown">
                   <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Hello, {this.props.credentials.hoTen}
                   </a>
+
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <NavLink to="/profile" className="dropdown-item">Profile</NavLink>
-                <button className="dropdown-item" onClick={handleLogout}>Đăng xuất</button>
+                  <button className="dropdown-item" onClick={handleLogout}>Đăng xuất</button>
 
                   <a className="dropdown-item" href="#">
                       My course
@@ -98,14 +103,16 @@ class HeaderComponent extends Component {
                     <button className="btn btn-udi-yellow" data-toggle="modal" data-target="#modalRegister">Đăng ký</button>
                 </div>
                 </li>
-
+               
               )}
               </ul>
-          </div>
-          
-        </nav>
+              </div>
+            </div>
+
+          </nav>
 
       </header>
+
     );
   }
 
@@ -129,3 +136,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(HeaderComponent);
+
+
