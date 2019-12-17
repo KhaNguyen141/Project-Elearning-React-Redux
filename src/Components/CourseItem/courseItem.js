@@ -44,11 +44,16 @@ class CourseItemComponent extends Component {
               <span><Field name="taiKhoan" type="hidden"/></span>
             
               <span><Field name="maKhoaHoc" type="hidden"/></span>
+            
+            <div className="text-center">
+              <button type="submit" className="btn btn-udi-yellow mt-2">Đăng ký</button>
               
-            <button type="submit" className="btn btn-udi-yellow mt-2">Đăng ký</button>
+              <NavLink to={`/coursedetail/${maKhoaHoc}`} className="btn btn-udi-white ml-2 mt-2">Xem Chi Tiêt</NavLink>
+            </div>
+            
             </Form>
 
-            <NavLink to={`/coursedetail/${maKhoaHoc}`} className="btn btn-udi-white ml-2 mt-2">Xem Chi Tiêt</NavLink>
+            
           </div>
         </div>
       </div>
