@@ -2,8 +2,11 @@
 
 export const settings = {
     userLogin:'userLogin',
+    fetchCourse: 'fetchCourse',
     courseStoring: 'courseStoring',
     courseDetail: 'courseDetail',
+    coursePending: 'coursePending',
+    courseSignedUp: 'courseSignedUp',
     token: 'accessToken',
     domain:'http://elearning0706.cybersoft.edu.vn'
 }

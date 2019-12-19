@@ -1,10 +1,9 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux';
 import { userProfileUpdate } from '../../Redux/Action/User/UserActions';
 
 import {validationSchema} from '../../Layouts/Validation/ValidationForm';
 import { Formik, Field, Form } from 'formik';
-import * as Yup from 'yup';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const ProfileDetail = () => {
@@ -12,6 +11,7 @@ const ProfileDetail = () => {
     const dispatch = useDispatch();
   
     const userInfo = JSON.parse(localStorage.getItem('userLogin'));
+
     return (
         <Formik 
         initialValues = {{
@@ -70,10 +70,10 @@ const ProfileDetail = () => {
                                             onChange={handleChange}
                                             className="form-control" 
                                             placeholder="Tài khoản"
-                                            // disabled={true}
+                                            disabled={true}
                                             />
                                             <ErrorMessage touched={touched.taiKhoan} message={errors.taiKhoan}/>
-                                            {/* {errors.taiKhoan && touched.taiKhoan ? <div>{errors.taiKhoan}</div> : ''} */}
+                                            
                                         </div>
                                         <div className="form-group">
                                             <label>Mật khẩu: </label>
@@ -85,7 +85,7 @@ const ProfileDetail = () => {
                                             className="form-control" 
                                             placeholder="Mật khẩu" />
                                             <ErrorMessage touched={touched.matKhau} message={errors.matKhau}/>
-                                            {/* {errors.matKhau && touched.matKhau ? <div>{errors.matKhau}</div> : ''} */}
+                                           
                                         </div>
                                         <div className="form-group">
                                             <label>Họ tên: </label>
@@ -95,7 +95,7 @@ const ProfileDetail = () => {
                                             onChange={handleChange}
                                             className="form-control" placeholder="Họ tên" />
                                             <ErrorMessage touched={touched.hoTen} message={errors.hoTen}/>
-                                            {/* {errors.hoTen && touched.hoTen ? <div>{errors.hoTen}</div> : ''} */}
+                                          
                                         </div>
                                     
                                         <div className="form-group">
@@ -108,7 +108,7 @@ const ProfileDetail = () => {
                                             className="form-control" 
                                             placeholder="Số điện thoại" />
                                             <ErrorMessage touched={touched.soDT} message={errors.soDT}/>
-                                            {/* {errors.soDT && touched.soDT ? <div>{errors.soDT}</div> : ''} */}
+                                            
                                         </div>
                                     
                                         <div className="form-group">
@@ -120,7 +120,7 @@ const ProfileDetail = () => {
                                             className="form-control" 
                                             placeholder="Email" />
                                             <ErrorMessage touched={touched.email} message={errors.email}/>
-                                            {/* {errors.email && touched.email ? <div>{errors.email}</div> : ''} */}
+                                            
                                         </div>
                                     </div>
                             </div>
@@ -135,7 +135,10 @@ const ProfileDetail = () => {
     </div> 
     )}
     </Formik>
+
     );
+
+
 };
 
 export default ProfileDetail;

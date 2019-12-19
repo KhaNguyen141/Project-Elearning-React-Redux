@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import CourseService from "../../Services/courseService";
 
 import { fetchCourseDetail } from "../../Redux/Action/Course/CourseAction";
+import { userAddCourse } from "../../Redux/Action/User/UserActions";
 
 const courseService = new CourseService();
 
@@ -11,9 +12,11 @@ class CourseDetail extends Component {
 
   render() {
 
-    const {tenKhoaHoc, moTa, hinhAnh, ngayTao, luotXem} = this.props.courseDetail;
+    const {tenKhoaHoc, maKhoaHoc, moTa, hinhAnh, ngayTao, luotXem} = this.props.courseDetail;
+
+    const { taiKhoan } = this.props.credentials;
     return (
-      <div className="courseDetailContainer">
+      <div className="courseDetailContainer container">
         
         {/* <img src={hinhAnh} style={{width: "100%", height: "50rem"}} /> */}
         
@@ -35,6 +38,7 @@ class CourseDetail extends Component {
               <span> Số lượng học viên đăng ký: {luotXem}</span>
           </div>
           <p>Ngày tạo: {ngayTao}</p>
+          <button onClick={() => this.handleDangKy(taiKhoan, maKhoaHoc)} type="button" className="btn btn-udi-yellow mt-2">Đăng ký</button>
         </div>
 
       </div>
@@ -44,12 +48,13 @@ class CourseDetail extends Component {
   componentDidMount() {
     //Lấy tham số mã khóa học từ url
     const {courseid} = this.props.match.params;
-    // const courseid = this.props.match.params.courseid;
 
-  
     //call api lấy chi tiết khoá học
     this.props.dispatch( fetchCourseDetail(courseid) )
+  }
 
+  handleDangKy = (taiKhoan, maKhoaHoc) => {
+    this.props.dispatch(userAddCourse(taiKhoan, maKhoaHoc));
   }
 }
 
@@ -62,6 +67,7 @@ http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKho
  */
 
 const mapStateToProps = state => ({
+  credentials: state.userReducer.credentials,
   courseDetail: state.courseReducer.detail
 });
 

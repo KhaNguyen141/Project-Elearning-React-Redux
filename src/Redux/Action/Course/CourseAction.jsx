@@ -14,6 +14,7 @@ export const fetchCourse = () => {
       courseService
       .fetchCourses()
       .then(res => {
+        localStorage.setItem(settings.fetchCourse, JSON.stringify(res.data))
         dispatch(reduxAction(FETCH_COURSES, res.data));
       })
       .catch(err => {
@@ -63,21 +64,6 @@ export const fetchCourseDetail = (courseid) => {
     };
   };
 
-  export const fetchCoursePending = (coursePending) => {
-    return dispatch => {
-      courseService
-        .fetchCoursePending(coursePending)
-        .then(res => {
-            localStorage.setItem(settings.coursePending, JSON.stringify(res.data));
-          
-            dispatch(reduxAction(FETCH_COURSE_PENDING, res.data));
-          
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    };
-  };
 
   
   

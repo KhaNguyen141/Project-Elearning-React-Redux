@@ -1,24 +1,42 @@
-import { LOGIN, UPDATE_USER, USER_ADD_COURSE, FETCH_COURSE_PENDING } from "../../Action/type";
+import { LOGIN, UPDATE_USER, USER_ADD_COURSE, USER_CANCEL_COURSE, USER_CHECK_COURSE } from "../../Action/type";
+import { settings } from "../../../Config/settings";
 
 let initialState = {
-  credentials: null,
+  credentials: "",
+  profileUpdate: [],
+  userAddCourse: [],
+  userCancelCourse: [],
+  userCheckCourse: [
+    JSON.parse(localStorage.getItem("courseSignedUp"))
+  ],
+
 };
 
 const UserReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case LOGIN: {
         state.credentials = payload;
-        return {...state}
+        return {...state};
     }
 
     case UPDATE_USER: {
-      state.credentials = payload;
-      return {...state}
+      state.profileUpdate = payload;
+      return {...state};
     }
 
     case USER_ADD_COURSE: {
-      state.credentials = payload;
-      return {...state}
+      state.userAddCourse = payload;
+      return {...state};
+    }
+
+    case USER_CANCEL_COURSE: {
+      state.userCancelCourse = payload;
+      return {...state};
+    }
+
+    case USER_CHECK_COURSE: {
+      state.userCheckCourse = state.userCheckCourse;
+      return {...state};
     }
     
     default:

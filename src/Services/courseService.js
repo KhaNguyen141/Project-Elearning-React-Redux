@@ -13,8 +13,9 @@ class CourseService {
   fetchCourses() {
     return restConnector({
       url:
-        `/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP09`,
+        `/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP09&`,
       method: "GET",
+      
     });
   }
 
@@ -31,17 +32,6 @@ class CourseService {
       url:
         `/api/QuanLyKhoaHoc/LayDanhMucKhoaHoc`,
       method: "GET",
-    });
-  }
-
-  fetchCoursePending(coursePending) {
-    return restConnector({
-      url:
-        `/api/QuanLyNguoiDung/LayDanhSachKhoaHocChoXetDuyet`,
-      method: "POST",
-      header: { 
-        'Authorization': "Bearer " + settings.token },
-      data: coursePending,
     });
   }
 }

@@ -1,4 +1,4 @@
-import { LOGIN, REGISTER, UPDATE_USER, USER_ADD_COURSE } from "../type";
+import { LOGIN, REGISTER, UPDATE_USER, USER_ADD_COURSE, USER_CANCEL_COURSE, USER_CHECK_COURSE } from "../type";
 import reduxAction from "../action";
 
 import { settings } from "../../../Config/settings";
@@ -77,6 +77,7 @@ export const userProfileUpdate = (userProfileUpdate) => {
       userService
       .userProfileUpdate(userProfileUpdate)
       .then(res => {
+        localStorage.setItem(settings.userLogin, JSON.stringify(res.data));
         dispatch(reduxAction(UPDATE_USER, res.data));
         console.log(res.data);
         Swal.fire(
@@ -97,16 +98,14 @@ export const userProfileUpdate = (userProfileUpdate) => {
   }
 }
 
-export const userAddCourse = (addCourse) => {
+export const userAddCourse = (taiKhoan, maKhoaHoc) => {
   return dispatch => {
-   
       userService
-      .userAddCourse(addCourse)
+      .userAddCourse(taiKhoan, maKhoaHoc)
       .then(res => {
-          dispatch(reduxAction(USER_ADD_COURSE, res.data));
-          console.log(res.data);
-        
-        
+       
+        dispatch(reduxAction(USER_ADD_COURSE, res.data));
+        console.log(res.data);
         Swal.fire(
           'Đăng ký khoá học thành công!',
           '',
@@ -124,3 +123,48 @@ export const userAddCourse = (addCourse) => {
 
   }
 }
+
+export const userCancelCourse = (taiKhoan, maKhoaHoc) => {
+  return dispatch => {
+      userService
+      .userCancelCourse(taiKhoan, maKhoaHoc)
+      .then(res => {
+       
+        dispatch(reduxAction(USER_CANCEL_COURSE, res.data));
+        console.log(res.data);
+        Swal.fire(
+          'Huỷ đăng ký khoá học thành công!',
+          '',
+          'success'
+        )
+      }).catch(error => {
+        console.log(error.response.data)
+        Swal.fire({
+          icon: 'error',
+          title: 'Khoá học chưa đăng ký',
+          text: ''
+        })
+      })
+    
+
+  }
+}
+
+export const userCheckCourse = (taiKhoan, maKhoaHoc) => {
+  return dispatch => {
+      userService
+      .userCheckCourse(taiKhoan, maKhoaHoc)
+      .then(res => {
+        localStorage.setItem(settings.courseSignedUp, JSON.stringify(res.data));
+        dispatch(reduxAction(USER_CHECK_COURSE, res.data));
+        // console.log(res.data);
+      
+      }).catch(error => {
+        console.log(error.response.data)
+       
+      })
+    
+
+  }
+}
+

@@ -28,16 +28,45 @@ class UserService {
         });
     }
 
-    userAddCourse(addCourse) {
+    userAddCourse(taiKhoan, maKhoaHoc) {
         return restConnector({
             method: "POST",
             url: "/api/QuanLyKhoaHoc/DangKyKhoaHoc",
-            header: { 
-              'Authorization': "Bearer " + settings.token },
-            data: addCourse,
+            data: {
+                taiKhoan: taiKhoan,
+                maKhoaHoc: maKhoaHoc,
+                header: settings.token,
+            },
                 
         });
     }
+
+    userCancelCourse(taiKhoan, maKhoaHoc) {
+        return restConnector({
+            method: "POST",
+            url: "/api/QuanLyKhoaHoc/HuyGhiDanh",
+            data: {
+                taiKhoan: taiKhoan,
+                maKhoaHoc: maKhoaHoc,
+                header: settings.token,
+            },
+                
+        });
+    }
+    
+    userCheckCourse(taiKhoan, matKhau) {
+        return restConnector({
+            method: "POST",
+            url: "/api/QuanLyNguoiDung/ThongTinTaiKhoan",
+            data: {
+                taiKhoan: taiKhoan,
+                matKhau: matKhau,
+                header: settings.token,
+            },
+                
+        });
+    }
+    
     
 }
 
