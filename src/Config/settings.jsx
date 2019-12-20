@@ -7,6 +7,7 @@ export const settings = {
     courseDetail: 'courseDetail',
     coursePending: 'coursePending',
     courseSignedUp: 'courseSignedUp',
+    fetchListCategory: 'fetchListCategory',
     token: 'accessToken',
     domain:'http://elearning0706.cybersoft.edu.vn'
 }

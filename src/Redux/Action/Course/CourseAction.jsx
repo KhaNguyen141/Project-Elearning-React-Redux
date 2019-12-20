@@ -56,6 +56,7 @@ export const fetchCourseDetail = (courseid) => {
       courseService
         .fetchListCategory()
         .then(res => {
+          localStorage.setItem(settings.fetchListCategory, JSON.stringify(res.data))
           dispatch(reduxAction(FETCH_LIST_CATEGORY, res.data));
         })
         .catch(err => {

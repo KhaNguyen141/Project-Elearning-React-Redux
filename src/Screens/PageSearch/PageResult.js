@@ -8,6 +8,7 @@ export default class PageResault extends Component {
                 <h1>Tìm thấy khoá học</h1>
                 <div>
                     <h1>Khoá học: </h1>
+                    <CourseItemComponent />
                 </div>
             </div>
         )

@@ -3,11 +3,10 @@ import {useDispatch} from 'react-redux';
 import {userLoginAction} from '../../Redux/Action/User/UserActions';
 import { Formik, Field, Form } from 'formik';
 
-//Component không có lifecycle 
-
-const Login = () => {
+const Login = (props) => {
 
     const dispatch = useDispatch();
+
 
     return (
         <Formik 

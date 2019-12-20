@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import HomeScreen from "./Screens/Home/home";
 import CourseDetail from "./Screens/CourseDetail/courseDetail";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Router } from "react-router-dom";
 
 import { connect } from "react-redux";
 import reduxAction from "./Redux/Action/action";
@@ -11,11 +11,10 @@ import { restConnector } from "./Services";
 import HeaderComponent from "./Layouts/Header";
 import FooterComponent from './Layouts/Footer';
 
-import { LOGIN, FETCH_COURSE_DETAIL, FETCH_COURSE_BY_ID } from "./Redux/Action/type";
+import { LOGIN } from "./Redux/Action/type";
 import ProfileDetail from "./Screens/Profile/ProfileDetail";
 import CourseListCategoriesComponent from "./Components/CourseItem/courseListCategories";
-import courseItem from "./Components/CourseItem/courseItem";
-import PageResault from "./Screens/PageSearch/PageResault";
+import PageResult from "./Screens/PageSearch/PageResult";
 
 class App extends Component {
   render() {
@@ -23,12 +22,12 @@ class App extends Component {
       <BrowserRouter>
         <HeaderComponent />
         <Switch>
-          <Route exact path="/home" component={HomeScreen} />
-          <Route exact path="/coursedetail/:courseid" component={CourseDetail}/>
-          <Route exact path="/profile" component={ProfileDetail} />
-          <Route exact path="/coursecategories/:maDanhMuc" component={CourseListCategoriesComponent} />
-          <Route exact path="/timkiem" component={PageResault} />
-          <Route exact path="/" component={HomeScreen} />
+            <Route exact path="/home" component={HomeScreen} />
+            <Route exact path="/coursedetail/:courseid" component={CourseDetail}/>
+            <Route exact path="/profile" component={ProfileDetail} />
+            <Route exact path="/coursecategories/:maDanhMuc" component={CourseListCategoriesComponent}/>
+            <Route exact path="/timkiem" component={PageResult} />
+            <Route exact path="/" component={HomeScreen} />
         </Switch>
         <FooterComponent />
       </BrowserRouter>

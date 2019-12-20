@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { userCancelCourse } from '../Redux/Action/User/UserActions';
 import { connect } from 'react-redux';
-import { fetchCoursesByID } from '../Redux/Action/Course/CourseAction';
 
 class CoursePendingItemComponent extends Component {
     render() {
@@ -18,24 +17,26 @@ class CoursePendingItemComponent extends Component {
                 </div>
                 
                 <div className="col-6" >
-                    <button onClick={() => this.handleCancel(taiKhoan, maKhoaHoc)} className="btn btn-cyber-red">Huỷ</button>
+                    <button onClick={() => this.props.handleCancel(taiKhoan, maKhoaHoc)} className="btn btn-cyber-red">Huỷ</button>
                 </div>
                 
             </div> 
         )
     }
-    handleCancel = (taiKhoan, maKhoaHoc) => {
-        this.props.dispatch(userCancelCourse(taiKhoan, maKhoaHoc));
-    }
 
-    componentDidMount() {
-        this.props.dispatch(fetchCoursesByID())
-    }
 }
 
 const mapStateToProps = (state) => ({
     credentials: state.userReducer.credentials,
     userCancelCourse: state.userReducer.userCancelCourse
-  })
+})
 
-export default connect(mapStateToProps)(CoursePendingItemComponent);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleCancel: (taiKhoan, maKhoaHoc) => {
+            dispatch(userCancelCourse(taiKhoan, maKhoaHoc));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoursePendingItemComponent);

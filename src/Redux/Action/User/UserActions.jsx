@@ -103,21 +103,32 @@ export const userAddCourse = (taiKhoan, maKhoaHoc) => {
       userService
       .userAddCourse(taiKhoan, maKhoaHoc)
       .then(res => {
-       
-        dispatch(reduxAction(USER_ADD_COURSE, res.data));
-        console.log(res.data);
-        Swal.fire(
-          'Đăng ký khoá học thành công!',
-          '',
-          'success'
-        )
+        if (localStorage.getItem("userLogin") !== null) {
+          dispatch(reduxAction(USER_ADD_COURSE, res.data));
+          console.log(res.data);
+          Swal.fire(
+            'Đăng ký khoá học thành công!',
+            '',
+            'success'
+          )
+        } 
+
       }).catch(error => {
+        if (localStorage.getItem("userLogin") === null) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Vui lòng đăng nhập để thực hiện chức năng này',
+            text: ''
+          })
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Khoá học đã đăng ký rồi',
+            text: ''
+          })
+        }
         console.log(error.response.data)
-        Swal.fire({
-          icon: 'error',
-          title: 'Khoá học đã tồn tại',
-          text: ''
-        })
+        
       })
     
 
@@ -129,7 +140,6 @@ export const userCancelCourse = (taiKhoan, maKhoaHoc) => {
       userService
       .userCancelCourse(taiKhoan, maKhoaHoc)
       .then(res => {
-       
         dispatch(reduxAction(USER_CANCEL_COURSE, res.data));
         console.log(res.data);
         Swal.fire(

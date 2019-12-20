@@ -6,36 +6,34 @@ let initialState = {
   profileUpdate: [],
   userAddCourse: [],
   userCancelCourse: [],
-  userCheckCourse: [
-    JSON.parse(localStorage.getItem("courseSignedUp"))
-  ],
+  userCheckCourse: [],
 
 };
 
-const UserReducer = (state = initialState, { type, payload }) => {
-  switch (type) {
+const UserReducer = (state = initialState, action) => {
+  switch (action.type) {
     case LOGIN: {
-        state.credentials = payload;
+        state.credentials = action.payload;
         return {...state};
     }
 
     case UPDATE_USER: {
-      state.profileUpdate = payload;
+      state.profileUpdate = action.payload;
       return {...state};
     }
 
     case USER_ADD_COURSE: {
-      state.userAddCourse = payload;
+      console.log(action)
       return {...state};
     }
 
     case USER_CANCEL_COURSE: {
-      state.userCancelCourse = payload;
+      console.log(action)
       return {...state};
     }
 
     case USER_CHECK_COURSE: {
-      state.userCheckCourse = state.userCheckCourse;
+      state.userCheckCourse = [JSON.parse(localStorage.getItem("courseSignedUp"))];
       return {...state};
     }
     

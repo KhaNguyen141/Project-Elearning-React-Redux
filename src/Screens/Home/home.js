@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Component } from "react";
 
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { fetchCourse } from "../../Redux/Action/Course/CourseAction";
 
 // import Component
@@ -20,11 +20,10 @@ import IntroductionComponent from '../../Layouts/Introduction';
 
 const HomeScreen = (props) => {
 
+  const dispatch = useDispatch;
   useEffect(() => {
-    if (props.credentials) {
-      props.dispatch( fetchCourse() )
-    }
-  }, [props.credentials])
+    props.dispatch( fetchCourse() )
+  }, [])
 
   return (
     <section className="udemyCourse">

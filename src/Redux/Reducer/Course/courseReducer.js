@@ -10,28 +10,28 @@ let initialState = {
 
 };
 
-const CourseReducer = (state = initialState, { type, payload }) => {
-  switch (type) {
+const CourseReducer = (state = initialState, action) => {
+  switch (action.type) {
     case FETCH_COURSES: {
       
       return {
         ...state,
-        courses: payload
+        courses: action.payload
       }
     }
 
     case FETCH_COURSE_DETAIL: {
-      state.detail = payload
+      state.detail = action.payload
       return {...state};
     }
 
     case FETCH_LIST_CATEGORY: {
-      state.courseListCategory = payload;
+      state.courseListCategory = action.payload;
       return {...state};
     }
 
     case FETCH_COURSE_BY_ID: {
-      state.courseByID = payload;
+      state.courseByID = action.payload;
       return {...state};
      
     }
@@ -39,7 +39,7 @@ const CourseReducer = (state = initialState, { type, payload }) => {
     case COURSE_SEARCH_ACTION: {
         return {
           ...state,
-          courseSearch: payload
+          courseSearch: action.payload
         }
     }
     default:

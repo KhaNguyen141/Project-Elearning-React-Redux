@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import { connect } from "react-redux";
 import { userAddCourse } from "../../Redux/Action/User/UserActions";
+import { USER_ADD_COURSE } from "../../Redux/Action/type";
 
 class CourseItemComponent extends Component {
   
@@ -33,7 +34,7 @@ class CourseItemComponent extends Component {
             
             <div className="text-center">
            
-              <button onClick={() => this.handleDangKy(taiKhoan, maKhoaHoc)} type="button" className="btn btn-udi-yellow mt-2">Đăng ký</button>
+              <button onClick={() => this.props.handleDangKy(taiKhoan, maKhoaHoc)} type="button" className="btn btn-udi-yellow mt-2">Đăng ký</button>
 
               <NavLink to={`/coursedetail/${maKhoaHoc}`} className="btn btn-udi-white ml-2 mt-2">Xem Chi Tiêt</NavLink>
             </div>
@@ -50,10 +51,6 @@ class CourseItemComponent extends Component {
     return string;
   }
 
-  handleDangKy = (taiKhoan, maKhoaHoc) => {
-    this.props.dispatch(userAddCourse(taiKhoan, maKhoaHoc));
-  }
-
 }
 
 const mapStateToProps = (state) => ({
@@ -62,4 +59,12 @@ const mapStateToProps = (state) => ({
   userCancelCourse: state.userReducer.userCancelCourse
 })
 
-export default connect(mapStateToProps)(CourseItemComponent);
+const mapDispatchToProps = (dispatch) => {
+  return {
+      handleDangKy: (taiKhoan, maKhoaHoc) => {
+          dispatch(userAddCourse(taiKhoan, maKhoaHoc));
+      }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CourseItemComponent);

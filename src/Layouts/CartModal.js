@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import CoursePendingItemComponent from '../Components/coursePendingItem';
-import _ from 'lodash';
 
 class CartModalComponent extends Component {
 
