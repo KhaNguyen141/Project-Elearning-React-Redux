@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import HomeScreen from "./Screens/Home/home";
 import CourseDetail from "./Screens/CourseDetail/courseDetail";
-import { BrowserRouter, Route, Switch, Router } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Router, Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import reduxAction from "./Redux/Action/action";
@@ -18,15 +18,25 @@ import PageResult from "./Screens/PageSearch/PageResult";
 
 class App extends Component {
   render() {
+    const notFoundPage = () => (
+      <div className="container contentNotFound">
+        <h1>Page not found 404</h1>
+        <Link className="btn btn-success" to="/home">Back to home</Link>
+      </div>
+    )
+    
     return (
+      
       <BrowserRouter>
         <HeaderComponent />
         <Switch>
             <Route exact path="/home" component={HomeScreen} />
+            <Route exact path="/" component={HomeScreen} />
             <Route exact path="/coursedetail/:courseid" component={CourseDetail}/>
             <Route exact path="/profile" component={ProfileDetail} />
             <Route exact path="/coursecategories/:maDanhMuc" component={CourseListCategoriesComponent}/>
-            <Route exact path="/timkiem" component={PageResult} />
+            <Route exact path="/timkiem/:tenKhoaHoc" component={PageResult} />
+            <Route component={notFoundPage} />
             <Route exact path="/" component={HomeScreen} />
         </Switch>
         <FooterComponent />

@@ -1,6 +1,7 @@
 .udemyInfo {
+    margin-bottom: $mg-4;
     background-color: $color-white-cream;
-    height: auto;
+    
     .udemyComments__top {
         .udemyComments__text {
             @include width70 ($w-70, $mg-auto);

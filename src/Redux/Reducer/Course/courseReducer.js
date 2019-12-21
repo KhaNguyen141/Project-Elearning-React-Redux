@@ -1,13 +1,12 @@
-import { FETCH_COURSES, FETCH_COURSE_DETAIL, FETCH_LIST_CATEGORY, FETCH_COURSE_BY_ID, COURSE_SEARCH_ACTION} from "../../Action/type";
+import { FETCH_COURSES, FETCH_COURSE_DETAIL, FETCH_LIST_CATEGORY, FETCH_COURSE_BY_ID, COURSE_SEARCH_ACTION, SEARCH_COURSE, FETCH_COURSE_SEARCH} from "../../Action/type";
 
 let initialState = {
   courses: [],
   detail: [],
   courseListCategory: [],
   courseByID: [],
-  value: '',
-  courseSearch: [],
-
+  text: '',
+  courseFilter: [],
 };
 
 const CourseReducer = (state = initialState, action) => {
@@ -31,17 +30,23 @@ const CourseReducer = (state = initialState, action) => {
     }
 
     case FETCH_COURSE_BY_ID: {
-      state.courseByID = action.payload;
-      return {...state};
-     
+      return {
+        ...state,
+        courseByID: action.payload
+      }
     }
 
-    case COURSE_SEARCH_ACTION: {
-        return {
-          ...state,
-          courseSearch: action.payload
-        }
+    case SEARCH_COURSE: {
+      state.text = action.payload;
+      console.log(state.text)
+      return {...state}
     }
+
+    case FETCH_COURSE_SEARCH: {
+        state.courseFilter = action.payload;
+        return {...state}
+    }
+    
     default:
       return state;
   }

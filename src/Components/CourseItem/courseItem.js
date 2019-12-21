@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 
 import { connect } from "react-redux";
 import { userAddCourse } from "../../Redux/Action/User/UserActions";
-import { USER_ADD_COURSE } from "../../Redux/Action/type";
 
 class CourseItemComponent extends Component {
   

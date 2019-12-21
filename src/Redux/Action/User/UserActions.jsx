@@ -59,7 +59,7 @@ export const userRegisterAction = (userRegister) => {
         '',
         'success'
     ).then(() => {
-        window.location.reload();
+        // window.location.reload();
     })
     }).catch(error => {
       console.log(error.response.data)
@@ -160,10 +160,10 @@ export const userCancelCourse = (taiKhoan, maKhoaHoc) => {
   }
 }
 
-export const userCheckCourse = (taiKhoan, maKhoaHoc) => {
+export const userCheckCourse = (taiKhoan, matkhau) => {
   return dispatch => {
       userService
-      .userCheckCourse(taiKhoan, maKhoaHoc)
+      .userCheckCourse(taiKhoan, matkhau)
       .then(res => {
         localStorage.setItem(settings.courseSignedUp, JSON.stringify(res.data));
         dispatch(reduxAction(USER_CHECK_COURSE, res.data));

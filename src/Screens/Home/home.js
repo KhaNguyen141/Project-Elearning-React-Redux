@@ -5,6 +5,7 @@ import { fetchCourse } from "../../Redux/Action/Course/CourseAction";
 
 // import Component
 import CourseItemComponent from "../../Components/CourseItem/courseItem";
+import HeaderComponent from "../../Layouts/Header";
 
 // import SCSS
 import "../../App.scss";
@@ -17,12 +18,14 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 // import layout
 import CarouselComponent from '../../Layouts/Carousel';
 import IntroductionComponent from '../../Layouts/Introduction';
+import UserCommentsComponent from "../../Layouts/UserComments";
+import { withRouter } from "react-router-dom";
 
 const HomeScreen = (props) => {
 
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   useEffect(() => {
-    props.dispatch( fetchCourse() )
+    dispatch( fetchCourse() )
   }, [])
 
   return (
@@ -163,6 +166,10 @@ const HomeScreen = (props) => {
                 </div>
               </div>
             </div>
+
+            <div>
+               <UserCommentsComponent />
+            </div>
       </section>
   );
 };
@@ -173,5 +180,5 @@ const HomeScreen = (props) => {
 
   });
 
-export default connect(mapStateToProps)(HomeScreen);
+export default withRouter(connect(mapStateToProps)(HomeScreen));
 

@@ -16,8 +16,7 @@ const Login = (props) => {
 
             }}
             onSubmit={values  => {
-                dispatch(userLoginAction(values))
-                console.log(values)
+                dispatch(userLoginAction(values));
                 
             }}
         >

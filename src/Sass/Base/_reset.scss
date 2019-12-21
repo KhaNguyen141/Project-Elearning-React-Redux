@@ -4,8 +4,9 @@
     box-sizing: border-box;
 }
 
-html,body{
+html, body{
     font-family: 'Open Sans', sans-serif;
     @include text-style($color-black-0,$fs-0,$fw-normal);
-    
+    position: relative;
+    min-height: 90vh;
 }

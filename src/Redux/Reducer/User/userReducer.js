@@ -1,5 +1,5 @@
 import { LOGIN, UPDATE_USER, USER_ADD_COURSE, USER_CANCEL_COURSE, USER_CHECK_COURSE } from "../../Action/type";
-import { settings } from "../../../Config/settings";
+import { userCancelCourse } from '../../Action/User/UserActions'
 
 let initialState = {
   credentials: "",
@@ -28,8 +28,9 @@ const UserReducer = (state = initialState, action) => {
     }
 
     case USER_CANCEL_COURSE: {
-      console.log(action)
-      return {...state};
+      state.userCancelCourse = action.payload;
+      return {...state}
+
     }
 
     case USER_CHECK_COURSE: {

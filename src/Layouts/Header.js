@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
-import { NavLink, Link } from "react-router-dom"; //Thư viện thẻ link (thay thế thẻ <a></a>)
+import { NavLink, Link, withRouter, Redirect } from "react-router-dom"; //Thư viện thẻ link (thay thế thẻ <a></a>)
 import { connect, useDispatch } from "react-redux";
 import "../App.scss";
 
@@ -10,28 +10,15 @@ import CartModal from "./CartModal";
 
 import { settings } from "../Config/settings";
 import { userCheckCourse } from "../Redux/Action/User/UserActions";
-import { fetchListCategory } from "../Redux/Action/Course/CourseAction";
+import { fetchListCategory, searchCourse, fetchCourseSearch, fetchCoursesByID } from "../Redux/Action/Course/CourseAction";
 
-const HeaderComponent = (props) => {
+class HeaderComponent extends Component {
 
-  const dispatch = useDispatch();
+  render() {
 
-  useEffect(() => {
-    dispatch(fetchListCategory())
-  })
-
-  const handleCheckCourse = (taiKhoan, matKhau) => {
-    dispatch(userCheckCourse(taiKhoan, matKhau));
-  }
-
-  const handleLogout = (e) => {
-    e.preventDefault();
-    localStorage.removeItem(settings.userLogin);
-    window.location.replace("/home");
-   
-  }
-
-  const {taiKhoan, matKhau} = props.credentials;
+  const {taiKhoan, matKhau} = this.props.credentials;
+  
+  const {tenKhoaHoc} = this.props.course;
  
   return (
     <header className="udemyNavbar container">
@@ -48,7 +35,7 @@ const HeaderComponent = (props) => {
                       Danh sách khoá học
                   </a>
                     <div className="dropdown-menu">
-                      {props.courseCategory
+                      {this.props.courseCategory
                         .sort((a, b) => a.tenDanhMuc.localeCompare(b.tenDanhMuc))
                         .map((list, index) => {
 
@@ -58,6 +45,7 @@ const HeaderComponent = (props) => {
                                 pathname: `/coursecategories/${list.maDanhMuc}`, courseID: list.tenDanhMuc
 
                               }}
+                              
                               key={index}
                               className="dropdown-item">{list.tenDanhMuc}</NavLink>
                           )
@@ -66,16 +54,24 @@ const HeaderComponent = (props) => {
 
                   </div>
                 </div>
-                <form className="formSearch">
+
+                <form className="formSearch" onSubmit={this.onSubmit}>
                   <div className="input-group">
-                    <input type="text" className="form-control" placeholder="Tìm khóa học" aria-label="Recipient's username" aria-describedby="basic-addon2" />
-                    <div className="input-group-append">
-                      <span className="input-group-text" id="basic-addon2">
-                        <i className="fa fa-search" />
-                      </span>
-                    </div>
+                      <input 
+                      type="text" 
+                      name="searchText" 
+                      className="form-control" 
+                      placeholder="Tìm khóa học" 
+                      onChange={this.onChange}
+                     />
+                      <Link to={`/timkiem/${this.props.text}`} onClick={this.onSubmit} type="submit" className="input-group-append">
+                          <span className="input-group-text" id="basic-addon2">
+                              <i className="fa fa-search"/>
+                          </span>
+                      </Link>
                   </div>
                 </form>
+
               </div>
             </div>
 
@@ -83,13 +79,13 @@ const HeaderComponent = (props) => {
               <div className="row">
                
               <ul className="navbar-nav mr-auto">
-              {props.credentials ? (
+              {this.props.credentials ? (
               <div className="d-flex">
                     <div className="nav-item navbar-toggle mr-3">
                       <div className="shopingCart">
                         <CartModal />
                         <a className="icon-shopping" data-toggle="modal" data-target="#cartModal">
-                          <i onClick={() => handleCheckCourse(taiKhoan, matKhau)} className="fa fa-shopping-cart" />
+                          <i onClick={() => this.handleCheckCourse(taiKhoan, matKhau)} className="fa fa-shopping-cart" />
                         </a>
                       </div>
                     </div>
@@ -97,12 +93,12 @@ const HeaderComponent = (props) => {
                     <li className="nav-item dropdown">
                       <div className="dropdown">
                         <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Hello, {props.credentials.hoTen}
+                          Hello, {this.props.credentials.hoTen}
                         </a>
 
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                           <NavLink to="/profile" className="dropdown-item">Profile</NavLink>
-                          <button className="dropdown-item" onClick={handleLogout}>Đăng xuất</button>
+                          <button className="dropdown-item" onClick={this.handleLogout}>Đăng xuất</button>
 
                           <a className="dropdown-item" href="#">
                             My course
@@ -135,16 +131,41 @@ const HeaderComponent = (props) => {
 
       </header>
 
-  );
+      );
+    }
+  
+    componentDidMount() {
+      this.props.dispatch(fetchListCategory())
+    }
+
+    onChange = (event) => {
+      this.props.dispatch(searchCourse(event.target.value));
+    }
+
+    onSubmit = (event) => {
+      event.preventDefault();
+      this.props.dispatch(fetchCourseSearch(this.props.text))
+      this.props.history.push(`/timkiem/${this.props.text}`)
+    }
+
+    handleCheckCourse = (taiKhoan, matKhau) => {
+      // this.props.dispatch(userCheckCourse(taiKhoan, matKhau));
+      this.props.dispatch(userCheckCourse(taiKhoan, matKhau))
+    }
+
+    handleLogout = (e) => {
+      e.preventDefault();
+      localStorage.removeItem(settings.userLogin);
+      window.location.replace("/home");
+    
+    }
 };
 
 const mapStateToProps = (state) => ({
   credentials: state.userReducer.credentials,
   courseCategory: state.courseReducer.courseListCategory,
   course: state.courseReducer.courses,
-  userCart: state.userReducer.userCheckCourse,
+  text: state.courseReducer.text,
 });
 
-export default connect(mapStateToProps)(HeaderComponent);
-
-
+export default withRouter(connect(mapStateToProps)(HeaderComponent));
