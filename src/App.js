@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     const notFoundPage = () => (
       <div className="container contentNotFound">
-        <h1>Page not found 404</h1>
+        <h1>Content is not found</h1>
         <Link className="btn btn-success" to="/home">Back to home</Link>
       </div>
     )

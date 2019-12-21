@@ -13,10 +13,13 @@ class PageResault extends Component {
                 <div>
                     <h1>Khoá học</h1>
                     <div className="row">
-                    {this.props.courseFilter.map((item, index) => {
+                    {this.props.courseSearch.map((item, index) => {
                         return (
-                            <div className="col-3">
-                                <CourseItemComponent item={item} key={index}/>
+                            <div className="col-4 pt-4">
+                                <div>
+                                    <CourseItemComponent item={item} key={index}/>
+                                </div>
+                                
                             </div> 
                         )
                     })}
@@ -35,7 +38,7 @@ const mapStateToProps = (state) => ({
     credentials: state.userReducer.credentials,
     courseCategory: state.courseReducer.courseListCategory,
     text: state.courseReducer.text,
-    courseFilter: state.courseReducer.courseFilter,
+    courseSearch: state.courseReducer.courseSearch,
   });
 
 export default connect(mapStateToProps)(PageResault);

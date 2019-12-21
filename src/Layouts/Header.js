@@ -10,7 +10,7 @@ import CartModal from "./CartModal";
 
 import { settings } from "../Config/settings";
 import { userCheckCourse } from "../Redux/Action/User/UserActions";
-import { fetchListCategory, searchCourse, fetchCourseSearch, fetchCoursesByID } from "../Redux/Action/Course/CourseAction";
+import { fetchListCategory, searchCourse, fetchCourseSearch } from "../Redux/Action/Course/CourseAction";
 
 class HeaderComponent extends Component {
 

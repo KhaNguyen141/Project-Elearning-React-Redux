@@ -3,6 +3,7 @@
 export const settings = {
     userLogin:'userLogin',
     fetchCourse: 'fetchCourse',
+    fetchCourseSearch: 'fetchCourseSearch',
     courseStoring: 'courseStoring',
     courseDetail: 'courseDetail',
     coursePending: 'coursePending',
