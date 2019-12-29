@@ -21,7 +21,7 @@ const CourseListCategoriesComponent = (props) => {
         state => state.courseReducer.courseByID,
         
         );
-
+    
     const dispatch = useDispatch();
 
     useEffect (() => {
@@ -29,6 +29,14 @@ const CourseListCategoriesComponent = (props) => {
         dispatch( fetchCoursesByID(maDanhMuc) );
         
     }, [])
+
+    
+    useEffect (() => {
+        const {maDanhMuc} = props.match.params;
+        dispatch( fetchCoursesByID(maDanhMuc) );
+        
+    }, [courseListByID])
+
     return (
         <div className="container">
             <h1> Khoá học: {props.location.courseID}</h1>

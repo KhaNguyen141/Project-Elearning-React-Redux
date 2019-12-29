@@ -59,7 +59,7 @@ export const userRegisterAction = (userRegister) => {
         '',
         'success'
     ).then(() => {
-        // window.location.reload();
+        console.log(res.data)
     })
     }).catch(error => {
       console.log(error.response.data)

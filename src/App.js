@@ -52,6 +52,7 @@ class App extends Component {
       this.props.dispatch( reduxAction( LOGIN, JSON.parse(userLoginStr) )  );
 
     }
+ 
   }
 }
 
