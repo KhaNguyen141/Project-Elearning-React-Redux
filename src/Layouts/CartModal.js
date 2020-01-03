@@ -12,13 +12,13 @@ class CartModalComponent extends Component {
                 <div className="modal-dialog modal-lg" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title">Khoá học đang chờ duyệt</h5>
+                            <h5 className="modal-title">Course Pending</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
                         </div>
                         <div className="modal-body">
-                            <h2>Thông tin khoá học</h2>
+                            <h2>Course List</h2>
                             {this.props.coursePending.map((item) => 
                                 item.chiTietKhoaHocGhiDanh.map((course, i) => {
                                     return (

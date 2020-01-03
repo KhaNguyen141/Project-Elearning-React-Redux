@@ -15,6 +15,9 @@ import { LOGIN } from "./Redux/Action/type";
 import ProfileDetail from "./Screens/Profile/ProfileDetail";
 import CourseListCategoriesComponent from "./Components/CourseItem/courseListCategories";
 import PageResult from "./Screens/PageSearch/PageResult";
+import CourseApprovedComponent from "./Screens/CourseManagement/CourseApproved";
+
+import './App.scss';
 
 class App extends Component {
   render() {
@@ -36,6 +39,7 @@ class App extends Component {
             <Route exact path="/profile" component={ProfileDetail} />
             <Route exact path="/coursecategories/:maDanhMuc" component={CourseListCategoriesComponent}/>
             <Route exact path="/timkiem/:tenKhoaHoc" component={PageResult} />
+            <Route exact path="/my-course" component={CourseApprovedComponent} />
             <Route component={notFoundPage} />
             <Route exact path="/" component={HomeScreen} />
         </Switch>

@@ -9,7 +9,7 @@ import Register from "./UserAction/Register";
 import CartModal from "./CartModal";
 
 import { settings } from "../Config/settings";
-import { userCheckCourse } from "../Redux/Action/User/UserActions";
+import { userCheckCourse, userCheckCourseApproved } from "../Redux/Action/User/UserActions";
 import { fetchListCategory, searchCourse, fetchCourseSearch } from "../Redux/Action/Course/CourseAction";
 
 class HeaderComponent extends Component {
@@ -17,8 +17,6 @@ class HeaderComponent extends Component {
   render() {
 
   const {taiKhoan, matKhau} = this.props.credentials;
-  
-  const {tenKhoaHoc} = this.props.course;
  
   return (
     <header className="udemyNavbar container">
@@ -32,7 +30,7 @@ class HeaderComponent extends Component {
                 <div className="nav-item navbar-toggle mr-3 categories">
                   <div className="dropdown">
                     <a className="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="fa fa-th mr-2" />
-                      Danh sách khoá học
+                      Categories
                   </a>
                     <div className="dropdown-menu">
                       {this.props.courseCategory
@@ -61,7 +59,7 @@ class HeaderComponent extends Component {
                       type="text" 
                       name="searchText" 
                       className="form-control" 
-                      placeholder="Tìm khóa học" 
+                      placeholder="Search for course" 
                       onChange={this.onChange}
                      />
                       <Link to={`/timkiem/${this.props.text}`} onClick={this.onSubmit} type="submit" className="input-group-append">
@@ -98,11 +96,8 @@ class HeaderComponent extends Component {
 
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                           <NavLink to="/profile" className="dropdown-item">Profile</NavLink>
+                          <NavLink to="/my-course" onClick={() => this.handleCheckCourseApproved(taiKhoan)} className="dropdown-item">My course</NavLink>
                           <button className="dropdown-item" onClick={this.handleLogout}>Đăng xuất</button>
-
-                          <a className="dropdown-item" href="#">
-                            My course
-                        </a>
 
                         </div>
                       </div>
@@ -149,7 +144,6 @@ class HeaderComponent extends Component {
     }
 
     handleCheckCourse = (taiKhoan, matKhau) => {
-      // this.props.dispatch(userCheckCourse(taiKhoan, matKhau));
       this.props.dispatch(userCheckCourse(taiKhoan, matKhau))
     }
 
@@ -158,6 +152,10 @@ class HeaderComponent extends Component {
       localStorage.removeItem(settings.userLogin);
       window.location.replace("/home");
     
+    }
+
+    handleCheckCourseApproved = (taiKhoan) => {
+      this.props.dispatch(userCheckCourseApproved(taiKhoan))
     }
 };
 

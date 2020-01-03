@@ -41,14 +41,15 @@ const CourseListCategoriesComponent = (props) => {
         <div className="container">
             <h1> Khoá học: {props.location.courseID}</h1>
             <h4> Các khoá học phổ biến</h4>
-            <div className="tab-pane fade show" id="frontEndCourse" role="tabpanel">
-            {courseListByID.length && (
-                <OwlCarousel className="udemyCourse__items" margin={10} nav={true}>
-                    {courseListByID.map((item, index) => {
-                        return <CourseItemComponent className="item" item={item} key={index}/>
-                    })}
-                </OwlCarousel>
-            )}
+            <div className="row" id="frontEndCourse" role="tabpanel">
+                
+                {courseListByID.map((item, index) => {
+                    return (
+                        <div className="col-3">
+                            <CourseItemComponent className="item" item={item} key={index} />
+                        </div>
+                    )
+                })}
             </div>
 
         </div>

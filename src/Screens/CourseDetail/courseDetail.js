@@ -20,11 +20,11 @@ class CourseDetail extends Component {
         
         {/* <img src={hinhAnh} style={{width: "100%", height: "50rem"}} /> */}
         
-        <h1>Chi tiết khóa học {tenKhoaHoc}</h1>
+        <h1>Course detail of {tenKhoaHoc}</h1>
 
         <img src={hinhAnh} />
-        <div>
-          <p>Mô tả chi tiết khóa học {moTa}</p>
+        <div className="mt-4">
+          <h4>Course description: {moTa}</h4>
         </div>
         <div>
           <div className="rating__star">
@@ -35,7 +35,7 @@ class CourseDetail extends Component {
               <i className="fa fa-star-half-o" aria-hidden="true" />
               <span> 4.6 </span>
               <span> (25,554)</span>
-              <span> Số lượng học viên đăng ký: {luotXem}</span>
+              <div> Số lượng học viên đăng ký: {luotXem}</div>
           </div>
           <p>Ngày tạo: {ngayTao}</p>
           <button onClick={() => this.handleDangKy(taiKhoan, maKhoaHoc)} type="button" className="btn btn-udi-yellow mt-2">Đăng ký</button>

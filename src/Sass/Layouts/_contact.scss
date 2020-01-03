@@ -1,0 +1,22 @@
+.contactContainer {
+    display: flex;
+    justify-content: space-between !important;
+    .footer__top {
+        @include width70 ($w-70, $mg-auto);
+        margin: auto;
+        a {
+            @include text-style($color-blue, $fs-1, $fw-normal);
+            &:hover {
+                @include text-style($color-black-0, $fs-1, $fw-normal);
+                text-decoration: none;
+            }
+        }
+        .bold {
+                @include text-style($color-blue, $fs-1, $fw-bold);
+                &:hover {
+                    @include text-style($color-black-0, $fs-1, $fw-bold);
+                    text-decoration: none;
+                }
+            }
+    }
+}

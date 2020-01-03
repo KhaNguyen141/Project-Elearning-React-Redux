@@ -33,9 +33,9 @@ class CourseItemComponent extends Component {
             
             <div className="text-center">
            
-              <button onClick={() => this.props.handleDangKy(taiKhoan, maKhoaHoc)} type="button" className="btn btn-udi-yellow mt-2">Đăng ký</button>
+              <button onClick={() => this.props.handleDangKy(taiKhoan, maKhoaHoc)} type="button" className="btn btn-udi-yellow mt-2">Enroll</button>
 
-              <NavLink to={`/coursedetail/${maKhoaHoc}`} className="btn btn-udi-white ml-2 mt-2">Xem Chi Tiêt</NavLink>
+              <NavLink to={`/coursedetail/${maKhoaHoc}`} className="btn btn-udi-white ml-2 mt-2">Detail</NavLink>
             </div>
           </div>
         </div>

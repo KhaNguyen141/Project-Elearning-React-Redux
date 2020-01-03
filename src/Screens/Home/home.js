@@ -1,11 +1,11 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useEffect } from "react";
 
 import { connect, useDispatch } from "react-redux";
-import { fetchCourse, fetchListCategory } from "../../Redux/Action/Course/CourseAction";
+import { fetchCourse } from "../../Redux/Action/Course/CourseAction";
 
 // import Component
 import CourseItemComponent from "../../Components/CourseItem/courseItem";
-import HeaderComponent from "../../Layouts/Header";
+import ContactComponent from "../../Layouts/Contact";
 
 // import SCSS
 import "../../App.scss";
@@ -45,7 +45,7 @@ const HomeScreen = (props) => {
               <div className="udemyCourse__tabs">
                 <nav>
                   <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                      <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#latestCourse" role="tab" aria-controls="nav-home" aria-selected="true">Các khóa học mới nhất </a>
+                      <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#latestCourse" role="tab" aria-controls="nav-home" aria-selected="true">Latest Courses </a>
                   </div>
                 </nav>
          
@@ -100,6 +100,10 @@ const HomeScreen = (props) => {
 
             <div>
                <UserCommentsComponent />
+            </div>
+
+            <div>
+              <ContactComponent />
             </div>
       </section>
   );

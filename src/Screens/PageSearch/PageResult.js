@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CourseItemComponent from '../../Components/CourseItem/courseItem'
 import { connect } from 'react-redux'
-import { fetchCourse, fetchCourseSearch } from '../../Redux/Action/Course/CourseAction'
+import { fetchCourseSearch } from '../../Redux/Action/Course/CourseAction'
 
 class PageResault extends Component {
     render() {
@@ -9,9 +9,9 @@ class PageResault extends Component {
         return (
             
             <div className="container">
-                <h1>Tìm thấy khoá học: {keyword}</h1>
+                <h1>Courses found: {keyword}</h1>
                 <div>
-                    <h1>Khoá học</h1>
+                    <h1>Course List</h1>
                     <div className="row">
                     {this.props.courseSearch.map((item, index) => {
                         return (

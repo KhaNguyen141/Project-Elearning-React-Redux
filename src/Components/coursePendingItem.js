@@ -11,13 +11,12 @@ class CoursePendingItemComponent extends Component {
         return (
             
             <div className="cyberCartModal row" >
-                <div className="col-6">
-                    <h2 className="card-text">Khoá học: {tenKhoaHoc}</h2>
-                    <p>Người tạo: </p>
+                <div className="col-8">
+                    <h4 className="card-text">Course: {tenKhoaHoc}</h4>
                 </div>
                 
-                <div className="col-6" >
-                    <button onClick={() => this.props.handleCancel(taiKhoan, maKhoaHoc)} className="btn btn-cyber-red">Huỷ</button>
+                <div className="col-4" >
+                    <div className="statusPending">Pending...</div>
                 </div>
                 
             </div> 

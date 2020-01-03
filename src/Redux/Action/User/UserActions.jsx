@@ -1,4 +1,4 @@
-import { LOGIN, REGISTER, UPDATE_USER, USER_ADD_COURSE, USER_CANCEL_COURSE, USER_CHECK_COURSE } from "../type";
+import { LOGIN, REGISTER, UPDATE_USER, USER_ADD_COURSE, USER_CANCEL_COURSE, USER_CHECK_COURSE, USER_CHECK_COURSE_APPROVED } from "../type";
 import reduxAction from "../action";
 
 import { settings } from "../../../Config/settings";
@@ -167,7 +167,24 @@ export const userCheckCourse = (taiKhoan, matkhau) => {
       .then(res => {
         localStorage.setItem(settings.courseSignedUp, JSON.stringify(res.data));
         dispatch(reduxAction(USER_CHECK_COURSE, res.data));
-        // console.log(res.data);
+        console.log(res.data);
+      
+      }).catch(error => {
+        console.log(error.response.data)
+       
+      })
+    
+
+  }
+}
+
+export const userCheckCourseApproved = (taiKhoan) => {
+  return dispatch => {
+      userService
+      .userCheckCourseApproved(taiKhoan)
+      .then(res => {
+        dispatch(reduxAction(USER_CHECK_COURSE_APPROVED, res.data));
+        console.log(res.data);
       
       }).catch(error => {
         console.log(error.response.data)

@@ -1,4 +1,4 @@
-import { LOGIN, UPDATE_USER, USER_ADD_COURSE, USER_CANCEL_COURSE, USER_CHECK_COURSE } from "../../Action/type";
+import { LOGIN, UPDATE_USER, USER_ADD_COURSE, USER_CANCEL_COURSE, USER_CHECK_COURSE, USER_CHECK_COURSE_APPROVED } from "../../Action/type";
 import { userCancelCourse } from '../../Action/User/UserActions'
 
 let initialState = {
@@ -7,6 +7,7 @@ let initialState = {
   userAddCourse: [],
   userCancelCourse: [],
   userCheckCourse: [],
+  userCheckCourseAccepted: [],
 
 };
 
@@ -23,7 +24,7 @@ const UserReducer = (state = initialState, action) => {
     }
 
     case USER_ADD_COURSE: {
-      console.log(action)
+      state.userAddCourse = action.payload;
       return {...state};
     }
 
@@ -35,6 +36,11 @@ const UserReducer = (state = initialState, action) => {
 
     case USER_CHECK_COURSE: {
       state.userCheckCourse = [JSON.parse(localStorage.getItem("courseSignedUp"))];
+      return {...state};
+    }
+
+    case USER_CHECK_COURSE_APPROVED: {
+      state.userCheckCourseAccepted = action.payload;
       return {...state};
     }
     

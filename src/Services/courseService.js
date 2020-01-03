@@ -1,5 +1,4 @@
 import { restConnector } from ".";
-import { settings } from "../Config/settings";
 
 class CourseService {
   fetchCourseDetail(courseid) {

@@ -7,7 +7,6 @@ class CarouselComponent extends Component {
                 <div className="container udemyCarousel__content">
                     <h1>Khởi đầu sự nghiệp của bạn</h1>
                     <p>Trở thành lập trình chuyên nghiệp</p>
-                    <button className="btn-udi-yellow">Xem khóa học</button>
                 </div>
             </section>
         )

@@ -26,7 +26,6 @@ const ProfileDetail = () => {
 
         validationSchema={validationSchema}
         onSubmit={values  => {
-            
             dispatch(userProfileUpdate(values))
         }}
         >
@@ -37,14 +36,8 @@ const ProfileDetail = () => {
                     <div className="card" style={{ width: '18rem' }}>
                         <img src="https://blog.techiehunter.org/wp-content/uploads/2018/09/product_16032_product_shot_wide_image.jpg" className="card-img-top" alt="profile picture" />
                         <div className="card-body">
-                            <h5 className="card-title"></h5>
-                            <div>
-                                <a href="#">Profile</a>
-                            </div>
-                            <div>
-                                <a href="#">Course Registered</a>
-                            </div>
-                            
+                            <h5 className="card-title">Profile detail</h5>
+                        
                         </div>
                     </div>
                 </div>
@@ -62,7 +55,7 @@ const ProfileDetail = () => {
                                 
                                     <div>
                                         <div className="form-group">
-                                            <label>Tài khoản: </label>
+                                            <label>Username: </label>
                                             <Field 
                                             name="taiKhoan" 
                                             type="text" 
@@ -76,7 +69,7 @@ const ProfileDetail = () => {
                                             
                                         </div>
                                         <div className="form-group">
-                                            <label>Mật khẩu: </label>
+                                            <label>Password: </label>
                                             <Field 
                                             name="matKhau" 
                                             type="password" 
@@ -88,7 +81,7 @@ const ProfileDetail = () => {
                                            
                                         </div>
                                         <div className="form-group">
-                                            <label>Họ tên: </label>
+                                            <label>Name: </label>
                                             <Field 
                                             name="hoTen" type="text" 
                                             value={values.hoTen} 
@@ -99,7 +92,7 @@ const ProfileDetail = () => {
                                         </div>
                                     
                                         <div className="form-group">
-                                            <label>Số điện thoại: </label>
+                                            <label>Phone contact: </label>
                                             <Field 
                                             name="soDT" 
                                             type="text" 
