@@ -26,7 +26,7 @@ const Login = (props) => {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h4 className="modal-title pt-2">Đăng nhập</h4>
+                            <h4 className="modal-title pt-2">Sign in</h4>
                             
                             <button type="button" className="close modalClose" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
@@ -39,7 +39,7 @@ const Login = (props) => {
                                     <Field 
                                     name="taiKhoan" 
                                     type="text" className="form-control taiKhoan" 
-                                    placeholder="Tài khoản" 
+                                    placeholder="Username" 
                                     onChange={handleChange}/>
                                 
                                 </div>
@@ -49,14 +49,14 @@ const Login = (props) => {
                                     name="matKhau" 
                                     type="password" 
                                     className="form-control matKhau" 
-                                    placeholder="Mật khẩu" 
+                                    placeholder="Password" 
                                     onChange={handleChange}/>
                                     
                                 </div>
 
-                                <button type="submit" className="btn btn-udi-yellow">Đăng nhập</button>
+                                <button type="submit" className="btn btn-udi-yellow">Sign In</button>
                                 
-                                <p className="mt-4">Bạn chưa có tài khoản? <a href="#modalRegister" data-toggle="modal" data-target="#modalRegister" data-dismiss="modal">Đăng ký</a></p>
+                                <p className="mt-4">Don't have an account? <a href="#modalRegister" data-toggle="modal" data-target="#modalRegister" data-dismiss="modal">Sign up</a></p>
                                 
                         </div>
                     </div>

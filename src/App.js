@@ -38,7 +38,7 @@ class App extends Component {
             <Route exact path="/coursedetail/:courseid" component={CourseDetail}/>
             <Route exact path="/profile" component={ProfileDetail} />
             <Route exact path="/coursecategories/:maDanhMuc" component={CourseListCategoriesComponent}/>
-            <Route exact path="/timkiem/:tenKhoaHoc" component={PageResult} />
+            <Route exact path="/page-result/:tenKhoaHoc" component={PageResult} />
             <Route exact path="/my-course" component={CourseApprovedComponent} />
             <Route component={notFoundPage} />
             <Route exact path="/" component={HomeScreen} />

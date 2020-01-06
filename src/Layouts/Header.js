@@ -62,7 +62,7 @@ class HeaderComponent extends Component {
                       placeholder="Search for course" 
                       onChange={this.onChange}
                      />
-                      <Link to={`/timkiem/${this.props.text}`} onClick={this.onSubmit} type="submit" className="input-group-append">
+                      <Link to={`/page-result/${this.props.text}`} onClick={this.onSubmit} type="submit" className="input-group-append">
                           <span className="input-group-text" id="basic-addon2">
                               <i className="fa fa-search"/>
                           </span>
@@ -97,7 +97,7 @@ class HeaderComponent extends Component {
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                           <NavLink to="/profile" className="dropdown-item">Profile</NavLink>
                           <NavLink to="/my-course" onClick={() => this.handleCheckCourseApproved(taiKhoan)} className="dropdown-item">My course</NavLink>
-                          <button className="dropdown-item" onClick={this.handleLogout}>Đăng xuất</button>
+                          <button className="dropdown-item" onClick={this.handleLogout}>Log out</button>
 
                         </div>
                       </div>
@@ -108,12 +108,12 @@ class HeaderComponent extends Component {
                 <li className="button-group d-flex">
                 <Login />
                 <div className="nav-link">
-                    <button className="btn btn-udi-white mr-2" data-toggle="modal" data-target="#modalLogin">Đăng nhập</button>
+                    <button className="btn btn-udi-white mr-2" data-toggle="modal" data-target="#modalLogin">Log In</button>
                 </div>
              
                 <Register />
                 <div className="nav-link">
-                    <button className="btn btn-udi-yellow" data-toggle="modal" data-target="#modalRegister">Đăng ký</button>
+                    <button className="btn btn-udi-yellow" data-toggle="modal" data-target="#modalRegister">Sign up</button>
                 </div>
                 </li>
                
@@ -140,7 +140,7 @@ class HeaderComponent extends Component {
     onSubmit = (event) => {
       event.preventDefault();
       this.props.dispatch(fetchCourseSearch(this.props.text))
-      this.props.history.push(`/timkiem/${this.props.text}`)
+      this.props.history.push(`/page-result/${this.props.text}`)
     }
 
     handleCheckCourse = (taiKhoan, matKhau) => {

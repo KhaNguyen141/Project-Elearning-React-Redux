@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 
 class CoursePendingItemComponent extends Component {
     render() {
-       const {tenKhoaHoc, maKhoaHoc} = this.props.course;
-
-       const { taiKhoan } = this.props.credentials;
+       const {tenKhoaHoc} = this.props.course;
 
         return (
             

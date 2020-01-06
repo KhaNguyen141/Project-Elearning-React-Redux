@@ -55,7 +55,7 @@ class CourseItemComponent extends Component {
 const mapStateToProps = (state) => ({
   credentials: state.userReducer.credentials,
   userAddCourse: state.userReducer.userAddCourse,
-  userCancelCourse: state.userReducer.userCancelCourse
+  
 })
 
 const mapDispatchToProps = (dispatch) => {

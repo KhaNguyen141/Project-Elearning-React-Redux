@@ -33,7 +33,7 @@ const Register = () => {
                         <div className="modal-dialog" role="document">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h4 className="modal-title pt-2">Đăng ký</h4>
+                                    <h4 className="modal-title pt-2">Sign up</h4>
 
                                     <button type="button" className="close modalClose" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">×</span>
@@ -48,7 +48,7 @@ const Register = () => {
                                         type="text" 
                                         onChange={handleChange}
                                         className="form-control taiKhoan" 
-                                        placeholder="Tài khoản" />
+                                        placeholder="Username" />
                                         <ErrorMessage touched={touched.taiKhoan} message={errors.taiKhoan}/>
                                     </div>
 
@@ -58,7 +58,7 @@ const Register = () => {
                                         type="text" 
                                         onChange={handleChange}
                                         className="form-control matKhau" 
-                                        placeholder="Mật khẩu" />
+                                        placeholder="Password" />
                                         <ErrorMessage touched={touched.matKhau} message={errors.matKhau}/>
                                     </div>
 
@@ -68,7 +68,7 @@ const Register = () => {
                                         type="text" 
                                         onChange={handleChange}
                                         className="form-control hoTen" 
-                                        placeholder="Họ Tên" />
+                                        placeholder="Name" />
                                         <ErrorMessage touched={touched.hoTen} message={errors.hoTen}/>
                                     </div>
 
@@ -78,7 +78,7 @@ const Register = () => {
                                         type="text" 
                                         onChange={handleChange}
                                         className="form-control soDT" 
-                                        placeholder="Số điện thoại" />
+                                        placeholder="Phone contact" />
                                         <ErrorMessage touched={touched.soDT} message={errors.soDT}/>
                                     </div>
 
@@ -103,9 +103,9 @@ const Register = () => {
 
                                 </div>
 
-                                    <button type="submit" className="btn btn-udi-yellow">Đăng ký</button>
+                                    <button type="submit" className="btn btn-udi-yellow">Sign Up</button>
                                     
-                                    <p className="mt-4">Bạn đã có tài khoản? <a href="#modalLogin" data-toggle="modal" data-target="#modalLogin" data-dismiss="modal">Đăng nhập</a></p>
+                                    <p className="mt-4">Already have an account? <a href="#modalLogin" data-toggle="modal" data-target="#modalLogin" data-dismiss="modal">Log In</a></p>
                                 </div>
                             </div>
                         </div>

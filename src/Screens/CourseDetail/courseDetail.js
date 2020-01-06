@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
-import CourseService from "../../Services/courseService";
 
 import { fetchCourseDetail } from "../../Redux/Action/Course/CourseAction";
 import { userAddCourse } from "../../Redux/Action/User/UserActions";
-
-const courseService = new CourseService();
 
 class CourseDetail extends Component {
 
@@ -15,10 +12,9 @@ class CourseDetail extends Component {
     const {tenKhoaHoc, maKhoaHoc, moTa, hinhAnh, ngayTao, luotXem} = this.props.courseDetail;
 
     const { taiKhoan } = this.props.credentials;
+    
     return (
       <div className="courseDetailContainer container">
-        
-        {/* <img src={hinhAnh} style={{width: "100%", height: "50rem"}} /> */}
         
         <h1>Course detail of {tenKhoaHoc}</h1>
 
@@ -35,10 +31,10 @@ class CourseDetail extends Component {
               <i className="fa fa-star-half-o" aria-hidden="true" />
               <span> 4.6 </span>
               <span> (25,554)</span>
-              <div> Số lượng học viên đăng ký: {luotXem}</div>
+              <div>Number of students: {luotXem}</div>
           </div>
-          <p>Ngày tạo: {ngayTao}</p>
-          <button onClick={() => this.handleDangKy(taiKhoan, maKhoaHoc)} type="button" className="btn btn-udi-yellow mt-2">Đăng ký</button>
+          <p>Creation date: {ngayTao}</p>
+          <button onClick={() => this.handleDangKy(taiKhoan, maKhoaHoc)} type="button" className="btn btn-udi-yellow mt-2">Enroll</button>
         </div>
 
       </div>
@@ -57,14 +53,6 @@ class CourseDetail extends Component {
     this.props.dispatch(userAddCourse(taiKhoan, maKhoaHoc));
   }
 }
-
-/**
- * 1.Khi load trang, dùng axios gửi lên server
-http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=111
- * 2. lưu cái course detail lên store (trên store phải có 1 dữ liệu mới, 1 reducer mới)
- * 3. ở courseDetail component, lấy "chi tiết khoá học" từ store xuống, hiện ra màn hình
- * các thông tin sau: tên, mã, hình ảnh, mô tả, người tao.
- */
 
 const mapStateToProps = state => ({
   credentials: state.userReducer.credentials,

@@ -143,7 +143,7 @@ export const userCancelCourse = (taiKhoan, maKhoaHoc) => {
         dispatch(reduxAction(USER_CANCEL_COURSE, res.data));
         console.log(res.data);
         Swal.fire(
-          'Huỷ đăng ký khoá học thành công!',
+          'Huỷ khoá học thành công!',
           '',
           'success'
         )

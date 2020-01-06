@@ -39,9 +39,9 @@ const CourseListCategoriesComponent = (props) => {
 
     return (
         <div className="container">
-            <h1> Khoá học: {props.location.courseID}</h1>
-            <h4> Các khoá học phổ biến</h4>
-            <div className="row" id="frontEndCourse" role="tabpanel">
+            <h1> Course: {props.location.courseID}</h1>
+
+            <div className="row" role="tabpanel">
                 
                 {courseListByID.map((item, index) => {
                     return (
