@@ -39,7 +39,7 @@ const HomeScreen = (props) => {
         </div>
         
 
-        <div className="udemyCourse__content">
+        <div className="udemyCourse__content container">
       
             <div className="udemyCourse__containerBox">
               <div className="udemyCourse__tabs">

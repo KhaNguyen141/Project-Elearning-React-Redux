@@ -1,15 +1,14 @@
 .udemyInfo {
     margin-bottom: $mg-4;
     background-color: $color-white-cream;
+    background-size: cover;
     
     .udemyComments__top {
         .udemyComments__text {
-            @include width70 ($w-70, $mg-auto);
             @include text-style($color-black-0, $fs-3, $fw-bold-0);
             padding: $pd-2 0;
         }
         .udemyComments__sliders {
-            @include width70 ($w-70, $mg-auto);
             .card {
                 border: none;
                 width: 100%;

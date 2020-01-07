@@ -7,7 +7,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 const UserCommentsComponent = () => {
     return (
         <section className="udemyInfo mt-5">
-            <div className="udemyComments__top">
+            <div className="udemyComments__top container">
                 <div className="udemyComments__text">
                     What our students have to say
                 </div>

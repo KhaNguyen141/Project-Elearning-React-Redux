@@ -1,7 +1,7 @@
 .udemyCourse {
     margin-top: $mg-2;
     .udemyCourse__content {
-        @include width70 ($w-70, $mg-auto);
+      
         .udemyCourse__text {
             background: $color-white-cream;
             padding-left: $pd-2 + 10;
