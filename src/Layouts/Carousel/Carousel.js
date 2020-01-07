@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import "../App.scss";
 import { connect } from 'react-redux';
-import { searchCourse, fetchCourseSearch } from '../Redux/Action/Course/CourseAction';
+import { searchCourse, fetchCourseSearch } from '../../Redux/Action/Course/CourseAction';
 
 class CarouselComponent extends Component {
     render() {

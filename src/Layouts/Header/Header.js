@@ -1,16 +1,16 @@
-import React, { Component, useState, useEffect } from "react";
-import { NavLink, Link, withRouter, Redirect } from "react-router-dom"; //Thư viện thẻ link (thay thế thẻ <a></a>)
-import { connect, useDispatch } from "react-redux";
-import "../App.scss";
+import React, { Component } from "react";
+import { NavLink, Link, withRouter } from "react-router-dom"; //Thư viện thẻ link (thay thế thẻ <a></a>)
+import { connect } from "react-redux";
+import "../../App.scss";
 
 // Import function layout
-import Login from "./UserAction/Login";
-import Register from "./UserAction/Register";
-import CartModal from "./CartModal";
+import Login from "../UserAction/Login";
+import Register from "../UserAction/Register";
+import CartModal from "../CartModal/CartModal";
 
-import { settings } from "../Config/settings";
-import { userCheckCourse, userCheckCourseApproved } from "../Redux/Action/User/UserActions";
-import { fetchListCategory, searchCourse, fetchCourseSearch } from "../Redux/Action/Course/CourseAction";
+import { settings } from "../../Config/settings";
+import { userCheckCourse, userCheckCourseApproved } from "../../Redux/Action/User/UserActions";
+import { fetchListCategory, searchCourse, fetchCourseSearch } from "../../Redux/Action/Course/CourseAction";
 
 class HeaderComponent extends Component {
 

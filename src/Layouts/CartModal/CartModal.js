@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import CoursePendingItemComponent from '../Components/coursePendingItem';
+import CoursePendingItemComponent from '../../Components/CourseItem/ModalPending/coursePendingItem';
 
 class CartModalComponent extends Component {
 

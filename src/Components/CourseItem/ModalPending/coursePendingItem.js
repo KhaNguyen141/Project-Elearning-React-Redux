@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { userCancelCourse } from '../Redux/Action/User/UserActions';
+import { userCancelCourse } from '../../../Redux/Action/User/UserActions';
 import { connect } from 'react-redux';
 
 class CoursePendingItemComponent extends Component {

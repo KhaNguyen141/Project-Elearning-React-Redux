@@ -23,15 +23,15 @@
 @import '../Sass/Components/errorMessage';
 
 // Layout
-@import '../Sass/Layouts/header';
-@import '../Sass/Layouts/carousel';
-@import '../Sass/Layouts/intro';
-@import '../Sass/Layouts/course';
-@import '../Sass/Layouts/comments';
-@import '../Sass/Layouts/footer';
+@import '../Layouts/Header/header';
+@import '../Layouts/Carousel/carousel';
+@import '../Layouts/Introduction/intro';
+@import '../Screens/Home/course';
+@import '../Layouts/UserComments/comments';
+@import '../Layouts/Footer/footer';
 @import '../Sass/Layouts/modal';
-@import '../Sass/Layouts/status';
-@import '../Sass/Layouts/contact';
+@import '../Components/CourseItem/ModalPending/status';
+@import '../Layouts/Contact/contact';
 
 // Customize
 @import '../Sass/Base/customize';

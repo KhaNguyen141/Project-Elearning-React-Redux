@@ -8,8 +8,8 @@ import reduxAction from "./Redux/Action/action";
 import { restConnector } from "./Services";
 
 // import Layout
-import HeaderComponent from "./Layouts/Header";
-import FooterComponent from './Layouts/Footer';
+import HeaderComponent from "./Layouts/Header/Header";
+import FooterComponent from './Layouts/Footer/Footer';
 
 import { LOGIN } from "./Redux/Action/type";
 import ProfileDetail from "./Screens/Profile/ProfileDetail";

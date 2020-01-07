@@ -5,7 +5,7 @@ import { fetchCourse } from "../../Redux/Action/Course/CourseAction";
 
 // import Component
 import CourseItemComponent from "../../Components/CourseItem/courseItem";
-import ContactComponent from "../../Layouts/Contact";
+import ContactComponent from "../../Layouts/Contact/Contact";
 
 // import SCSS
 import "../../App.scss";
@@ -16,9 +16,9 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 // import layout
-import CarouselComponent from '../../Layouts/Carousel';
-import IntroductionComponent from '../../Layouts/Introduction';
-import UserCommentsComponent from "../../Layouts/UserComments";
+import CarouselComponent from '../../Layouts/Carousel/Carousel';
+import IntroductionComponent from '../../Layouts/Introduction/Introduction';
+import UserCommentsComponent from "../../Layouts/UserComments/UserComments";
 import { withRouter } from "react-router-dom";
 
 const HomeScreen = (props) => {
