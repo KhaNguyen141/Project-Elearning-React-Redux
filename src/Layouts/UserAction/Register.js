@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Formik, Field, Form } from 'formik';
 
 import {validationSchema} from '../Validation/ValidationForm';
-import {connect, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import { userRegisterAction } from '../../Redux/Action/User/UserActions';
 import ErrorMessage from '../../Screens/ErrorMessage/ErrorMessage';
 

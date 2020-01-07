@@ -67,10 +67,10 @@ const HomeScreen = (props) => {
  
                   {props.courseCategory.map((list, index) => {
                     return (
-                      <div>
+                      <div key={index} >
                         <nav className="mt-2">
-                          <div className="nav nav-tabs" id="nav-tab" role="tablist" key={index} >
-                            <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="true">{list.tenDanhMuc}</a>
+                          <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                            <div className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="true">{list.tenDanhMuc}</div>
                           </div>
                         </nav>
 
@@ -82,7 +82,7 @@ const HomeScreen = (props) => {
                                 {props.courseList
                                   .sort((a, b) => a.maKhoaHoc.localeCompare(b.maKhoaHoc))
                                   .map((item, index) => {
-                                    if (item.danhMucKhoaHoc.maDanhMucKhoahoc === list.maDanhMuc)
+                                    if (item.danhMucKhoaHoc.maDanhMucKhoahoc === list.maDanhMuc) 
                                       return <CourseItemComponent className="item" item={item} key={index} />
                                   })}
                               </OwlCarousel>

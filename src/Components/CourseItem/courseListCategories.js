@@ -1,5 +1,5 @@
-import React, { Component, useEffect, useState } from "react";
-import { connect, useSelector, useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import { fetchCoursesByID } from "../../Redux/Action/Course/CourseAction";
 
@@ -8,12 +8,6 @@ import CourseItemComponent from "../../Components/CourseItem/courseItem";
 
 // import SCSS
 import "../../App.scss";
-
-// Import Library CSS
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-
-import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 const CourseListCategoriesComponent = (props) => {
 

@@ -13,7 +13,7 @@ class CourseItemComponent extends Component {
     
     return (
       <div className="card">
-        <img className="card-img-top" src={hinhAnh} style={{ width: "100%", height: "150px" }} alt="Card image" />
+        <img className="card-img-top" src={hinhAnh} style={{ width: "100%", height: "150px" }} alt="Card" />
         <div className="card-body">
           <h4 className="card-title">{tenKhoaHoc}</h4>
           <p className="card-text">{this._shortenString(moTa)}</p>

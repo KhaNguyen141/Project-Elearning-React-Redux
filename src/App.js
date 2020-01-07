@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import HomeScreen from "./Screens/Home/home";
 import CourseDetail from "./Screens/CourseDetail/courseDetail";
-import { BrowserRouter, Route, Switch, Router, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import reduxAction from "./Redux/Action/action";

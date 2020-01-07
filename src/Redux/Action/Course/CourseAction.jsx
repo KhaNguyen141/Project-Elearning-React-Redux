@@ -1,7 +1,7 @@
 import reduxAction from '../action';
 
 import CourseService from "../../../Services/courseService";
-import { FETCH_COURSES, FETCH_COURSE_DETAIL, FETCH_COURSE_BY_ID, FETCH_LIST_CATEGORY, FETCH_COURSE_SEARCH, SEARCH_COURSE, FILTER_COURSE } from "../type";
+import { FETCH_COURSES, FETCH_COURSE_DETAIL, FETCH_COURSE_BY_ID, FETCH_LIST_CATEGORY, FETCH_COURSE_SEARCH, SEARCH_COURSE } from "../type";
 import { settings } from '../../../Config/settings';
 
 

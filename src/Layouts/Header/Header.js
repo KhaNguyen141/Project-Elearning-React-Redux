@@ -25,13 +25,13 @@ class HeaderComponent extends Component {
             <div className="header__left col-md-7">
               <div className="row">
                 <NavLink className="navbar-brand" to="/home">
-                  <img src="/img/CybersoftLogo.png" />
+                  <img src="/img/CybersoftLogo.png" alt="header logo"/>
                 </NavLink>
                 <div className="nav-item navbar-toggle mr-3 categories">
                   <div className="dropdown">
-                    <a className="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="fa fa-th mr-2" />
-                      Categories
-                  </a>
+                      <div className="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="fa fa-th mr-2" />
+                          Categories
+                      </div>
                     <div className="dropdown-menu">
                       {this.props.courseCategory
                         .sort((a, b) => a.tenDanhMuc.localeCompare(b.tenDanhMuc))
@@ -82,17 +82,17 @@ class HeaderComponent extends Component {
                     <div className="nav-item navbar-toggle mr-3">
                       <div className="shopingCart">
                         <CartModal />
-                        <a className="icon-shopping" data-toggle="modal" data-target="#cartModal">
+                        <div className="icon-shopping" data-toggle="modal" data-target="#cartModal">
                           <i onClick={() => this.handleCheckCourse(taiKhoan, matKhau)} className="fa fa-shopping-cart" />
-                        </a>
+                        </div>
                       </div>
                     </div>
 
                     <li className="nav-item dropdown">
                       <div className="dropdown">
-                        <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Hello, {this.props.credentials.hoTen}
-                        </a>
+                        </div>
 
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                           <NavLink to="/profile" className="dropdown-item">Profile</NavLink>

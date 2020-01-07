@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-
 import { connect } from "react-redux";
-
 import { fetchCourseDetail } from "../../Redux/Action/Course/CourseAction";
 import { userAddCourse } from "../../Redux/Action/User/UserActions";
 
@@ -18,7 +16,7 @@ class CourseDetail extends Component {
         
         <h1>Course detail of {tenKhoaHoc}</h1>
 
-        <img src={hinhAnh} />
+        <img src={hinhAnh} alt="course detail"/>
         <div className="mt-4">
           <h4>Course description: {moTa}</h4>
         </div>

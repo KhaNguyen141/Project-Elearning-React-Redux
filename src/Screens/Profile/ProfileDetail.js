@@ -1,5 +1,5 @@
-import React, { Component, useState, useEffect } from 'react'
-import { connect, useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { userProfileUpdate } from '../../Redux/Action/User/UserActions';
 
 import {validationSchema} from '../../Layouts/Validation/ValidationForm';
@@ -34,7 +34,7 @@ const ProfileDetail = () => {
             <div className="row">
                 <div className="col-3">
                     <div className="card" style={{ width: '18rem' }}>
-                        <img src="https://blog.techiehunter.org/wp-content/uploads/2018/09/product_16032_product_shot_wide_image.jpg" className="card-img-top" alt="profile picture" />
+                        <img src="https://blog.techiehunter.org/wp-content/uploads/2018/09/product_16032_product_shot_wide_image.jpg" className="card-img-top" alt="profile" />
                         <div className="card-body">
                             <h5 className="card-title">Profile detail</h5>
                         
@@ -130,8 +130,6 @@ const ProfileDetail = () => {
     </Formik>
 
     );
-
-
 };
 
 export default ProfileDetail;

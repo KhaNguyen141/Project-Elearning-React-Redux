@@ -14,10 +14,10 @@ class ContactComponent extends Component {
                     </div>
 
                     <div className="col-6" >
-                        <p><a href="#">Careers</a></p>
-                        <p><a href="#">Blog</a></p>
-                        <p><a href="#">Help and Support</a></p>
-                        <p><a href="#">About us</a></p>
+                        <p><a href="!#">Careers</a></p>
+                        <p><a href="!#">Blog</a></p>
+                        <p><a href="!#">Help and Support</a></p>
+                        <p><a href="!#">About us</a></p>
                     </div>
 
                 </div>

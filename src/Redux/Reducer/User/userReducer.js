@@ -1,5 +1,4 @@
 import { LOGIN, UPDATE_USER, USER_ADD_COURSE, USER_CANCEL_COURSE, USER_CHECK_COURSE, USER_CHECK_COURSE_APPROVED } from "../../Action/type";
-import { userCancelCourse } from '../../Action/User/UserActions'
 
 let initialState = {
   credentials: "",
