@@ -67,6 +67,7 @@ const UserCommentsComponent = () => {
                     </div>
                 </OwlCarousel>
             </div>
+
         </section>
 
     );

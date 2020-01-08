@@ -5,7 +5,6 @@ import { fetchCourse } from "../../Redux/Action/Course/CourseAction";
 
 // import Component
 import CourseItemComponent from "../../Components/CourseItem/courseItem";
-import ContactComponent from "../../Layouts/Contact/Contact";
 
 // import SCSS
 import "../../App.scss";
@@ -100,10 +99,6 @@ const HomeScreen = (props) => {
 
             <div>
                <UserCommentsComponent />
-            </div>
-
-            <div>
-              <ContactComponent />
             </div>
       </section>
   );

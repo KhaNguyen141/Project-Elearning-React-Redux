@@ -2,8 +2,26 @@
     margin-top: auto;
     z-index: 1;
     position: absolute;
-    bottom: -5rem;
+    bottom: -21rem;
     left: 20%;
+
+    .footer__top {
+        margin: auto;
+        a {
+            @include text-style($color-blue, $fs-1, $fw-normal);
+            &:hover {
+                @include text-style($color-black-0, $fs-1, $fw-normal);
+                text-decoration: none;
+            }
+        }
+        .bold {
+                @include text-style($color-blue, $fs-1, $fw-bold);
+                &:hover {
+                    @include text-style($color-black-0, $fs-1, $fw-bold);
+                    text-decoration: none;
+                }
+            }
+    }
     
     .footer__bottom {
         margin: $mg-1 + 5 auto;
