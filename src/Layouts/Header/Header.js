@@ -24,12 +24,17 @@ class HeaderComponent extends Component {
 
             <div className="header__left col-9 col-sm-10 col-md-8 col-lg-9 col-xl-9">
               <div className="row">
-                <NavLink className="navbar-brand" to="/home">
+                <NavLink className="navbar-brand header__logo" to="/home">
                   <img src="/img/CybersoftLogo.png" alt="header logo"/>
                 </NavLink>
-                <div id="navbarNav" className="nav-item navbar-toggle mr-3 categories collapse navbar-collapse">
+
+              <button className="navbar-toggler header__left__responsiveButton" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon" />
+              </button>
+              
+                <div className="nav-item navbar-toggle mr-3 categories">
                   <div className="dropdown">
-                      <div className="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="fa fa-th mr-2" />
+                      <div className="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="fa fa-th mr-2" />
                           Categories
                       </div>
                     <div className="dropdown-menu">
@@ -74,16 +79,13 @@ class HeaderComponent extends Component {
             </div>
 
             <div className="header__right col-3 col-sm-2 col-md-4 col-lg-3 col-xl-3" >
-         
-          <button className="navbar-toggler header__right__responsiveButton" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon" />
-          </button>
-              <div id="navbarNav" className="collapse navbar-collapse row">
+        
+              <div className="row">
                
               <ul className="navbar-nav mr-auto">
               {this.props.credentials ? (
               <div className="d-flex">
-                    <div className="nav-item navbar-toggle mr-3">
+                    <div className="nav-item navbar-toggle mr-3 header__right__shoppingCart">
                       <div className="shopingCart">
                         <CartModal />
                         <div className="icon-shopping" data-toggle="modal" data-target="#cartModal">
@@ -92,7 +94,7 @@ class HeaderComponent extends Component {
                       </div>
                     </div>
 
-                    <li className="nav-item dropdown">
+                    <li className="nav-item dropdown header__right__accountElement">
                       <div className="dropdown">
                         <div className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Hello, {this.props.credentials.hoTen}

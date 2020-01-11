@@ -70,17 +70,32 @@
 }
         // RESPONSIVES
 
-        @include mediaQuery('very small') {
+        @include mediaQuery('very-small') {
           .header__navbar { 
             .header__left {
+              .header__left__responsiveButton {
+                margin-left: -5%;
+                
+              }
+
+              .header__logo {
+                margin-left: 45%;
+              }
+
+              .categories {
+                display: none;
+              }
+              
               .formSearch {
                   display: none;
 
               }
           }
           .header__right{
-            .row {
-              margin: 0!important;
+            .header__right__shoppingCart {
+              position: absolute;
+              top: -200%;
+              left: 0;
             }
           }
         }
@@ -90,15 +105,28 @@
         @include mediaQuery('small') {
           .header__navbar { 
             .header__left {
-              .formSearch {
-                  display: none;
+              .header__left__responsiveButton {
+                position: absolute;
+                left: 0;
+              }
 
+              .header__logo {
+                margin-left: 50%;
+              }
+
+              .categories {
+                display: none;
+              }
+
+              .formSearch {
+                  max-width: 48%;
+                  display: none;
               }
           }
 
           .header__right{
-            .col-3, .col-sm-2 {
-              padding-right: 0px!important;
+            .header__right__shoppingCart {
+              margin-left: 30%;
             }
           }
         }
@@ -112,10 +140,36 @@
           
           .header__navbar { 
             .header__left {
-              .formSearch {
-                  max-width: 68%!important;
-                  
+
+              .header__left__responsiveButton {
+                position: absolute;
+                left: -5%;
               }
+
+              .header__logo {
+                margin-left: 45%;
+              }
+
+              .categories {
+                display: none;
+              }
+
+              .formSearch {
+                  max-width: 48%!important;
+                  display: none;
+              }
+          }
+
+          .header__right {
+
+            .header__right__shoppingCart {
+              margin-left: 30%;
+            }
+
+            .header__right__accountElement {
+              display: none;
+            }
+
           }
         }
         

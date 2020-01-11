@@ -9,4 +9,6 @@ html, body{
     @include text-style($color-black-0,$fs-0,$fw-normal);
     position: relative;
     min-height: 92vh;
+    overflow-x: hidden;
+
 }
