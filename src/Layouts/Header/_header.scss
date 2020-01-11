@@ -31,7 +31,10 @@
   }
 
   .header__right{
-    padding: $pd-1 - 5 $pd-3;
+    padding: $pd-1 - 5 0 $pd-1 - 5 $pd-2;
+    .row {
+      margin: 0!important;
+    }
     .shopingCart {
       line-height: 34px;
       cursor: pointer;
@@ -75,6 +78,11 @@
 
               }
           }
+          .header__right{
+            .row {
+              margin: 0!important;
+            }
+          }
         }
         
       }
@@ -87,16 +95,26 @@
 
               }
           }
+
+          .header__right{
+            .col-3, .col-sm-2 {
+              padding-right: 0px!important;
+            }
+          }
         }
         
       }
         
         @include mediaQuery('medium') {
+          .container {
+            padding-right: 0; 
+          }
+          
           .header__navbar { 
             .header__left {
               .formSearch {
                   max-width: 68%!important;
-
+                  
               }
           }
         }
@@ -104,10 +122,18 @@
       }
 
         @include mediaQuery('large') {
+          .container {
+            padding-right: 0; 
+          }
           .header__navbar {
             .header__left {
               .formSearch {
-                max-width: 48%;
+                max-width: 43%;
+                .form-control::placeholder {
+                  @include text-style($color-black-light, $fs-1, $fw-normal);
+                  
+                }
+                
                   
               }
             }

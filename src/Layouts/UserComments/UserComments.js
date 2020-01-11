@@ -1,16 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
-const UserCommentsComponent = () => {
+class UserCommentsComponent extends Component {
+
+    state = {
+        responsive: {
+          320: {
+            items: 1,
+          },
+          375: {
+            items: 1,
+          },
+    
+          600: {
+            items: 2,
+          },
+          768: {
+            items: 2,
+          },
+          992: {
+            items: 3,
+          },
+    
+          1200: {
+            items: 3,
+          },
+        },
+    }
+    render() {
+    
     return (
         <section className="udemyInfo mt-5">
             <div className="udemyComments__top container">
                 <div className="udemyComments__text">
                     What our students have to say
                 </div>
-                <OwlCarousel className="udemyComments__sliders" nav>
+                <OwlCarousel className="udemyComments__sliders" nav responsive={this.state.responsive}>
                     <div className="card">
                         <div className="card-body">
                             <div className="userInfo d-flex">
@@ -70,7 +97,8 @@ const UserCommentsComponent = () => {
 
         </section>
 
-    );
+        );
+    }
 };
 
 export default UserCommentsComponent;

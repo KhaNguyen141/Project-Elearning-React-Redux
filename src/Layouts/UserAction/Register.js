@@ -30,7 +30,7 @@ const Register = () => {
         {({values, errors, touched, handleChange}) => (
                 <Form className="formSearch">
                     <div className="modal fade" id="modalRegister" tabIndex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                        <div className="modal-dialog" role="document">
+                        <div className="modal-dialog modal-sm" role="document">
                             <div className="modal-content">
                                 <div className="modal-header">
                                     <h4 className="modal-title pt-2">Sign up</h4>

@@ -22,7 +22,7 @@ class HeaderComponent extends Component {
     <header className="udemyNavbar container">
           <nav className="header__navbar navbar navbar-expand-md navbar-light">
 
-            <div className="header__left col-9 col-sm-10 col-md-9 col-lg-9 col-xl-9">
+            <div className="header__left col-9 col-sm-10 col-md-8 col-lg-9 col-xl-9">
               <div className="row">
                 <NavLink className="navbar-brand" to="/home">
                   <img src="/img/CybersoftLogo.png" alt="header logo"/>
@@ -73,7 +73,7 @@ class HeaderComponent extends Component {
               </div>
             </div>
 
-            <div className="header__right col-3 col-sm-2 col-md-3 col-lg-3 col-xl-3" >
+            <div className="header__right col-3 col-sm-2 col-md-4 col-lg-3 col-xl-3" >
          
           <button className="navbar-toggler header__right__responsiveButton" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
@@ -112,12 +112,12 @@ class HeaderComponent extends Component {
                 <li className="button-group d-flex">
                 <Login />
                 <div className="nav-link">
-                    <button className="btn btn-udi-white mr-2" data-toggle="modal" data-target="#modalLogin">Log In</button>
+                    <button className="btn btn-udi-white buttonLogin" data-toggle="modal" data-target="#modalLogin">Log In</button>
                 </div>
              
                 <Register />
                 <div className="nav-link">
-                    <button className="btn btn-udi-yellow" data-toggle="modal" data-target="#modalRegister">Sign up</button>
+                    <button className="btn btn-udi-yellow buttonSignUp" data-toggle="modal" data-target="#modalRegister">Sign up</button>
                 </div>
                 </li>
                
