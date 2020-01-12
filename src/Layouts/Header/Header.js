@@ -11,15 +11,44 @@ import CartModal from "../CartModal/CartModal";
 import { settings } from "../../Config/settings";
 import { userCheckCourse, userCheckCourseApproved } from "../../Redux/Action/User/UserActions";
 import { fetchListCategory, searchCourse, fetchCourseSearch } from "../../Redux/Action/Course/CourseAction";
+import SideDrawer from "../SideDrawer/SideDrawer";
+import Backdrop from "../Backdrop/Backdrop";
+import DrawerToggleButton from "../../Components/ToggleButton/DrawerToggleButton";
 
 class HeaderComponent extends Component {
+
+  state = {
+    sideDrawerOpen: false
+  };
+
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) => {
+      return {sideDrawerOpen: !prevState.sideDrawerOpen};
+    });
+  };
+
+  backdropClickHandler = () => {
+    this.setState({
+      sideDrawerOpen: false
+    });
+  };
 
   render() {
 
   const {taiKhoan, matKhau} = this.props.credentials;
+
+  let sideDrawer;
+  let backdrop;
+
+  if (this.state.sideDrawerOpen) {
+    sideDrawer = <SideDrawer />;
+    backdrop = <Backdrop click={this.backdropClickHandler}/>
+  }
  
   return (
     <header className="udemyNavbar container">
+          <SideDrawer show={this.state.sideDrawerOpen}/>
+          {backdrop}
           <nav className="header__navbar navbar navbar-expand-md navbar-light">
 
             <div className="header__left col-9 col-sm-10 col-md-8 col-lg-9 col-xl-9">
@@ -28,9 +57,7 @@ class HeaderComponent extends Component {
                   <img src="/img/CybersoftLogo.png" alt="header logo"/>
                 </NavLink>
 
-              <button className="navbar-toggler header__left__responsiveButton" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon" />
-              </button>
+                <DrawerToggleButton click={this.drawerToggleClickHandler}/>
               
                 <div className="nav-item navbar-toggle mr-3 categories">
                   <div className="dropdown">
