@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 class SideDrawer extends Component {
     render() {
@@ -11,8 +13,40 @@ class SideDrawer extends Component {
         return (
             <nav className={drawerClasses}>
                 <ul>
-                    <li><a href="!#">Products</a></li>
-                    <li><a href="!#">Users</a></li>
+                    <div className="navbarProfileContainer">
+                        <div className="navbarProfileContainer__profileName d-flex">
+                            <h5>Hi, Kha Nguyen</h5>
+                            <i class="fas fa-chevron-right"></i>
+                        </div> 
+                    </div>
+                    <hr class="divisionBorder"></hr>
+                    <div className="navbarProfileSection">
+                        <li>
+                            <a>Category</a>
+                        </li>
+                    </div>
+                    <hr class="divisionBorder"></hr>
+                    {this.props.courseCategory
+                    .sort((a, b) => a.tenDanhMuc.localeCompare(b.tenDanhMuc))
+                    .map((list, index) => {
+                        return (
+                            <div className="categoryList">
+                                <li className="d-flex">
+                                    <NavLink
+                                        to={{
+                                            pathname: `/coursecategories/${list.maDanhMuc}`, courseID: list.tenDanhMuc
+
+                                        }}
+
+                                        key={index}
+                                        >{list.tenDanhMuc}</NavLink>
+                                        <span><i class="fas fa-chevron-right"></i></span>
+                                </li>
+                                
+                            </div>
+                            
+                        )
+                    })}
                 </ul>
                 
             </nav>
@@ -20,4 +54,9 @@ class SideDrawer extends Component {
     }
 }
 
-export default SideDrawer;
+const mapStateToProps = (state) => ({
+    courseCategory: state.courseReducer.courseListCategory,
+    text: state.courseReducer.text,
+  });
+
+export default connect(mapStateToProps)(SideDrawer);
