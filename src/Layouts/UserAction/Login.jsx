@@ -21,7 +21,7 @@ const Login = (props) => {
             }}
         >
         {({handleChange}) => (
-        <Form className="formSearch">
+        <Form className="formSearch loginModal">
             <div className="modal fade" id="modalLogin" tabIndex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                 <div className="modal-dialog modal-sm" role="document">
                     <div className="modal-content">

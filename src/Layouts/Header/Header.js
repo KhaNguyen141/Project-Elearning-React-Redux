@@ -138,7 +138,7 @@ class HeaderComponent extends Component {
               </div>
               ) : (
                 
-                <li className="button-group d-flex">
+                <li className="button-group loginSignupDivision d-flex">
                 <Login />
                 <div className="nav-link">
                     <button className="btn btn-udi-white buttonLogin" data-toggle="modal" data-target="#modalLogin">Log In</button>

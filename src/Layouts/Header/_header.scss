@@ -92,6 +92,15 @@
               }
           }
           .header__right{
+            .navbar-nav {
+              .loginSignupDivision {
+                .nav-link {
+                  display: none;
+                }
+                
+              }
+            }
+            
             .header__right__shoppingCart {
               position: absolute;
               top: -200%;
@@ -125,6 +134,15 @@
           }
 
           .header__right{
+            .navbar-nav {
+              .loginSignupDivision {
+                .nav-link {
+                  display: none;
+                }
+                
+              }
+            }
+            
             .header__right__shoppingCart {
               margin-left: 30%;
             }
@@ -172,6 +190,14 @@
           }
 
           .header__right {
+            .navbar-nav {
+              .loginSignupDivision {
+                .nav-link {
+                  display: none;
+                }
+                
+              }
+            }
 
             .header__right__shoppingCart {
               margin-left: 30%;

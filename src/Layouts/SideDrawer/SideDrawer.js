@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import Login from '../UserAction/Login';
+import Register from '../UserAction/Register';
 
 class SideDrawer extends Component {
     render() {
@@ -14,10 +16,18 @@ class SideDrawer extends Component {
             <nav className={drawerClasses}>
                 <ul>
                     <div className="navbarProfileContainer">
+                    {this.props.credentials ? (
                         <div className="navbarProfileContainer__profileName d-flex">
-                            <h5>Hi, Kha Nguyen</h5>
+                            <h5>Hi, {this.props.credentials.hoTen}</h5>
                             <i class="fas fa-chevron-right"></i>
                         </div> 
+                    ) : (
+                        <div className="navbarProfileContainer__loginSignupDivision d-flex">
+                            <a className="mr-2" data-toggle="modal" data-target="#modalRegister">Sign up</a> 
+                            <span>/</span> 
+                            <a className="ml-2" data-toggle="modal" data-target="#modalLogin">Log in</a>
+                        </div>
+                    )}
                     </div>
                     <hr class="divisionBorder"></hr>
                     <div className="navbarProfileSection">
@@ -55,6 +65,7 @@ class SideDrawer extends Component {
 }
 
 const mapStateToProps = (state) => ({
+    credentials: state.userReducer.credentials,
     courseCategory: state.courseReducer.courseListCategory,
     text: state.courseReducer.text,
   });

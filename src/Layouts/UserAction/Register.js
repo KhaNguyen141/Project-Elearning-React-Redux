@@ -28,7 +28,7 @@ const Register = () => {
         }}
         >
         {({values, errors, touched, handleChange}) => (
-                <Form className="formSearch">
+                <Form className="formSearch registerModal">
                     <div className="modal fade" id="modalRegister" tabIndex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                         <div className="modal-dialog modal-sm" role="document">
                             <div className="modal-content">
