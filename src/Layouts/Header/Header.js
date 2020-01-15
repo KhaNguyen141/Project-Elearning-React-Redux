@@ -18,7 +18,8 @@ import DrawerToggleButton from "../../Components/ToggleButton/DrawerToggleButton
 class HeaderComponent extends Component {
 
   state = {
-    sideDrawerOpen: false
+    sideDrawerOpen: false,
+    
   };
 
   drawerToggleClickHandler = () => {

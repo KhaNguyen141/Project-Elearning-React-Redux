@@ -1,0 +1,52 @@
+.profileSideDrawer {
+    height: 100%;
+    background: $color-white-0;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 250px;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+
+    .menuProfileContent {
+        li {
+            cursor: pointer;
+            margin: 0;
+            padding: $pd-1 0 $pd-1 $pd-2 + 5;
+        }
+
+        li:active {
+            background: $color-gray-6;
+        }
+            
+    }
+}
+
+.profileSideDrawer.open {
+    transform: translateX(0);
+}
+
+.profileMenuContainer {
+    h5::before {
+        font-family: "Font Awesome 5 Free";
+        content: "\f053";
+        display: inline-block;
+        padding-right: $pd-2;
+        font-weight: $fw-bold;
+    }
+    .profileMenuContainer__header {
+        background: $color-gray-6;
+        padding: $pd-2 - 4 0 $pd-1 $pd-3 - 7;
+        cursor: pointer;
+     
+        i {
+            padding-top: 4px;
+            padding-left: $pd-7 - 3;
+        }
+       
+    }
+    
+}

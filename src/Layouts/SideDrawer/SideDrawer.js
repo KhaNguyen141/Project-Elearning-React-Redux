@@ -1,10 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import Login from '../UserAction/Login';
-import Register from '../UserAction/Register';
+
+import NavbarProfileMobile from '../../Components/NavbarProfile/NavbarProfileMobile';
 
 class SideDrawer extends Component {
+
+    state = {
+        profileDrawerOpen: false,
+    }
+
+    profleToggleClickHandler = () => {
+        this.setState((previousState) => {
+          return {profileDrawerOpen: !previousState.profileDrawerOpen};
+        });
+    }
+
     render() {
 
         let drawerClasses = 'side-drawer';
@@ -12,12 +23,14 @@ class SideDrawer extends Component {
             drawerClasses = 'side-drawer open';
 
         }
+
         return (
             <nav className={drawerClasses}>
+                <NavbarProfileMobile showProfileMenu={this.state.profileDrawerOpen} click={this.profleToggleClickHandler}/>
                 <ul>
                     <div className="navbarProfileContainer">
                     {this.props.credentials ? (
-                        <div className="navbarProfileContainer__profileName d-flex">
+                        <div onClick={this.profleToggleClickHandler} className="navbarProfileContainer__profileName d-flex">
                             <h5>Hi, {this.props.credentials.hoTen}</h5>
                             <i class="fas fa-chevron-right"></i>
                         </div> 

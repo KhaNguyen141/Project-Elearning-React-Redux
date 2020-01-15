@@ -59,7 +59,7 @@
     .navbarProfileContainer__profileName {
         background: $color-gray-6;
         padding: $pd-2 - 4 0 $pd-1 $pd-3 - 7;
-     
+        cursor: pointer;
         i {
             padding-top: 4px;
             padding-left: $pd-7 - 3;
@@ -74,4 +74,14 @@
         }
     }
     
+}
+
+.categoryList {
+    li {
+        cursor: pointer;
+    }
+
+    &:active {
+        background: $color-gray-6;
+    }
 }
