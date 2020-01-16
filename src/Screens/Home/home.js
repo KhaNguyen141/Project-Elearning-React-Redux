@@ -1,6 +1,6 @@
-import React, { useEffect, useState, Component } from "react";
+import React, { Component } from "react";
 
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { fetchCourse } from "../../Redux/Action/Course/CourseAction";
 
 // import Component

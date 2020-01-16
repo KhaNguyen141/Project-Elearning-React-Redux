@@ -1,0 +1,25 @@
+.formSearchMobile {
+    // width: $w-90 + 3;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: $fs-30;
+    z-index: 300;
+    flex-grow: 5;
+    padding-left: $pd-1;
+    display: none;
+    @include inputSearch($color-white-0, $color-white-0, $color-white-0, $color-gray-6, $color-white-0, $color-white-0);
+  
+    .formControlMobile:focus {
+        border: 1px solid $color-white-0;
+    }
+    
+    .input-group-text {
+      cursor: pointer;
+    }
+}
+
+.formSearchMobile.open {
+    display: block;
+}

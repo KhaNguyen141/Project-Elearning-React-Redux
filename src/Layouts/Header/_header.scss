@@ -1,5 +1,6 @@
 .udemyNavbar {
   .header__navbar {
+    
   align-items: none!important;
   .header__left {
     .categories {
@@ -154,11 +155,15 @@
           .side-drawer {
             display: none;
           }
-        
+
+          .searchMobileButton {
+            display: none;
+          }
+
           .backdrop {
               display: none;
           }
-          
+        
         }
          
         @include mediaQuery('medium') {

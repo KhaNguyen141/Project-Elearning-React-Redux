@@ -1,7 +1,7 @@
 .side-drawer {
     height: 100%;
     background: $color-white-0;
-    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
     left: 0;
@@ -62,14 +62,14 @@
         cursor: pointer;
         i {
             padding-top: 4px;
-            padding-left: $pd-7 - 3;
+            padding-left: $pd-8 - 2;
         }
        
     }
 
     .navbarProfileContainer__loginSignupDivision {
         padding: $pd-2 - 4 0 $pd-1 $pd-3 - 7;
-        a, span {
+        div, span {
             @include text-style($color-blue, $fs-2 - 2, $fw-normal)
         }
     }

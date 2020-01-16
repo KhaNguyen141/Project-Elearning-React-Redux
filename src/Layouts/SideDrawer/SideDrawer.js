@@ -32,28 +32,28 @@ class SideDrawer extends Component {
                     {this.props.credentials ? (
                         <div onClick={this.profleToggleClickHandler} className="navbarProfileContainer__profileName d-flex">
                             <h5>Hi, {this.props.credentials.hoTen}</h5>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </div> 
                     ) : (
                         <div className="navbarProfileContainer__loginSignupDivision d-flex">
-                            <a className="mr-2" data-toggle="modal" data-target="#modalRegister">Sign up</a> 
+                            <div className="mr-2" data-toggle="modal" data-target="#modalRegister">Sign up</div> 
                             <span>/</span> 
-                            <a className="ml-2" data-toggle="modal" data-target="#modalLogin">Log in</a>
+                            <div className="ml-2" data-toggle="modal" data-target="#modalLogin">Log in</div>
                         </div>
                     )}
                     </div>
-                    <hr class="divisionBorder"></hr>
+                    <hr className="divisionBorder"></hr>
                     <div className="navbarProfileSection">
                         <li>
-                            <a>Category</a>
+                            <h5>Category</h5>
                         </li>
                     </div>
-                    <hr class="divisionBorder"></hr>
+                    <hr className="divisionBorder"></hr>
                     {this.props.courseCategory
                     .sort((a, b) => a.tenDanhMuc.localeCompare(b.tenDanhMuc))
                     .map((list, index) => {
                         return (
-                            <div className="categoryList">
+                            <div key={index} className="categoryList">
                                 <li className="d-flex">
                                     <NavLink
                                         to={{
@@ -63,7 +63,7 @@ class SideDrawer extends Component {
 
                                         key={index}
                                         >{list.tenDanhMuc}</NavLink>
-                                        <span><i class="fas fa-chevron-right"></i></span>
+                                        <span><i className="fas fa-chevron-right"></i></span>
                                 </li>
                                 
                             </div>

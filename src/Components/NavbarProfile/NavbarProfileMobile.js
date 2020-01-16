@@ -28,13 +28,13 @@ class NavbarProfileMobile extends Component {
                   
                     </div>
                     <div className="navbarProfileSection">
-                        <hr class="divisionBorder"></hr>
+                        <hr className="divisionBorder"></hr>
                         <div className="navbarProfileSection">
                             <li>
-                                <a>Profile</a>
+                                <h5>Profile</h5>
                             </li>
                         </div>
-                        <hr class="divisionBorder"></hr>
+                        <hr className="divisionBorder"></hr>
                     </div>
                     <div className="menuProfileContent">
                         <li><NavLink to="/profile">My profile</NavLink></li>

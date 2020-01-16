@@ -11,15 +11,18 @@ import CartModal from "../CartModal/CartModal";
 import { settings } from "../../Config/settings";
 import { userCheckCourse, userCheckCourseApproved } from "../../Redux/Action/User/UserActions";
 import { fetchListCategory, searchCourse, fetchCourseSearch } from "../../Redux/Action/Course/CourseAction";
+
 import SideDrawer from "../SideDrawer/SideDrawer";
 import Backdrop from "../Backdrop/Backdrop";
 import DrawerToggleButton from "../../Components/ToggleButton/DrawerToggleButton";
+import SearchBoxMobile from '../SearchBox/SearchBoxMobile';
+import SearchToggleButton from "../../Components/ToggleButton/SearchToggleButton";
 
 class HeaderComponent extends Component {
 
   state = {
     sideDrawerOpen: false,
-    
+    searchBoxOpen: false,
   };
 
   drawerToggleClickHandler = () => {
@@ -28,9 +31,23 @@ class HeaderComponent extends Component {
     });
   };
 
+  searchToggleClickHandler = () => {
+    this.setState((prevState) => {
+      return {searchBoxOpen: !prevState.searchBoxOpen}
+    })
+  }
+
   backdropClickHandler = () => {
     this.setState({
-      sideDrawerOpen: false
+      sideDrawerOpen: false,
+  
+    });
+  };
+
+  backdropSearchClickHandler = () => {
+    this.setState({
+      searchBoxOpen: false,
+  
     });
   };
 
@@ -38,19 +55,23 @@ class HeaderComponent extends Component {
 
   const {taiKhoan, matKhau} = this.props.credentials;
 
-  let sideDrawer;
   let backdrop;
 
   if (this.state.sideDrawerOpen) {
-    sideDrawer = <SideDrawer />;
-    backdrop = <Backdrop click={this.backdropClickHandler}/>
+    backdrop = <Backdrop click={this.backdropClickHandler}/>;
+  }
+
+  if (this.state.searchBoxOpen) {
+    backdrop = <Backdrop click={this.backdropSearchClickHandler}/>;
   }
  
   return (
     <header className="udemyNavbar container">
+          <SearchBoxMobile showSearchBox={this.state.searchBoxOpen} searchClick={this.searchToggleClickHandler}/>
           <SideDrawer show={this.state.sideDrawerOpen}/>
           {backdrop}
-          <nav className="header__navbar navbar navbar-expand-md navbar-light">
+          
+          <nav className="header__navbar navbar navbar-expand-md navbar-light" style={{display: this.state.searchBoxOpen ? 'none' : 'flex' }}>
 
             <div className="header__left col-9 col-sm-10 col-md-8 col-lg-9 col-xl-9">
               <div className="row">
@@ -59,6 +80,7 @@ class HeaderComponent extends Component {
                 </NavLink>
 
                 <DrawerToggleButton click={this.drawerToggleClickHandler}/>
+                <SearchToggleButton searchClick={this.searchToggleClickHandler}/>
               
                 <div className="nav-item navbar-toggle mr-3 categories">
                   <div className="dropdown">
