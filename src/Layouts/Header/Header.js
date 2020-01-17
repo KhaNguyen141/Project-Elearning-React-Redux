@@ -71,7 +71,7 @@ class HeaderComponent extends Component {
           <SideDrawer show={this.state.sideDrawerOpen}/>
           {backdrop}
           
-          <nav className="header__navbar navbar navbar-expand-md navbar-light" style={{display: this.state.searchBoxOpen ? 'none' : 'flex' }}>
+          <nav className="header__navbar navbar navbar-expand-md navbar-light">
 
             <div className="header__left col-9 col-sm-10 col-md-8 col-lg-9 col-xl-9">
               <div className="row">

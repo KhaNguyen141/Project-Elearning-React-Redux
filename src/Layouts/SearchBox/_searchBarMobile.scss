@@ -1,6 +1,7 @@
 .formSearchMobile {
     // width: $w-90 + 3;
     width: 100%;
+    height: 8%;
     position: fixed;
     top: 0;
     left: 0;
@@ -8,6 +9,7 @@
     z-index: 300;
     flex-grow: 5;
     padding-left: $pd-1;
+    padding-top: 3px;
     display: none;
     @include inputSearch($color-white-0, $color-white-0, $color-white-0, $color-gray-6, $color-white-0, $color-white-0);
   
@@ -22,4 +24,45 @@
 
 .formSearchMobile.open {
     display: block;
+}
+
+// Responsive 
+
+@include mediaQuery('very-small') {
+    .formSearchMobile {
+        height: 9%;
+        padding-top: 5px;
+    }
+
+}
+
+@include mediaQuery('small') {
+    .formSearchMobile {
+        height: 9%!important;
+        padding-top: 5px;
+    }
+
+}
+
+@include mediaQueryMinWidth('small-mobile') {
+    .formSearchMobile {
+        height: 16%!important;
+        padding-top: 5px;
+    }
+
+}
+
+@include mediaQueryMinWidth('medium') {
+    .searchMobileButton {
+      display: none;
+    }
+
+    .backdrop {
+        display: none;
+    }
+
+    .formSearchMobile.open {
+      display: none!important;
+  }
+
 }

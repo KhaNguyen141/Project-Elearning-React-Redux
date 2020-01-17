@@ -9,13 +9,13 @@ class PageResault extends Component {
         return (
             
             <div className="container">
-                <h1>Courses found: {keyword}</h1>
+                <h2>Courses found: {keyword}</h2>
                 <div>
-                    <h1>Course List</h1>
+                    <h3>Course List</h3>
                     <div className="row">
                     {this.props.courseSearch.map((item, index) => {
                         return (
-                            <div className="col-4 pt-4">
+                            <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 pt-4">
                                 <div>
                                     <CourseItemComponent item={item} key={index}/>
                                 </div>

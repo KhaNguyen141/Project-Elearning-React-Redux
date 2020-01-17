@@ -156,14 +156,10 @@
             display: none;
           }
 
-          .searchMobileButton {
-            display: none;
-          }
-
           .backdrop {
               display: none;
           }
-        
+
         }
          
         @include mediaQuery('medium') {
@@ -192,6 +188,7 @@
                   max-width: 48%!important;
                   display: none;
               }
+              
           }
 
           .header__right {

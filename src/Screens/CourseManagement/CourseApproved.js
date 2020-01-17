@@ -11,7 +11,7 @@ class CourseApprovedComponent extends Component {
                     <div className="row">
                     {this.props.myCourse.map((item, index) => {
                         return (
-                            <div className="col-4 pt-4">
+                            <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 pt-4">
                                 <div>
                                     <CourseApprovedItem item={item} key={index}/>
                                 </div>

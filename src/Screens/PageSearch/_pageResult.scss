@@ -1,0 +1,5 @@
+.card-body {
+    h4 {
+        @include text-style ($color-black-0, $fs-2 - 2, $fw-bold);
+    }
+}
