@@ -1,0 +1,30 @@
+.courseDetailContainer {
+    .courseDetailContainer__background {
+        background-color: $color-gray-4;
+        height: auto;
+        padding: $pd-4;
+        
+        .courseDetailContainer__content {
+
+            .courseDetailContainer__courseInfo {
+                p, h2, .rating__star {
+                    color: $color-white-0;
+                    margin: $mg-1 0;
+                }
+
+            
+            }
+        
+            .card {
+                position: absolute;
+                right: 25%;
+                z-index: 20;
+                max-width: 300px;
+            }
+        }
+       
+    }
+
+
+    
+}
