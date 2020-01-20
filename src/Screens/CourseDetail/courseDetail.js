@@ -18,7 +18,7 @@ class CourseDetail extends Component {
           <div className="courseDetailContainer__content container">
             <div className="row">
 
-              <div className="courseDetailContainer__courseInfo col-7">
+              <div className="courseDetailContainer__courseInfo col-12 col-sm-7 col-md-6 col-lg-7 col-xl-7">
                 <h2>{tenKhoaHoc}</h2>
                 <p>{moTa}</p>
 
@@ -38,8 +38,8 @@ class CourseDetail extends Component {
                 </div>
               </div>
 
-              <div className="card col-5">
-                <img className="card-img-top" src={hinhAnh} alt="course detail" style={{ width: "18rem" }} />
+              <div className="card col-12 col-sm-5 col-md-6 col-lg-5 col-xl-5">
+                <img className="card-img-top" src={hinhAnh} alt="course detail"/>
                 <div className="card-body">
                   <h4 className="card-title">Course detail of {tenKhoaHoc}</h4>
                   <p className="card-text">Course description: {moTa}</p>
@@ -68,7 +68,7 @@ class CourseDetail extends Component {
         </div>
         <div className="container mt-3">
           <div className="row ">
-            <div className="col-7">
+            <div className="col-12 col-sm-7 col-md-6 col-lg-7 col-xl-7">
               <h2>What you'll learn</h2>
               <p>Build amazing single page applications with React JS and Redux</p>
               <p>Realize the power of building composable components</p>
@@ -82,7 +82,7 @@ class CourseDetail extends Component {
 
           <div className="container mt-3">
           <div className="row ">
-            <div className="col-7">
+            <div className="col-12 col-sm-7 col-md-6 col-lg-7 col-xl-7">
               <h2>Description</h2>
               <h4>Course Last Updated for React v16.6.3 and Redux v4.0.1!  All content is brand new!  Update includes detailed videos on the new React Hooks system.</h4>
               <p>Congratulations!  You've found the most popular, most complete, and most up-to-date resource online for learning React and Redux!</p>
@@ -96,7 +96,7 @@ class CourseDetail extends Component {
 
           <div className="container mt-3">
           <div className="row ">
-            <div className="col-7">
+            <div className="col-12 col-sm-7 col-md-6 col-lg-7 col-xl-7">
               <h2>Who this course is for:</h2>
               <p>Programmers looking to learn React</p>
               <p>Developers who want to grow out of just using jQuery</p>

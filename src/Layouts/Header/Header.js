@@ -17,6 +17,7 @@ import Backdrop from "../Backdrop/Backdrop";
 import DrawerToggleButton from "../../Components/ToggleButton/DrawerToggleButton";
 import SearchBoxMobile from '../SearchBox/SearchBoxMobile';
 import SearchToggleButton from "../../Components/ToggleButton/SearchToggleButton";
+import PageResult from "../../Screens/PageSearch/PageResult";
 
 class HeaderComponent extends Component {
 
@@ -80,6 +81,7 @@ class HeaderComponent extends Component {
                 </NavLink>
 
                 <DrawerToggleButton click={this.drawerToggleClickHandler}/>
+
                 <SearchToggleButton searchClick={this.searchToggleClickHandler}/>
               
                 <div className="nav-item navbar-toggle mr-3 categories">
@@ -110,21 +112,20 @@ class HeaderComponent extends Component {
 
                 <form className="formSearch" onSubmit={this.onSubmit}>
                   <div className="input-group">
-                      <input 
-                      type="text" 
-                      name="searchText" 
-                      className="form-control" 
-                      placeholder="Search for course" 
+                    <input
+                      type="text"
+                      name="searchText"
+                      className="form-control"
+                      placeholder="Search for course"
                       onChange={this.onChange}
-                     />
-                      <Link to={`/page-result/${this.props.text}`} onClick={this.onSubmit} type="submit" className="input-group-append">
-                          <span className="input-group-text" id="basic-addon2">
-                              <i className="fa fa-search"/>
-                          </span>
-                      </Link>
+                    />
+                    <Link to={`/page-result/${this.props.text}`} onClick={this.onSubmit} type="submit" className="input-group-append">
+                      <span className="input-group-text" id="basic-addon2">
+                        <i className="fa fa-search" />
+                      </span>
+                    </Link>
                   </div>
                 </form>
-
               </div>
             </div>
 
