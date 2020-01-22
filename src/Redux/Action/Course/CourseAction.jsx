@@ -1,7 +1,7 @@
 import reduxAction from '../action';
 
 import CourseService from "../../../Services/courseService";
-import { FETCH_COURSES, FETCH_COURSE_DETAIL, FETCH_COURSE_BY_ID, FETCH_LIST_CATEGORY, FETCH_COURSE_SEARCH, SEARCH_COURSE } from "../type";
+import { FETCH_COURSES, FETCH_COURSE_DETAIL, FETCH_COURSE_BY_ID, FETCH_LIST_CATEGORY, FETCH_COURSE_SEARCH, SEARCH_COURSE, SEARCH_NOT_FOUND } from "../type";
 import { settings } from '../../../Config/settings';
 
 
@@ -36,11 +36,13 @@ export const fetchCourse = () => {
         localStorage.setItem(settings.fetchCourseSearch, JSON.stringify(res.data))
         dispatch(reduxAction(FETCH_COURSE_SEARCH, res.data));
       })
-      .catch(err => {
-        console.log(err);
+      .catch(err => { 
+        // alert("Search result not found")
+        dispatch(reduxAction(SEARCH_NOT_FOUND, err.response.data))
+        console.log(err.response.data);
       });
     }
-  }
+}
 
 export const fetchCourseDetail = (courseid) => {
     return dispatch => {

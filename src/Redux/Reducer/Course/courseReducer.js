@@ -1,4 +1,4 @@
-import { FETCH_COURSES, FETCH_COURSE_DETAIL, FETCH_LIST_CATEGORY, FETCH_COURSE_BY_ID, SEARCH_COURSE, FETCH_COURSE_SEARCH} from "../../Action/type";
+import { FETCH_COURSES, FETCH_COURSE_DETAIL, FETCH_LIST_CATEGORY, FETCH_COURSE_BY_ID, SEARCH_COURSE, FETCH_COURSE_SEARCH, SEARCH_NOT_FOUND} from "../../Action/type";
 
 let initialState = {
   courses: [],
@@ -39,6 +39,11 @@ const CourseReducer = (state = initialState, action) => {
     case SEARCH_COURSE: {
       state.text = action.payload;
       return {...state}
+    }
+
+    case SEARCH_NOT_FOUND: {
+      state.courseSearch = [];
+      return {...state};
     }
 
     case FETCH_COURSE_SEARCH: {

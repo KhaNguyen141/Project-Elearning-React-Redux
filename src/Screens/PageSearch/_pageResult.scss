@@ -1,5 +1,13 @@
-.card-body {
-    h4 {
-        @include text-style ($color-black-0, $fs-2 - 2, $fw-bold);
+.pageResultContainer {
+    .card-body {
+        h4 {
+            @include text-style ($color-black-0, $fs-2 - 2, $fw-bold);
+        }
     }
+}
+
+.searchNotFoundContainer {
+    background: $color-gray-6;
+    width: 100%;
+    height: 470px;
 }

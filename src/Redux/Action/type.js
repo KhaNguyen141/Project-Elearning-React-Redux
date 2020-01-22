@@ -5,6 +5,7 @@ export const FETCH_COURSE_BY_ID = "FETCH_COURSE_BY_ID";
 export const FETCH_LIST_CATEGORY = "FETCH_LIST_CATEGORY";
 export const SEARCH_COURSE = 'SEARCH_COURSE';
 export const FETCH_COURSE_SEARCH = 'FETCH_COURSE_SEARCH';
+export const SEARCH_NOT_FOUND = 'SEARCH_NOT_FOUND';
 
 //User
 export const LOGIN = 'LOGIN';

@@ -22,8 +22,10 @@ import PageResult from "../../Screens/PageSearch/PageResult";
 class HeaderComponent extends Component {
 
   state = {
+    error: false,
     sideDrawerOpen: false,
     searchBoxOpen: false,
+    courseSearch: "",
   };
 
   drawerToggleClickHandler = () => {
@@ -119,11 +121,11 @@ class HeaderComponent extends Component {
                       placeholder="Search for course"
                       onChange={this.onChange}
                     />
-                    <Link to={`/page-result/${this.props.text}`} onClick={this.onSubmit} type="submit" className="input-group-append">
+                    <a onClick={this.onSubmit} type="submit" className="input-group-append">
                       <span className="input-group-text" id="basic-addon2">
                         <i className="fa fa-search" />
                       </span>
-                    </Link>
+                    </a>
                   </div>
                 </form>
               </div>
@@ -198,6 +200,7 @@ class HeaderComponent extends Component {
       event.preventDefault();
       this.props.dispatch(fetchCourseSearch(this.props.text))
       this.props.history.push(`/page-result/${this.props.text}`)
+      
     }
 
     handleCheckCourse = (taiKhoan, matKhau) => {
@@ -221,6 +224,7 @@ const mapStateToProps = (state) => ({
   courseCategory: state.courseReducer.courseListCategory,
   course: state.courseReducer.courses,
   text: state.courseReducer.text,
+  courseSearch: state.courseReducer.courseSearch,
 });
 
 export default withRouter(connect(mapStateToProps)(HeaderComponent));
