@@ -1,0 +1,17 @@
+.courseItemContainer {
+    .courseItemContainer__content {
+        height: 40px;
+        margin-bottom: 10px;
+        h4 {
+            @include text-style($color-black-0, $fs-0, $fw-bold)
+        }
+    }
+
+    .courseItemContainer__content2 {
+        .card-text {
+            padding: 10px 0;
+        }
+       
+    }
+    
+}

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchCoursesByID } from "../../Redux/Action/Course/CourseAction";
 
 // import Component
-import CourseItemComponent from "../../Components/CourseItem/courseItem";
+import CourseItemComponent from "./CourseItem";
 
 // import SCSS
 import "../../App.scss";
@@ -39,7 +39,7 @@ const CourseListCategoriesComponent = (props) => {
                 
                 {courseListByID.map((item, index) => {
                     return (
-                        <div className="col-3">
+                        <div className="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 mb-3">
                             <CourseItemComponent className="item" item={item} key={index} />
                         </div>
                     )

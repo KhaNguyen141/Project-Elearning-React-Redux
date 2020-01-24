@@ -1,27 +1,34 @@
 import React, { Component } from 'react'
-import CourseItemComponent from '../../Components/CourseItem/courseItem'
+import CourseItemComponent from '../../Components/CourseItem/CourseItem'
 import { connect } from 'react-redux'
 import ResultNotFound from './ResultNotFound';
 
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from 'react-loader-spinner'
+
 class PageResault extends Component {
+
+    state = {
+        isLoading: true,
+    }
 
     render() {
             return (
-                <div>
+                <div>x
+                    
                 {this.props.courseSearch.length > 0 ? (
                     <div className="pageResultContainer container">
                     <h2>Courses result: </h2>
                     <div className="row">
                         {this.props.courseSearch.map((item, index) => {
-                                return (
-                                    <div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 pt-4">
-                                        <div>
-                                            <CourseItemComponent item={item} key={index} />
-                                        </div>
+                            return (
+                                <div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 pt-4">
+                                    <div>
+                                        <CourseItemComponent item={item} key={index} />
                                     </div>
-                                )
-                            })
-                  
+                                </div>
+                            )
+                        })
                       }
                     </div>
                 </div>
@@ -33,6 +40,12 @@ class PageResault extends Component {
                 )}
                 </div>
             )
+    }
+
+    stopLoading = () => {
+        this.setState({
+            isLoading: false,
+        })
     }
 }
 

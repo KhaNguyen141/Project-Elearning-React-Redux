@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink, Link, withRouter } from "react-router-dom"; //Thư viện thẻ link (thay thế thẻ <a></a>)
+import { NavLink, withRouter } from "react-router-dom"; //Thư viện thẻ link (thay thế thẻ <a></a>)
 import { connect } from "react-redux";
 import "../../App.scss";
 
@@ -17,15 +17,12 @@ import Backdrop from "../Backdrop/Backdrop";
 import DrawerToggleButton from "../../Components/ToggleButton/DrawerToggleButton";
 import SearchBoxMobile from '../SearchBox/SearchBoxMobile';
 import SearchToggleButton from "../../Components/ToggleButton/SearchToggleButton";
-import PageResult from "../../Screens/PageSearch/PageResult";
 
 class HeaderComponent extends Component {
 
   state = {
-    error: false,
     sideDrawerOpen: false,
     searchBoxOpen: false,
-    courseSearch: "",
   };
 
   drawerToggleClickHandler = () => {

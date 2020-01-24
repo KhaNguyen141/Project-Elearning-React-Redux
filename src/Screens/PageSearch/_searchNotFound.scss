@@ -7,3 +7,34 @@
         }
     }
 }
+
+// Responsive
+
+@include mediaQueryMinWidth('very-small') { 
+    .notFoundContainer {
+        padding: $pd-5 * 2;
+        h1 {
+            @include text-style($color-black-0, $fs-2, $fw-bold)
+        }
+
+        p {
+            @include text-style($color-black-0, $fs-1 + 5, $fw-normal)
+        }
+        li {
+            @include text-style($color-black-0, $fs-1, $fw-normal)
+        }
+    }
+}
+
+@include mediaQueryMinWidth('small') { 
+    .notFoundContainer {
+        padding: $pd-5 * 2;
+        h1 {
+            @include text-style($color-black-0, $fs-3, $fw-bold)
+        }
+
+        p, li {
+            @include text-style($color-black-0, $fs-2 - 2, $fw-normal)
+        }
+    }
+}
