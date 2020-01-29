@@ -33,8 +33,10 @@ const ProfileDetail = () => {
         <div className="container">
             <div className="row">
                 <div className="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3">
-                    <div className="card" style={{ width: '18rem' }}>
-                        <img src="https://blog.techiehunter.org/wp-content/uploads/2018/09/product_16032_product_shot_wide_image.jpg" className="card-img-top" alt="profile" />
+                    <div className="card text-center">
+                        <div className="profilePicture">
+                            <img src="https://readtoolead.com/wp-content/uploads/2018/06/stevejobs.jpg"/>
+                        </div>
                         <div className="card-body">
                             <h5 className="card-title">Profile detail</h5>
                         

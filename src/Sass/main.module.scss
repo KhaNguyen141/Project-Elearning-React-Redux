@@ -27,6 +27,7 @@
 @import '../Screens/PageSearch/pageResult';
 @import '../Screens/Profile/profileDetail';
 @import '../Screens/PageSearch/searchNotFound';
+@import '../Screens/CourseManagement/courseApproved';
 
 // Layout
 @import '../Layouts/Header/header';
@@ -45,6 +46,7 @@
 @import '../Layouts/SearchBox/searchBarMobile';
 @import '../Components/ToggleButton/searchMobileButton';
 @import '../Components/CourseItem/courseItem';
+
 
 // Customize
 @import '../Sass/Base/customize';

@@ -5,7 +5,7 @@ import CourseApprovedItem from "../../Components/CourseItem/CourseApprovedItem";
 class CourseApprovedComponent extends Component {
     render() {
         return (
-            <div className="container">
+            <div className="courseApprovedContainer container">
                 <h1>My Course</h1>
                 <div>
                     <div className="row">
@@ -21,6 +21,7 @@ class CourseApprovedComponent extends Component {
                     })}
                     </div>
                 </div>
+
             </div>
         )
     }

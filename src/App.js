@@ -44,6 +44,7 @@ class App extends Component {
             <Route exact path="/" component={HomeScreen} />
         </Switch>
         <FooterComponent />
+  
       </BrowserRouter>
     );
   }

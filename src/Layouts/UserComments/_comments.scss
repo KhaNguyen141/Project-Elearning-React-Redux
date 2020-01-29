@@ -1,8 +1,8 @@
 .udemyInfo {
-    margin-bottom: $mg-4;
     background-color: $color-white-cream;
     background-size: cover;
     padding: $pd-3 0;
+        
     .udemyComments__top {
         .udemyComments__text {
             @include text-style($color-black-0, $fs-3, $fw-bold-0);

@@ -1,10 +1,6 @@
 .footer__container { 
-    margin-top: auto;
     z-index: 1;
-    position: absolute;
-    bottom: -21rem;
-    left: 20%;
-
+    padding: $pd-2;
     .footer__top {
         margin: auto;
         a {
@@ -49,14 +45,12 @@
     }  
     
     // RESPONSIVES
-    @include mediaQuery('medium') {
-        .footer__bottom {
-            .footer__left {
-                @include text-style($color-black-0, $fs-1 - 2, $fw-normal);
+    @include mediaQuery('extra-large') {
+        .footer__container { 
+            
+            
+        }
 
-            }
     }
-
-}
 
 }
