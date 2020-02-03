@@ -118,7 +118,7 @@ class HeaderComponent extends Component {
                       placeholder="Search for course"
                       onChange={this.onChange}
                     />
-                    <a onClick={this.onSubmit} type="submit" className="input-group-append">
+                    <a href="!#" onClick={this.onSubmit} type="submit" className="input-group-append">
                       <span className="input-group-text" id="basic-addon2">
                         <i className="fa fa-search" />
                       </span>

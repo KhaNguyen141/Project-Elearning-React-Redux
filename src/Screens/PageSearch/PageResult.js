@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import ResultNotFound from './ResultNotFound';
 
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
-import Loader from 'react-loader-spinner'
 
 class PageResault extends Component {
 

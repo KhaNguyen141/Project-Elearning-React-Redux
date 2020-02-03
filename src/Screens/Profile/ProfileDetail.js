@@ -35,7 +35,7 @@ const ProfileDetail = () => {
                 <div className="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3">
                     <div className="card text-center">
                         <div className="profilePicture">
-                            <img src="https://readtoolead.com/wp-content/uploads/2018/06/stevejobs.jpg"/>
+                            <img src="https://readtoolead.com/wp-content/uploads/2018/06/stevejobs.jpg" alt="profilePic"/>
                         </div>
                         <div className="card-body">
                             <h5 className="card-title">Profile detail</h5>
