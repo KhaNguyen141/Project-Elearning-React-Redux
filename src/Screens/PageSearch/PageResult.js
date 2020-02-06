@@ -13,7 +13,7 @@ class PageResault extends Component {
 
     render() {
             return (
-                <div>x
+                <div>
                     
                 {this.props.courseSearch.length > 0 ? (
                     <div className="pageResultContainer container">

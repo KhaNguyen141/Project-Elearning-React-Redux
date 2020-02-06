@@ -3,12 +3,41 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import NavbarProfileMobile from '../../Components/NavbarProfile/NavbarProfileMobile';
+import Login from '../UserAction/Login';
+import Register from '../UserAction/Register';
 
 class SideDrawer extends Component {
 
-    state = {
-        profileDrawerOpen: false,
-    }
+    constructor() {
+        super();
+        this.state = {
+          profileDrawerOpen: false,
+          modalLoginIsOpen: false,
+          modalSignUpIsOpen: false
+        };
+      }
+      
+      openLoginModal() {
+        this.setState({
+          modalLoginIsOpen: true,
+          modalSignUpIsOpen: false
+        });
+      }
+    
+      openSignUpModal() {
+        this.setState({
+          modalSignUpIsOpen: true,
+          modalLoginIsOpen: false
+        });
+      }
+
+      closeLoginModal() {
+        this.setState({modalLoginIsOpen: false});
+      }
+    
+      closeSignUpModal() {
+        this.setState({modalSignUpIsOpen: false});
+      }
 
     profleToggleClickHandler = () => {
         this.setState((previousState) => {
@@ -26,6 +55,7 @@ class SideDrawer extends Component {
 
         return (
             <nav className={drawerClasses}>
+        
                 <NavbarProfileMobile showProfileMenu={this.state.profileDrawerOpen} click={this.profleToggleClickHandler}/>
                 <ul>
                     <div className="navbarProfileContainer">
@@ -36,9 +66,22 @@ class SideDrawer extends Component {
                         </div> 
                     ) : (
                         <div className="navbarProfileContainer__loginSignupDivision d-flex">
-                            <div className="mr-2" data-toggle="modal" data-target="#modalRegister">Sign up</div> 
+                            <Login 
+                            isLoginOpen={this.state.modalLoginIsOpen}
+                            switchRegister={() => this.openSignUpModal()}
+                            isLoginClose={() => this.closeLoginModal()}
+                            /> 
+
+                            <Register
+                            isSignUpOpen={this.state.modalSignUpIsOpen} 
+                            switchLogin={() => this.openLoginModal()} 
+                            isSignUpClose={() => this.closeSignUpModal()}/>
+
+                            <div onClick={() => this.openSignUpModal()} className="navbarProfileContainer__signUpButton" data-toggle="modal" data-target="#modalRegister">Sign up</div> 
                             <span>/</span> 
-                            <div className="ml-2" data-toggle="modal" data-target="#modalLogin">Log in</div>
+
+
+                            <div onClick={() => this.openLoginModal()} className="ml-2 navbarProfileContainer__login" data-toggle="modal" data-target="#modalLogin">Log in</div>
                         </div>
                     )}
                     </div>

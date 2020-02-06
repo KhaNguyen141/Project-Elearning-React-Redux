@@ -1,0 +1,9 @@
+.signUpSwitch {
+    @include text-style($color-black-0, $fs-0, $fw-bold);
+    color: $color-yellow-1;
+    transition: 0.5s all;
+    cursor: pointer;
+    &:hover {
+        color: $color-yellow-3;
+    }
+}

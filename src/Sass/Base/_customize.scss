@@ -25,3 +25,24 @@
 .FormCheck {
     display: inline;
 }
+
+.modal-open {
+    padding: 0!important;
+}
+
+.modal-header {
+    h5 {
+        @include text-style($color-black-0, $fs-30, $fw-normal)
+    }
+    .close {
+        padding-top: $pd-2;
+        padding-right: $pd-2;
+        @include text-style($color-black-0, $fs-30, $fw-bold);
+        cursor: pointer;
+    }
+}
+
+.form-control:focus {
+    border-color: $color-gray-2;
+    box-shadow: none;
+}

@@ -20,10 +20,37 @@ import SearchToggleButton from "../../Components/ToggleButton/SearchToggleButton
 
 class HeaderComponent extends Component {
 
-  state = {
-    sideDrawerOpen: false,
-    searchBoxOpen: false,
-  };
+  constructor() {
+    super();
+    this.state = {
+      sideDrawerOpen: false,
+      searchBoxOpen: false,
+      modalLoginIsOpen: false,
+      modalSignUpIsOpen: false
+    };
+  }
+  
+  openLoginModal() {
+    this.setState({
+      modalLoginIsOpen: true,
+      modalSignUpIsOpen: false
+    });
+  }
+
+  openSignUpModal() {
+    this.setState({
+      modalSignUpIsOpen: true,
+      modalLoginIsOpen: false
+    });
+  }
+
+  closeLoginModal() {
+    this.setState({modalLoginIsOpen: false});
+  }
+
+  closeSignUpModal() {
+    this.setState({modalSignUpIsOpen: false});
+  }
 
   drawerToggleClickHandler = () => {
     this.setState((prevState) => {
@@ -69,6 +96,8 @@ class HeaderComponent extends Component {
     <header className="udemyNavbar container">
           <SearchBoxMobile showSearchBox={this.state.searchBoxOpen} searchClick={this.searchToggleClickHandler}/>
           <SideDrawer show={this.state.sideDrawerOpen}/>
+         
+         
           {backdrop}
           
           <nav className="header__navbar navbar navbar-expand-md navbar-light">
@@ -160,16 +189,23 @@ class HeaderComponent extends Component {
                     </li>
               </div>
               ) : (
-                
+               
                 <li className="button-group loginSignupDivision d-flex">
-                <Login />
+                <Login
+                isLoginOpen={this.state.modalLoginIsOpen}
+                switchRegister={() => this.openSignUpModal()} 
+                isLoginClose={() => this.closeLoginModal()}
+                /> 
                 <div className="nav-link">
-                    <button className="btn btn-udi-white buttonLogin" data-toggle="modal" data-target="#modalLogin">Log In</button>
+                    <button onClick={() => this.openLoginModal()} className="btn btn-udi-white buttonLogin">Log In</button>
                 </div>
              
-                <Register />
+                <Register 
+                isSignUpOpen={this.state.modalSignUpIsOpen} 
+                switchLogin={() => this.openLoginModal()} 
+                isSignUpClose={() => this.closeSignUpModal()}/>
                 <div className="nav-link">
-                    <button className="btn btn-udi-yellow buttonSignUp" data-toggle="modal" data-target="#modalRegister">Sign up</button>
+                    <button onClick={() => this.openSignUpModal()} className="btn btn-udi-yellow buttonSignUp">Sign up</button>
                 </div>
                 </li>
                

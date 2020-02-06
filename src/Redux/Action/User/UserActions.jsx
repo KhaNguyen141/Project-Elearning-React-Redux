@@ -31,10 +31,7 @@ export const userLoginAction = (userLogin) => {
           'Đăng nhập thành công!',
           '',
           'success'
-        ).then(() => {
-          window.location.reload();
-      })
-
+        )
       })
       .catch(error => {
           console.log(error.response.data);
@@ -58,9 +55,7 @@ export const userRegisterAction = (userRegister) => {
         'Đăng ký thành công!',
         '',
         'success'
-    ).then(() => {
-        console.log(res.data)
-    })
+      )
     }).catch(error => {
       console.log(error.response.data)
       Swal.fire({

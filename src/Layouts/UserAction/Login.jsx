@@ -1,12 +1,16 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 import {userLoginAction} from '../../Redux/Action/User/UserActions';
+
 import { Formik, Field, Form } from 'formik';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 
 const Login = (props) => {
 
     const dispatch = useDispatch();
 
+    const closeBtn = <div className="close" onClick={props.isLoginClose}>&times;</div>;
 
     return (
         <Formik 
@@ -16,54 +20,50 @@ const Login = (props) => {
 
             }}
             onSubmit={values  => {
-                dispatch(userLoginAction(values));
-                
+                dispatch(userLoginAction(values));  
+               
             }}
         >
-        {({handleChange}) => (
-        <Form className="formSearch loginModal">
-            <div className="modal fade" id="modalLogin" tabIndex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                <div className="modal-dialog modal-sm" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h4 className="modal-title pt-2">Sign in</h4>
-                            
-                            <button type="button" className="close modalClose" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
+            {({ handleChange }) => (
+                <Modal
+                    isOpen={props.isLoginOpen}
+                    toggle={props.isLoginClose} 
+                >
+                    <Form className="formSearch loginModal">
 
-                        </div>
+                        <ModalHeader close={closeBtn}>
+                            Sign in
+                        </ModalHeader>
 
-                        <div className="modal-body">
-                                <div className="form-group">
-                                    <Field 
-                                    name="taiKhoan" 
-                                    type="text" className="form-control taiKhoan" 
-                                    placeholder="Username" 
-                                    onChange={handleChange}/>
-                                
-                                </div>
+                        <ModalBody>
+                            <div className="form-group">
+                                <Field
+                                    name="taiKhoan"
+                                    type="text" className="form-control taiKhoan"
+                                    placeholder="Username"
+                                    onChange={handleChange} />
 
-                                <div className="form-group">
-                                    <Field 
-                                    name="matKhau" 
-                                    type="password" 
-                                    className="form-control matKhau" 
-                                    placeholder="Password" 
-                                    onChange={handleChange}/>
-                                    
-                                </div>
+                            </div>
 
-                                <button type="submit" className="btn btn-udi-yellow">Sign In</button>
-                                
-                                <p className="mt-4">Don't have an account? <a href="#modalRegister" data-toggle="modal" data-target="#modalRegister" data-dismiss="modal">Sign up</a></p>
-                                
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </Form>
-        )}
+                            <div className="form-group">
+                                <Field
+                                    name="matKhau"
+                                    type="password"
+                                    className="form-control matKhau"
+                                    placeholder="Password"
+                                    onChange={handleChange} />
+
+                            </div>
+
+                            <button type="submit" className="btn btn-udi-yellow">Sign In</button>
+
+                            <p className="mt-4">Don't have an account? <span className="signUpSwitch" onClick={props.switchRegister}>Sign up</span></p>
+
+                        </ModalBody>
+
+                    </Form>
+                </Modal>
+            )}
         </Formik>
     );
 };

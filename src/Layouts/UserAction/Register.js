@@ -1,14 +1,19 @@
 import React from 'react';
-import { Formik, Field, Form } from 'formik';
-
-import {validationSchema} from '../Validation/ValidationForm';
 import {useDispatch} from 'react-redux';
-import { userRegisterAction } from '../../Redux/Action/User/UserActions';
+
+import { Formik, Field, Form } from 'formik';
+import {validationSchema} from '../Validation/ValidationForm';
 import ErrorMessage from '../../Screens/ErrorMessage/ErrorMessage';
 
-const Register = () => {
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { userRegisterAction } from '../../Redux/Action/User/UserActions';
+
+
+const Register = (props) => {
 
     const dispatch = useDispatch();
+
+    const closeBtn = <div className="close" onClick={props.isSignUpClose}>&times;</div>;
 
     return (
         <Formik initialValues ={{ 
@@ -27,90 +32,86 @@ const Register = () => {
             
         }}
         >
-        {({values, errors, touched, handleChange}) => (
+        {({errors, touched, handleChange}) => (
+            <Modal
+            isOpen={props.isSignUpOpen}
+            toggle={props.isSignUpClose} 
+            >
                 <Form className="formSearch registerModal">
-                    <div className="modal fade" id="modalRegister" tabIndex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                        <div className="modal-dialog modal-sm" role="document">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h4 className="modal-title pt-2">Sign up</h4>
+                    
+                        <ModalHeader close={closeBtn}>
+                            Sign up
+                        </ModalHeader>
 
-                                    <button type="button" className="close modalClose" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-
-                                </div>
-
-                                <div className="modal-body">
-                                    <div className="form-group">
-                                        <Field 
-                                        name="taiKhoan" 
-                                        type="text" 
-                                        onChange={handleChange}
-                                        className="form-control taiKhoan" 
-                                        placeholder="Username" />
-                                        <ErrorMessage touched={touched.taiKhoan} message={errors.taiKhoan}/>
-                                    </div>
-
-                                    <div className="form-group">
-                                        <Field 
-                                        name="matKhau" 
-                                        type="text" 
-                                        onChange={handleChange}
-                                        className="form-control matKhau" 
-                                        placeholder="Password" />
-                                        <ErrorMessage touched={touched.matKhau} message={errors.matKhau}/>
-                                    </div>
-
-                                    <div className="form-group">
-                                        <Field 
-                                        name="hoTen" 
-                                        type="text" 
-                                        onChange={handleChange}
-                                        className="form-control hoTen" 
-                                        placeholder="Name" />
-                                        <ErrorMessage touched={touched.hoTen} message={errors.hoTen}/>
-                                    </div>
-
-                                    <div className="form-group">
-                                        <Field 
-                                        name="soDT" 
-                                        type="text" 
-                                        onChange={handleChange}
-                                        className="form-control soDT" 
-                                        placeholder="Phone contact" />
-                                        <ErrorMessage touched={touched.soDT} message={errors.soDT}/>
-                                    </div>
-
-                                    <div className="form-group">
-                                        <Field 
-                                        name="maNhom" 
-                                        type="hidden" 
-                                        />
-                                    </div>
-
-                                    <div className="form-group">
-                                        <Field 
-                                        name="email" 
-                                        type="text" 
-                                        onChange={handleChange}
-                                        className="form-control email" 
-                                        placeholder="Email" />
-                                        <ErrorMessage touched={touched.email} message={errors.email}/>
-                                    </div>
-
-                                    <div className="form-group">
-
-                                </div>
-
-                                    <button type="submit" className="btn btn-udi-yellow">Sign Up</button>
-                                    
-                                    <p className="mt-4">Already have an account? <a href="#modalLogin" data-toggle="modal" data-target="#modalLogin" data-dismiss="modal">Log In</a></p>
-                                </div>
+                        <ModalBody>
+                            <div className="form-group">
+                                <Field
+                                    name="taiKhoan"
+                                    type="text"
+                                    onChange={handleChange}
+                                    className="form-control taiKhoan"
+                                    placeholder="Username" />
+                                <ErrorMessage touched={touched.taiKhoan} message={errors.taiKhoan} />
                             </div>
-                        </div>
-                    </div>
+
+                            <div className="form-group">
+                                <Field
+                                    name="matKhau"
+                                    type="text"
+                                    onChange={handleChange}
+                                    className="form-control matKhau"
+                                    placeholder="Password" />
+                                <ErrorMessage touched={touched.matKhau} message={errors.matKhau} />
+                            </div>
+
+                            <div className="form-group">
+                                <Field
+                                    name="hoTen"
+                                    type="text"
+                                    onChange={handleChange}
+                                    className="form-control hoTen"
+                                    placeholder="Name" />
+                                <ErrorMessage touched={touched.hoTen} message={errors.hoTen} />
+                            </div>
+
+                            <div className="form-group">
+                                <Field
+                                    name="soDT"
+                                    type="text"
+                                    onChange={handleChange}
+                                    className="form-control soDT"
+                                    placeholder="Phone contact" />
+                                <ErrorMessage touched={touched.soDT} message={errors.soDT} />
+                            </div>
+
+                            <div className="form-group">
+                                <Field
+                                    name="maNhom"
+                                    type="hidden"
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <Field
+                                    name="email"
+                                    type="text"
+                                    onChange={handleChange}
+                                    className="form-control email"
+                                    placeholder="Email" />
+                                <ErrorMessage touched={touched.email} message={errors.email} />
+                            </div>
+
+                            <div className="form-group">
+
+                            </div>
+
+                            <button type="submit" className="btn btn-udi-yellow">Sign Up</button>
+
+                            <p className="mt-4">Already have an account? <span className="loginSwitch" onClick={props.switchLogin}>Log In</span></p>
+                        </ModalBody>
+
                 </Form>
+            </Modal>
         )}
     </Formik>
     );
