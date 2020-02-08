@@ -8,6 +8,7 @@ import CourseItemComponent from "./CourseItem";
 
 // import SCSS
 import "../../App.scss";
+import CourseItemFilter from "./CourseItemSearch/CourseItemFilter";
 
 const CourseListCategoriesComponent = (props) => {
 
@@ -34,18 +35,13 @@ const CourseListCategoriesComponent = (props) => {
     return (
         <div className="container">
             <h1> Course: {props.location.courseID}</h1>
-
-            <div className="row" role="tabpanel">
-                
                 {courseListByID.map((item, index) => {
                     return (
-                        <div className="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 mb-3">
-                            <CourseItemComponent className="item" item={item} key={index} />
+                        <div>
+                            <CourseItemFilter className="item" item={item} key={index} />
                         </div>
                     )
                 })}
-            </div>
-
         </div>
     );
 };

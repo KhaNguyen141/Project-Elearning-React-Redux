@@ -1,0 +1,87 @@
+.Container {
+    a {
+        color: $color-black-0;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.courseItemFilterContainer {
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 2px solid $color-gray-3;
+    border-bottom: 2px solid $color-gray-3;
+    transition: 0.3s all;
+    cursor: pointer;
+    &:hover {
+        background-color: $color-gray-1;
+    }
+
+    .courseItemFilterContainer__courseContent {
+        max-width: 60%;
+        margin-left: $pd-2 - 5;
+        .courseBrief {
+            margin-top: $pd-1;
+            margin-bottom: 0;
+        }
+     
+    }
+
+    img {
+        width: 200px;
+        height: $h-100;
+    }
+
+    [class*="col-"] {
+        padding: 0;
+    }
+     
+}
+
+// Responsive
+
+@include mediaQuery('small') {
+    .courseItemFilterContainer {
+        h5 {
+            @include text-style($color-black-0, $fs-1 + 2, $fw-bold)
+        }
+
+        span, p {
+            @include text-style($color-black-0, $fs-1, $fw-normal)
+        }
+
+        .rating {
+            @include text-style($color-black-0, $fs-1, $fw-normal)
+        }
+
+        img {
+            width: $h-70!important;
+            height: $h-70!important;
+        }
+    }
+  
+}
+
+@include mediaQuery('medium') {
+    .courseItemFilterContainer {
+        h5 {
+            @include text-style($color-black-0, $fs-1 + 2, $fw-bold)
+        }
+
+        span, p {
+            @include text-style($color-black-0, $fs-1, $fw-normal)
+        }
+
+        .rating {
+            @include text-style($color-black-0, $fs-1, $fw-normal)
+        }
+        
+        img {
+            width: $w-120;
+            height: $h-70;
+        }
+    }
+  
+}

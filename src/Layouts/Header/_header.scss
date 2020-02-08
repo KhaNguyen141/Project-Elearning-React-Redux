@@ -129,8 +129,8 @@
               }
 
               .formSearch {
-                  max-width: 48%;
-                  display: none;
+                max-width: 48%;
+                display: none;
               }
           }
 
@@ -142,10 +142,6 @@
                 }
                 
               }
-            }
-            
-            .header__right__shoppingCart {
-              margin-left: 30%;
             }
           }
         }
@@ -221,13 +217,11 @@
           .header__navbar {
             .header__left {
               .formSearch {
-                max-width: 43%;
+                max-width: 42%;
                 .form-control::placeholder {
                   @include text-style($color-black-light, $fs-1, $fw-normal);
                   
                 }
-                
-                  
               }
             }
 
