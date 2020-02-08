@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import NavbarProfileMobile from '../../Components/NavbarProfile/NavbarProfileMobile';
 import Login from '../UserAction/Login';
 import Register from '../UserAction/Register';
+import Backdrop from '../Backdrop/Backdrop';
 
 class SideDrawer extends Component {
 
@@ -51,6 +52,12 @@ class SideDrawer extends Component {
         if (this.props.show) {
             drawerClasses = 'side-drawer open';
 
+        }
+
+        let backdrop;
+
+        if (this.state.sideDrawerOpen) {
+          backdrop = <Backdrop click={this.backdropClickHandler} />;
         }
 
         return (

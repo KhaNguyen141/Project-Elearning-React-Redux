@@ -147,17 +147,7 @@
         }
         
       }
-        @include mediaQueryMinWidth('medium') {
-          .side-drawer {
-            display: none;
-          }
-
-          .backdrop {
-              display: none;
-          }
-
-        }
-         
+        
         @include mediaQuery('medium') {
 
           .container {

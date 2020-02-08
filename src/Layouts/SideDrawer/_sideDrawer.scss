@@ -77,4 +77,11 @@
     transform: translateX(0);
 }
 
+// Responsive
 
+@include mediaQueryMinWidth('medium') {
+    .side-drawer {
+      display: none;
+    }
+
+  }
