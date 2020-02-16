@@ -24,7 +24,7 @@ const Login = (props) => {
                
             }}
         >
-            {({ handleChange }) => (
+            {({values, handleChange }) => (
                 <Modal
                     isOpen={props.isLoginOpen}
                     toggle={props.isLoginClose} 
@@ -40,6 +40,7 @@ const Login = (props) => {
                                 <Field
                                     name="taiKhoan"
                                     type="text" className="form-control taiKhoan"
+                                    value={values.taiKhoan}
                                     placeholder="Username"
                                     onChange={handleChange} />
 
@@ -49,6 +50,7 @@ const Login = (props) => {
                                 <Field
                                     name="matKhau"
                                     type="password"
+                                    value={values.matKhau}
                                     className="form-control matKhau"
                                     placeholder="Password"
                                     onChange={handleChange} />

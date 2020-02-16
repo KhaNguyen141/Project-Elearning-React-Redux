@@ -42,6 +42,11 @@
     }
 }
 
+.form-control {
+    border-radius: 50px;
+    border: 1px solid $color-gray-2;
+}
+
 .form-control:focus {
     border-color: $color-gray-2;
     box-shadow: none;

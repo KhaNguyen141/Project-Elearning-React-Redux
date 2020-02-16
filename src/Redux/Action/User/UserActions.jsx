@@ -16,7 +16,7 @@ export const userLoginAction = (userLogin) => {
       userService
       .userLoginAction(userLogin)
       .then(res => {
-        //1.luu local
+        //luu local
         localStorage.setItem(settings.userLogin, JSON.stringify(res.data));
         localStorage.setItem(settings.token, res.data.accessToken);
 
@@ -28,7 +28,7 @@ export const userLoginAction = (userLogin) => {
         restConnector.defaults.headers['Authorization'] = "Bearer " + res.data.accessToken
 
         Swal.fire (
-          'Đăng nhập thành công!',
+          'Login Successfully!',
           '',
           'success'
         )
@@ -37,8 +37,8 @@ export const userLoginAction = (userLogin) => {
           console.log(error.response.data);
           Swal.fire({
             icon: 'error',
-            title: 'Đăng nhập thất bại',
-            text: 'Vui lòng thử lại'
+            title: 'Login Failed',
+            text: 'Please check your ID and Password and try again'
         })
       });
   };
@@ -52,16 +52,16 @@ export const userRegisterAction = (userRegister) => {
       dispatch(reduxAction(REGISTER, res.data));
       console.log(res.data);
       Swal.fire(
-        'Đăng ký thành công!',
-        '',
+        'Registration Completed Successfully!',
+        'You can sign in now',
         'success'
       )
     }).catch(error => {
       console.log(error.response.data)
       Swal.fire({
         icon: 'error',
-        title: 'Đăng ký thất bại',
-        text: 'Tài khoản hoặc email đã tồn tại!',
+        title: 'Registration Failed!',
+        text: 'ID or Email already exists',
       })
     });
   }
@@ -76,7 +76,7 @@ export const userProfileUpdate = (userProfileUpdate) => {
         dispatch(reduxAction(UPDATE_USER, res.data));
         console.log(res.data);
         Swal.fire(
-          'Cập nhật thành công!',
+          'Update Account Successfully!',
           '',
           'success'
         )
@@ -84,8 +84,8 @@ export const userProfileUpdate = (userProfileUpdate) => {
         console.log(error.response.data)
         Swal.fire({
           icon: 'error',
-          title: 'Cập nhật thất bại',
-          text: 'Vui lòng thử lại!'
+          title: 'Account update failed',
+          text: 'Please check the value and try again'
         })
       })
 
@@ -102,7 +102,7 @@ export const userAddCourse = (taiKhoan, maKhoaHoc) => {
           dispatch(reduxAction(USER_ADD_COURSE, res.data));
           console.log(res.data);
           Swal.fire(
-            'Đăng ký khoá học thành công!',
+            'Enroll Succesfully!',
             '',
             'success'
           )
@@ -112,13 +112,13 @@ export const userAddCourse = (taiKhoan, maKhoaHoc) => {
         if (localStorage.getItem("userLogin") === null) {
           Swal.fire({
             icon: 'error',
-            title: 'Vui lòng đăng nhập để thực hiện chức năng này',
+            title: 'Please sign in to complete this action',
             text: ''
           })
         } else {
           Swal.fire({
             icon: 'error',
-            title: 'Khoá học đã đăng ký rồi',
+            title: 'Course already exists',
             text: ''
           })
         }
@@ -138,7 +138,7 @@ export const userCancelCourse = (taiKhoan, maKhoaHoc) => {
         dispatch(reduxAction(USER_CANCEL_COURSE, res.data));
         console.log(res.data);
         Swal.fire(
-          'Huỷ khoá học thành công!',
+          'Cancel Course Successfully!',
           '',
           'success'
         )
@@ -146,7 +146,7 @@ export const userCancelCourse = (taiKhoan, maKhoaHoc) => {
         console.log(error.response.data)
         Swal.fire({
           icon: 'error',
-          title: 'Khoá học chưa đăng ký',
+          title: 'Sorry, you are not in this course',
           text: ''
         })
       })

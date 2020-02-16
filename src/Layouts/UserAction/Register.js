@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 
 import { Formik, Field, Form } from 'formik';
 import {validationSchema} from '../Validation/ValidationForm';
-import ErrorMessage from '../../Screens/ErrorMessage/ErrorMessage';
+import ErrorMessage from '../../Layouts/ErrorMessage/ErrorMessage';
 
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { userRegisterAction } from '../../Redux/Action/User/UserActions';
@@ -49,7 +49,9 @@ const Register = (props) => {
                                     name="taiKhoan"
                                     type="text"
                                     onChange={handleChange}
-                                    className="form-control taiKhoan"
+                                    className={
+                                        !touched.taiKhoan ? "form-control" : touched.taiKhoan && !errors.taiKhoan ? "form-control valid" : "form-control error"
+                                    }  
                                     placeholder="Username" />
                                 <ErrorMessage touched={touched.taiKhoan} message={errors.taiKhoan} />
                             </div>
@@ -59,7 +61,9 @@ const Register = (props) => {
                                     name="matKhau"
                                     type="text"
                                     onChange={handleChange}
-                                    className="form-control matKhau"
+                                    className={
+                                        !touched.matKhau ? "form-control" : touched.matKhau && !errors.matKhau ? "form-control valid" : "form-control error"
+                                    } 
                                     placeholder="Password" />
                                 <ErrorMessage touched={touched.matKhau} message={errors.matKhau} />
                             </div>
@@ -69,7 +73,9 @@ const Register = (props) => {
                                     name="hoTen"
                                     type="text"
                                     onChange={handleChange}
-                                    className="form-control hoTen"
+                                    className={
+                                        !touched.hoTen ? "form-control" : touched.hoTen && !errors.hoTen ? "form-control valid" : "form-control error"
+                                    }  
                                     placeholder="Name" />
                                 <ErrorMessage touched={touched.hoTen} message={errors.hoTen} />
                             </div>
@@ -79,7 +85,9 @@ const Register = (props) => {
                                     name="soDT"
                                     type="text"
                                     onChange={handleChange}
-                                    className="form-control soDT"
+                                    className={
+                                        !touched.soDT ? "form-control" : touched.soDT && !errors.soDT ? "form-control valid" : "form-control error"
+                                    }  
                                     placeholder="Phone contact" />
                                 <ErrorMessage touched={touched.soDT} message={errors.soDT} />
                             </div>
@@ -96,7 +104,9 @@ const Register = (props) => {
                                     name="email"
                                     type="text"
                                     onChange={handleChange}
-                                    className="form-control email"
+                                    className={
+                                        !touched.email ? "form-control" : touched.email && !errors.email ? "form-control valid" : "form-control error"
+                                    }  
                                     placeholder="Email" />
                                 <ErrorMessage touched={touched.email} message={errors.email} />
                             </div>

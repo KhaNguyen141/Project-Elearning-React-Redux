@@ -2,32 +2,33 @@ import * as Yup from 'yup';
 
 export const validationSchema = Yup.object().shape({
     taiKhoan: Yup.string()
-    .min(6, "Tài khoản phải có ít nhất 6 kí tự")
-    .max(255, "Tài khoản chỉ được phép tối đa 255 kí tự")
-    .required("Tài khoản không được để trống"),
+    .min(6, "ID must have at least 6 characters")
+    .max(16, "Your ID only contains 16 characters")
+    .required("ID is required"),
 
     matKhau: Yup.string()
-    .min(6, "Mật khẩu phải có ít nhất 6 kí tự")
-    .max(255, "Mật khẩu chỉ được phép tối đa 255 kí tự")
-    .required("Mật khẩu không được để trống"),
+    .min(6, "Your password must contain at least 6 characters")
+    .max(16, "Your password only contains 20 characters")
+    .required("Password is required"),
 
     hoTen: Yup.string()
-    .min(6, "Họ tên phải có ít nhất 6 kí tự")
-    .max(255, "Họ tên chỉ được phép tối đa 255 kí tự")
-    .required("Họ tên không được để trống"),
+    .min(6, "Your name must contain at least 6 characters")
+    .max(50, "Your name only contains 50 characters")
+    .required("Your name is required"),
 
     maNhom: Yup.string()
-    .min(4, "Mã nhóm phải có ít nhất 4 kí tự")
-    .max(255, "Mã nhóm chỉ được phép tối đa 255 kí tự")
-    .required("Mã nhóm không được để trống"),
+    .min(4, "Group ID must contain at least 6 characters")
+    .max(30, "Group ID only contains 30 characters")
+    .required("Group ID is required"),
     
     email: Yup.string()
-    .email("Email phải đúng định dạng")
-    .max(255, "Email chỉ được phép tối đa 255 kí tự")
-    .required("Email không được để trống"),
+    .email("Email address is invalid")
+    .max(255, "Email only contains 255 characters")
+    .required("Email is required"),
 
     soDT: Yup.string().matches(/^\+?(?:[0-9]??).{5,14}[0-9]$/, 'Số điện thoại phải đúng định dạng')
-    .min(10, 'Số điện thoại phải đúng định dạng')
-    .required("Số điện thoại không được để trống"),
+    .min(10, 'Phone number is invalid')
+    .required("Phone number is required"),
+
 
 })
