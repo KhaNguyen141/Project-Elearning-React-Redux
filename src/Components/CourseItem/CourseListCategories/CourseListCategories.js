@@ -21,14 +21,7 @@ const CourseListCategoriesComponent = (props) => {
         const {maDanhMuc} = props.match.params;
         dispatch( fetchCoursesByID(maDanhMuc) );
         
-    }, [])
-
-    
-    useEffect (() => {
-        const {maDanhMuc} = props.match.params;
-        dispatch( fetchCoursesByID(maDanhMuc) );
-        
-    }, [courseListByID])
+    }, [courseListByID, dispatch, props.match.params])
 
     const loadMore = () => {
         setVisible(visible + 5);
@@ -40,8 +33,8 @@ const CourseListCategoriesComponent = (props) => {
             <h1> Course: {props.location.courseID}</h1>
                 {courseListByID.slice(0, visible).map((item, index) => {
                     return (
-                        <div>
-                            <CourseItemFilter className="item" item={item} key={index} />
+                        <div key={index} >
+                            <CourseItemFilter className="item" item={item} />
                         </div>
                     )
                 })}

@@ -29,7 +29,7 @@ const Login = (props) => {
                     isOpen={props.isLoginOpen}
                     toggle={props.isLoginClose} 
                 >
-                    <Form className="formSearch loginModal">
+                    <Form className="formLogin">
 
                         <ModalHeader close={closeBtn}>
                             Sign in

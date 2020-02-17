@@ -34,7 +34,7 @@ const UserReducer = (state = initialState, action) => {
     }
 
     case USER_CHECK_COURSE: {
-      state.userCheckCourse = [JSON.parse(localStorage.getItem("courseSignedUp"))];
+      state.userCheckCourse = action.payload;
       return {...state};
     }
 

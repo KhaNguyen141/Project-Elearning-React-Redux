@@ -73,10 +73,10 @@
                     }
                     .card-body {
                         h4 {
-                            @include card-format ($sp-1, $o-1, $text-o-1);
+                            @include card-format ();
                         }
                         p {
-                            @include card-format ($sp-1, $o-1, $text-o-1);
+                            @include card-format ();
                         }
                     
                     }

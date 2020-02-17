@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import HomeScreen from "./Screens/Home/home";
 import CourseDetail from "./Screens/CourseDetail/courseDetail";
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { connect } from "react-redux";
 import reduxAction from "./Redux/Action/action";
@@ -16,18 +16,13 @@ import ProfileDetail from "./Screens/Profile/ProfileDetail";
 import CourseListCategoriesComponent from "./Components/CourseItem/CourseListCategories/CourseListCategories";
 import PageResult from "./Screens/PageSearch/PageResult";
 import CourseApprovedComponent from "./Screens/CourseManagement/CourseApproved";
+import PageNotFound from "./Screens/PageNotFound/PageNotFound";
 
 import './App.scss';
 
+
 class App extends Component {
-  render() {
-    const notFoundPage = () => (
-      <div className="container contentNotFound">
-        <h1>Content is not found</h1>
-        <Link className="btn btn-success" to="/home">Back to home</Link>
-      </div>
-    )
-    
+  render() {   
     return (
       
       <BrowserRouter>
@@ -40,7 +35,7 @@ class App extends Component {
             <Route exact path="/coursecategories/:maDanhMuc" component={CourseListCategoriesComponent}/>
             <Route exact path="/page-result/:tenKhoaHoc" component={PageResult} />
             <Route exact path="/my-course" component={CourseApprovedComponent} />
-            <Route component={notFoundPage} />
+            <Route component={PageNotFound} />
             <Route exact path="/" component={HomeScreen} />
         </Switch>
         <FooterComponent />

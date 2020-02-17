@@ -37,7 +37,7 @@ const Register = (props) => {
             isOpen={props.isSignUpOpen}
             toggle={props.isSignUpClose} 
             >
-                <Form className="formSearch registerModal">
+                <Form className="formLogin">
                     
                         <ModalHeader close={closeBtn}>
                             Sign up

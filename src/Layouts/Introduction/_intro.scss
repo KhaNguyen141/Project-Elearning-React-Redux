@@ -1,8 +1,9 @@
 .udemyIntro {
     background: linear-gradient(to left, $color-yellow-0, $color-red-1);
     .udemyIntro__content {
-        @include width70 ($w-70, $mg-auto);
-        padding: 10px 0;
+        @include width70 ();
+        padding: $pd-1 0;
+        padding-left: $pd-2;
         .udemyIntro__item {
             .udemyIntro__icon {
                 @include text-style($color-white-0 ,$fs-4 + 10, $fw-bold-1);
@@ -27,6 +28,7 @@
       @include mediaQuery('large') {
         .udemyIntro__content {
             text-align: center;
+            padding-left: 0;
             .udemyIntro__item {
                 i {
                     display: none;

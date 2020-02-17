@@ -46,7 +46,7 @@ const ProfileDetail = () => {
                 <div className="col-12 col-sm-6 col-md-7 col-lg-8 col-xl-9">
                     <div className="card text-center">
                     
-                    <Form className="formSearch">
+                    <Form className="formProfile">
                         <div>
                             <div className="card-header">
                                 <h2>Public profile</h2>

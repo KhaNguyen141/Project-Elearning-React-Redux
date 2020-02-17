@@ -1,0 +1,44 @@
+.pageNotFoundContainer {
+    min-height: calc(100vh - 380px);
+    padding: $pd-5 * 3;
+    background: $color-gray-6;
+    width: 100%;
+    height: 470px;
+    ul {
+        padding-left: $pd-2;
+        li {
+            padding-left: $pd-1;
+        }
+    }
+}
+
+// Responsive
+
+@include mediaQueryMinWidth('very-small') { 
+    .pageNotFoundContainer {
+        padding: $pd-5 * 2;
+        h1 {
+            @include text-style($color-black-0, $fs-2, $fw-bold)
+        }
+
+        p {
+            @include text-style($color-black-0, $fs-1 + 5, $fw-normal)
+        }
+        li {
+            @include text-style($color-black-0, $fs-1, $fw-normal)
+        }
+    }
+}
+
+@include mediaQueryMinWidth('small') { 
+    .pageNotFoundContainer {
+        padding: $pd-5 * 2;
+        h1 {
+            @include text-style($color-black-0, $fs-3, $fw-bold)
+        }
+
+        p, li {
+            @include text-style($color-black-0, $fs-2 - 2, $fw-normal)
+        }
+    }
+}

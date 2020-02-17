@@ -5,9 +5,7 @@ import CoursePendingItemComponent from '../../Components/CourseItem/ModalPending
 class CartModalComponent extends Component {
 
     render() {
-
         return (
-            
             <div className="modal fade" id="cartModal" tabIndex={-1} role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                 <div className="modal-dialog modal-lg" role="document">
                     <div className="modal-content">
@@ -19,14 +17,18 @@ class CartModalComponent extends Component {
                         </div>
                         <div className="modal-body">
                             <h2>Course List</h2>
-                            {this.props.coursePending.map((item) => 
-                                item.chiTietKhoaHocGhiDanh.map((course, i) => {
+                            {this.props.coursePending.length ? (
+                                this.props.coursePending.map((course, index) => {
                                     return (
-                                    <CoursePendingItemComponent course={course} key={i}/>
-                                    )
-                                })   
-                            )}
-                            
+                                        <div key={index}>
+                                            <CoursePendingItemComponent course={course} />
+                                        </div>
+                                    )})
+                                ) : (
+                                    <div className="text-center" key>
+                                        Cart Empty
+                                    </div>
+                                )}
                         </div>
                     </div>
                 </div>

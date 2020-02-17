@@ -29,98 +29,99 @@ class HeaderComponent extends Component {
       modalSignUpIsOpen: false
     };
   }
-  
+
   render() {
+    const { taiKhoan, matKhau } = this.props.credentials;
 
-  const {taiKhoan, matKhau} = this.props.credentials;
+    console.log(this.props.coursePending)
 
-  let backdrop;
+    let backdrop;
 
-  if (this.state.sideDrawerOpen) {
-    backdrop = <Backdrop click={this.backdropClickHandler}/>;
-  }
+    if (this.state.sideDrawerOpen) {
+      backdrop = <Backdrop click={this.backdropClickHandler} />;
+    }
 
-  if (this.state.searchBoxOpen) {
-    backdrop = <Backdrop click={this.backdropSearchClickHandler}/>;
-  }
- 
-  return (
-    <header className="udemyNavbar container">
-          <SearchBoxMobile showSearchBox={this.state.searchBoxOpen} searchClick={this.searchToggleClickHandler}/>
-          <SideDrawer show={this.state.sideDrawerOpen}/>
-         
-         
-          {backdrop}
-          
-          <nav className="header__navbar navbar navbar-expand-md navbar-light">
+    if (this.state.searchBoxOpen) {
+      backdrop = <Backdrop click={this.backdropSearchClickHandler} />;
+    }
 
-            <div className="header__left col-9 col-sm-10 col-md-8 col-lg-9 col-xl-9">
-              <div className="row">
-                <NavLink className="navbar-brand header__logo" to="/home">
-                  <img src="/img/CybersoftLogo.png" alt="header logo"/>
-                </NavLink>
+    return (
+      <header className="udemyNavbar container">
+        <SearchBoxMobile showSearchBox={this.state.searchBoxOpen} searchClick={this.searchToggleClickHandler} />
+        <SideDrawer show={this.state.sideDrawerOpen} />
+        {backdrop}
 
-                <DrawerToggleButton click={this.drawerToggleClickHandler}/>
+        <nav className="header__navbar navbar navbar-expand-md navbar-light">
 
-                <SearchToggleButton searchClick={this.searchToggleClickHandler}/>
-              
-                <div className="nav-item navbar-toggle mr-3 categories">
-                  <div className="dropdown">
-                      <div className="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="fa fa-th mr-2" />
-                          Categories
+          <div className="header__left col-9 col-sm-10 col-md-8 col-lg-9 col-xl-9">
+            <div className="row">
+              <NavLink className="navbar-brand header__logo" to="/home">
+                <img src="/img/CybersoftLogo.png" alt="header logo" />
+              </NavLink>
+
+              <DrawerToggleButton click={this.drawerToggleClickHandler} />
+
+              <SearchToggleButton searchClick={this.searchToggleClickHandler} />
+
+              <div className="nav-item navbar-toggle mr-3 categories">
+                <div className="dropdown">
+                  <div className="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="fa fa-th mr-2" />
+                    Categories
                       </div>
-                    <div className="dropdown-menu">
-                      {this.props.courseCategory
-                        .sort((a, b) => a.tenDanhMuc.localeCompare(b.tenDanhMuc))
-                        .map((list, index) => {
+                  <div className="dropdown-menu">
+                    {this.props.courseCategory
+                      .sort((a, b) => a.tenDanhMuc.localeCompare(b.tenDanhMuc))
+                      .map((list, index) => {
 
-                          return (
-                            <NavLink
-                              to={{
-                                pathname: `/coursecategories/${list.maDanhMuc}`, courseID: list.tenDanhMuc
+                        return (
+                          <NavLink
+                            to={{
+                              pathname: `/coursecategories/${list.maDanhMuc}`, courseID: list.tenDanhMuc
 
-                              }}
-                              
-                              key={index}
-                              className="dropdown-item">{list.tenDanhMuc}</NavLink>
-                          )
-                        })}
-                    </div>
+                            }}
 
+                            key={index}
+                            className="dropdown-item">{list.tenDanhMuc}</NavLink>
+                        )
+                      })}
                   </div>
+
                 </div>
-
-                <form className="formSearch" onSubmit={this.onSubmit}>
-                  <div className="input-group">
-                    <input
-                      type="text"
-                      name="searchText"
-                      className="form-control"
-                      placeholder="Search for course"
-                      onChange={this.onChange}
-                    />
-                    <a href="!#" onClick={this.onSubmit} type="submit" className="input-group-append">
-                      <span className="input-group-text" id="basic-addon2">
-                        <i className="fa fa-search" />
-                      </span>
-                    </a>
-                  </div>
-                </form>
               </div>
-            </div>
 
-            <div className="header__right col-3 col-sm-2 col-md-4 col-lg-3 col-xl-3" >
-        
-              <div className="row">
-               
+              <form className="formSearch" onSubmit={this.onSubmit}>
+                <div className="input-group">
+                  <input
+                    type="text"
+                    name="searchText"
+                    className="form-control"
+                    placeholder="Search for course"
+                    onChange={this.onChange}
+                  />
+                  <a href="!#" onClick={this.onSubmit} type="submit" className="input-group-append">
+                    <span className="input-group-text" id="basic-addon2">
+                      <i className="fa fa-search" />
+                    </span>
+                  </a>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div className="header__right col-3 col-sm-2 col-md-4 col-lg-3 col-xl-3" >
+
+            <div className="row">
+
               <ul className="navbar-nav mr-auto">
-              {this.props.credentials ? (
-              <div className="d-flex">
+                {this.props.credentials ? (
+                  <div className="d-flex">
                     <div className="nav-item navbar-toggle mr-3 header__right__shoppingCart">
                       <div className="shopingCart">
                         <CartModal />
                         <div className="icon-shopping" data-toggle="modal" data-target="#cartModal">
-                          <i onClick={() => this.handleCheckCourse(taiKhoan, matKhau)} className="fa fa-shopping-cart" />
+                        {
+                          <i onClick={() => this.handleCheckCourse(taiKhoan, matKhau)} className={this.props.coursePending.length > 0 ? "fa fa-shopping-cart redNotice" : "fa fa-shopping-cart"} />
+                        }
                         </div>
                       </div>
                     </div>
@@ -139,117 +140,117 @@ class HeaderComponent extends Component {
                         </div>
                       </div>
                     </li>
-              </div>
-              ) : (
-               
-                <li className="button-group loginSignupDivision d-flex">
-                <Login
-                isLoginOpen={this.state.modalLoginIsOpen}
-                switchRegister={() => this.openSignUpModal()} 
-                isLoginClose={() => this.closeLoginModal()}
-                /> 
-                <div className="nav-link">
-                    <button onClick={() => this.openLoginModal()} className="btn btn-udi-white buttonLogin">Log In</button>
-                </div>
-             
-                <Register 
-                isSignUpOpen={this.state.modalSignUpIsOpen} 
-                switchLogin={() => this.openLoginModal()} 
-                isSignUpClose={() => this.closeSignUpModal()}/>
-                <div className="nav-link">
-                    <button onClick={() => this.openSignUpModal()} className="btn btn-udi-yellow buttonSignUp">Sign up</button>
-                </div>
-                </li>
-               
-              )}
-              </ul>
-              </div>
-            </div>
+                  </div>
+                ) : (
 
-          </nav>
+                    <li className="button-group loginSignupDivision d-flex">
+                      <Login
+                        isLoginOpen={this.state.modalLoginIsOpen}
+                        switchRegister={() => this.openSignUpModal()}
+                        isLoginClose={() => this.closeLoginModal()}
+                      />
+                      <div className="nav-link">
+                        <button onClick={() => this.openLoginModal()} className="btn btn-udi-white buttonLogin">Log In</button>
+                      </div>
+
+                      <Register
+                        isSignUpOpen={this.state.modalSignUpIsOpen}
+                        switchLogin={() => this.openLoginModal()}
+                        isSignUpClose={() => this.closeSignUpModal()} />
+                      <div className="nav-link">
+                        <button onClick={() => this.openSignUpModal()} className="btn btn-udi-yellow buttonSignUp">Sign up</button>
+                      </div>
+                    </li>
+
+                  )}
+              </ul>
+            </div>
+          </div>
+
+        </nav>
 
       </header>
 
-      );
-    }
-  
-    componentDidMount() {
-      this.props.dispatch(fetchListCategory())
-    }
-    
-    openLoginModal() {
-      this.setState({
-        modalLoginIsOpen: true,
-        modalSignUpIsOpen: false
-      });
-    }
-  
-    openSignUpModal() {
-      this.setState({
-        modalSignUpIsOpen: true,
-        modalLoginIsOpen: false
-      });
-    }
-  
-    closeLoginModal() {
-      this.setState({modalLoginIsOpen: false});
-    }
-  
-    closeSignUpModal() {
-      this.setState({modalSignUpIsOpen: false});
-    }
-  
-    drawerToggleClickHandler = () => {
-      this.setState((prevState) => {
-        return {sideDrawerOpen: !prevState.sideDrawerOpen};
-      });
-    };
-  
-    searchToggleClickHandler = () => {
-      this.setState((prevState) => {
-        return {searchBoxOpen: !prevState.searchBoxOpen}
-      })
-    }
-  
-    backdropClickHandler = () => {
-      this.setState({
-        sideDrawerOpen: false,
-    
-      });
-    };
-  
-    backdropSearchClickHandler = () => {
-      this.setState({
-        searchBoxOpen: false,
-    
-      });
-    };
-  
-    onChange = (event) => {
-      this.props.dispatch(searchCourse(event.target.value));
-    }
+    );
+  }
 
-    onSubmit = (event) => {
-      event.preventDefault();
-      this.props.dispatch(fetchCourseSearch(this.props.text))
-      this.props.history.push(`/page-result/${this.props.text}`)
-      
-    }
+  componentDidMount() {
+    this.props.dispatch(fetchListCategory())
+  }
 
-    handleCheckCourse = (taiKhoan, matKhau) => {
-      this.props.dispatch(userCheckCourse(taiKhoan, matKhau))
-    }
+  openLoginModal() {
+    this.setState({
+      modalLoginIsOpen: true,
+      modalSignUpIsOpen: false
+    });
+  }
 
-    handleLogout = (e) => {
-      e.preventDefault();
-      localStorage.removeItem(settings.userLogin);
-      window.location.replace("/home");
-    
-    }
+  openSignUpModal() {
+    this.setState({
+      modalSignUpIsOpen: true,
+      modalLoginIsOpen: false
+    });
+  }
 
-    handleCheckCourseApproved = (taiKhoan) => {
-      this.props.dispatch(userCheckCourseApproved(taiKhoan))
-    }
+  closeLoginModal() {
+    this.setState({ modalLoginIsOpen: false });
+  }
+
+  closeSignUpModal() {
+    this.setState({ modalSignUpIsOpen: false });
+  }
+
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) => {
+      return { sideDrawerOpen: !prevState.sideDrawerOpen };
+    });
+  };
+
+  searchToggleClickHandler = () => {
+    this.setState((prevState) => {
+      return { searchBoxOpen: !prevState.searchBoxOpen }
+    })
+  }
+
+  backdropClickHandler = () => {
+    this.setState({
+      sideDrawerOpen: false,
+
+    });
+  };
+
+  backdropSearchClickHandler = () => {
+    this.setState({
+      searchBoxOpen: false,
+
+    });
+  };
+
+  onChange = (event) => {
+    this.props.dispatch(searchCourse(event.target.value));
+  }
+
+  onSubmit = (event) => {
+    event.preventDefault();
+    this.props.dispatch(fetchCourseSearch(this.props.text))
+    this.props.history.push(`/page-result/${this.props.text}`)
+
+  }
+
+  handleCheckCourse = (taiKhoan, matKhau) => {
+    this.props.dispatch(userCheckCourse(taiKhoan, matKhau))
+  }
+
+  handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem(settings.userLogin);
+    window.location.replace("/home");
+
+  }
+
+  handleCheckCourseApproved = (taiKhoan) => {
+    this.props.dispatch(userCheckCourseApproved(taiKhoan))
+  }
 };
 
 const mapStateToProps = (state) => ({
@@ -257,7 +258,8 @@ const mapStateToProps = (state) => ({
   courseCategory: state.courseReducer.courseListCategory,
   course: state.courseReducer.courses,
   text: state.courseReducer.text,
-  courseSearch: state.courseReducer.courseSearch,
+  coursePending: state.userReducer.userCheckCourse,
+  courseSearch: state.courseReducer.courseSearch
 });
 
 export default withRouter(connect(mapStateToProps)(HeaderComponent));

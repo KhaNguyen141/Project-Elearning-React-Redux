@@ -58,12 +58,26 @@
     }
 }
 
-@mixin width70 ($width, $margin) {
-    width: $w-80;
+@mixin searchBox() {
+  .form-control {
+    border-radius: 50px;
+    border: 1px solid $color-gray-2;
+  }
+  
+  .form-control:focus {
+    border-color: $color-gray-2;
+    box-shadow: none;
+  }
+}
+
+
+
+@mixin width70() {
+    width: $w-70;
     margin: $mg-auto;
 }
 
-@mixin card-format ($spacing, $overflow, $text-overflow) {
+@mixin card-format() {
     white-space: $sp-1; 
     overflow: $o-1;
     text-overflow: $text-o-1;

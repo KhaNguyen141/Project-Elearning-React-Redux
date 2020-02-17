@@ -50,7 +50,6 @@ export const userRegisterAction = (userRegister) => {
       .userRegisterAction(userRegister)
       .then(res => {
       dispatch(reduxAction(REGISTER, res.data));
-      console.log(res.data);
       Swal.fire(
         'Registration Completed Successfully!',
         'You can sign in now',
@@ -74,7 +73,6 @@ export const userProfileUpdate = (userProfileUpdate) => {
       .then(res => {
         localStorage.setItem(settings.userLogin, JSON.stringify(res.data));
         dispatch(reduxAction(UPDATE_USER, res.data));
-        console.log(res.data);
         Swal.fire(
           'Update Account Successfully!',
           '',
@@ -100,7 +98,6 @@ export const userAddCourse = (taiKhoan, maKhoaHoc) => {
       .then(res => {
         if (localStorage.getItem("userLogin") !== null) {
           dispatch(reduxAction(USER_ADD_COURSE, res.data));
-          console.log(res.data);
           Swal.fire(
             'Enroll Succesfully!',
             '',
@@ -136,7 +133,6 @@ export const userCancelCourse = (taiKhoan, maKhoaHoc) => {
       .userCancelCourse(taiKhoan, maKhoaHoc)
       .then(res => {
         dispatch(reduxAction(USER_CANCEL_COURSE, res.data));
-        console.log(res.data);
         Swal.fire(
           'Cancel Course Successfully!',
           '',
@@ -160,10 +156,8 @@ export const userCheckCourse = (taiKhoan, matkhau) => {
       userService
       .userCheckCourse(taiKhoan, matkhau)
       .then(res => {
-        localStorage.setItem(settings.courseSignedUp, JSON.stringify(res.data));
-        dispatch(reduxAction(USER_CHECK_COURSE, res.data));
-        console.log(res.data);
-      
+        dispatch(reduxAction(USER_CHECK_COURSE, res.data.chiTietKhoaHocGhiDanh));
+        
       }).catch(error => {
         console.log(error.response.data)
        

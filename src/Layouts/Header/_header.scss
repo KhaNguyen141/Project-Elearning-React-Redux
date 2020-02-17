@@ -37,6 +37,9 @@
       margin: 0!important;
     }
     .shopingCart {
+      .redNotice {
+        color: $color-red-2;
+      }
       line-height: 34px;
       cursor: pointer;
       @include text-style($color-black-light, $fs-2, $fw-normal);
