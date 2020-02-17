@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { userCancelCourse } from '../../Redux/Action/User/UserActions';
+import { userCancelCourse } from '../../../Redux/Action/User/UserActions';
 import { NavLink } from 'react-router-dom';
 
 class CourseApprovedItem extends Component {

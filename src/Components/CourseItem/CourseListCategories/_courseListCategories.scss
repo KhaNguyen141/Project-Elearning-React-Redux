@@ -1,0 +1,25 @@
+.courseListCategoriesContainer {
+    .courseListCategoriesContainer__buttonLoadMore {
+        transform: translateX(35%);
+        margin-top: $mg-2;
+    }
+}
+
+// 
+
+@include mediaQuery('extra-large') {
+    .courseListCategoriesContainer {
+        .courseListCategoriesContainer__buttonLoadMore {
+            transform: translateX(43%);
+        }
+    }
+} 
+
+@include mediaQuery('large') {
+    .courseListCategoriesContainer {
+        .courseListCategoriesContainer__buttonLoadMore {
+            transform: translateX(43%);
+        }
+    }
+} 
+

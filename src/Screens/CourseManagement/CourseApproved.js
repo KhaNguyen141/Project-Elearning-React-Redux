@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import CourseApprovedItem from "../../Components/CourseItem/CourseApprovedItem";
+import CourseApprovedItem from "../../Components/CourseItem/CourseApprovedItem/CourseApprovedItem";
 
 class CourseApprovedComponent extends Component {
     render() {

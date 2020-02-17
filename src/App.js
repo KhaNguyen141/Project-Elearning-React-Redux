@@ -13,7 +13,7 @@ import FooterComponent from './Layouts/Footer/Footer';
 
 import { LOGIN } from "./Redux/Action/type";
 import ProfileDetail from "./Screens/Profile/ProfileDetail";
-import CourseListCategoriesComponent from "./Components/CourseItem/CourseListCategories";
+import CourseListCategoriesComponent from "./Components/CourseItem/CourseListCategories/CourseListCategories";
 import PageResult from "./Screens/PageSearch/PageResult";
 import CourseApprovedComponent from "./Screens/CourseManagement/CourseApproved";
 

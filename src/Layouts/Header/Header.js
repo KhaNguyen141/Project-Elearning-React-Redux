@@ -30,54 +30,6 @@ class HeaderComponent extends Component {
     };
   }
   
-  openLoginModal() {
-    this.setState({
-      modalLoginIsOpen: true,
-      modalSignUpIsOpen: false
-    });
-  }
-
-  openSignUpModal() {
-    this.setState({
-      modalSignUpIsOpen: true,
-      modalLoginIsOpen: false
-    });
-  }
-
-  closeLoginModal() {
-    this.setState({modalLoginIsOpen: false});
-  }
-
-  closeSignUpModal() {
-    this.setState({modalSignUpIsOpen: false});
-  }
-
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-      return {sideDrawerOpen: !prevState.sideDrawerOpen};
-    });
-  };
-
-  searchToggleClickHandler = () => {
-    this.setState((prevState) => {
-      return {searchBoxOpen: !prevState.searchBoxOpen}
-    })
-  }
-
-  backdropClickHandler = () => {
-    this.setState({
-      sideDrawerOpen: false,
-  
-    });
-  };
-
-  backdropSearchClickHandler = () => {
-    this.setState({
-      searchBoxOpen: false,
-  
-    });
-  };
-
   render() {
 
   const {taiKhoan, matKhau} = this.props.credentials;
@@ -224,7 +176,55 @@ class HeaderComponent extends Component {
     componentDidMount() {
       this.props.dispatch(fetchListCategory())
     }
-
+    
+    openLoginModal() {
+      this.setState({
+        modalLoginIsOpen: true,
+        modalSignUpIsOpen: false
+      });
+    }
+  
+    openSignUpModal() {
+      this.setState({
+        modalSignUpIsOpen: true,
+        modalLoginIsOpen: false
+      });
+    }
+  
+    closeLoginModal() {
+      this.setState({modalLoginIsOpen: false});
+    }
+  
+    closeSignUpModal() {
+      this.setState({modalSignUpIsOpen: false});
+    }
+  
+    drawerToggleClickHandler = () => {
+      this.setState((prevState) => {
+        return {sideDrawerOpen: !prevState.sideDrawerOpen};
+      });
+    };
+  
+    searchToggleClickHandler = () => {
+      this.setState((prevState) => {
+        return {searchBoxOpen: !prevState.searchBoxOpen}
+      })
+    }
+  
+    backdropClickHandler = () => {
+      this.setState({
+        sideDrawerOpen: false,
+    
+      });
+    };
+  
+    backdropSearchClickHandler = () => {
+      this.setState({
+        searchBoxOpen: false,
+    
+      });
+    };
+  
     onChange = (event) => {
       this.props.dispatch(searchCourse(event.target.value));
     }

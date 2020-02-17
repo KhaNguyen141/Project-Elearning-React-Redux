@@ -75,7 +75,7 @@ class HomeScreen extends Component {
                         {this.props.courseList.length && (
                             <OwlCarousel className="udemyCourse__items" margin={10} items={5} nav responsive={this.state.responsive}>
                               {this.props.courseList
-                              .slice(17)
+                              .slice(0, 10)
                               .sort((a, b) => b.ngayTao.split('/').reverse().join().localeCompare(a.ngayTao.split('/').reverse().join()))
                               .map((item, index) => {
                                   return <CourseItemComponent className="item" item={item} key={index} />

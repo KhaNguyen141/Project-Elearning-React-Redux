@@ -8,21 +8,24 @@ import CourseItemFilter from '../../Components/CourseItem/CourseItemSearch/Cours
 
 class PageResault extends Component {
 
-    state = {
-        isLoading: true,
-    }
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading: true,
+            visible: 3,
     
+        }
+    }
 
     render() {
             return (
                 <div>
                     
                 {this.props.courseSearch.length > 0 ? (
-                    <div className="pageResultContainer container">
+                <div className="pageResultContainer container">
                     <h2>Courses result: </h2>
                    
-                        {this.props.courseSearch.map((item, index) => {
+                        {this.props.courseSearch.slice(0, this.state.visible).map((item, index) => {
                             return (
                                 
                                 <div>
@@ -31,7 +34,13 @@ class PageResault extends Component {
                             )
                         })
                       }
+                      <div className="pageResultContainer__buttonLoadMore">
+                        {this.state.visible < this.props.courseSearch.length &&
+                          <button type="button" onClick={() => this.loadMore()} className="btn btn-udi-white">Load more</button>
+                        }
+                      </div>
                 </div>
+                
                 ) : (
                     <div className="searchNotFoundContainer">
                         <ResultNotFound />
@@ -42,6 +51,12 @@ class PageResault extends Component {
                 
                 </div>
             )
+    }
+
+    loadMore = () => {
+        this.setState((oldItem) => {
+            return {visible: oldItem.visible + 10}
+        })
     }
 
     stopLoading = () => {
