@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useDispatch} from 'react-redux';
 
 import { Formik, Field, Form } from 'formik';
@@ -16,7 +16,7 @@ const Register = (props) => {
     const closeBtn = <div className="close" onClick={props.isSignUpClose}>&times;</div>;
 
     return (
-        <Formik initialValues ={{ 
+        <Formik initialValues = {{ 
             taiKhoan: "",
             matKhau: "",
             hoTen: "",
@@ -27,9 +27,9 @@ const Register = (props) => {
         }}
         
         validationSchema={validationSchema}
-        onSubmit={values  => {
-            dispatch(userRegisterAction(values))
-            
+        onSubmit={(values, { resetForm }) => {
+            dispatch(userRegisterAction(values));
+            resetForm();
         }}
         >
         {({errors, touched, handleChange}) => (
@@ -65,6 +65,7 @@ const Register = (props) => {
                                         !touched.matKhau ? "form-control" : touched.matKhau && !errors.matKhau ? "form-control valid" : "form-control error"
                                     } 
                                     placeholder="Password" />
+                                    
                                 <ErrorMessage touched={touched.matKhau} message={errors.matKhau} />
                             </div>
 

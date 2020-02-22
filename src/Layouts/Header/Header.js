@@ -27,6 +27,7 @@ class HeaderComponent extends Component {
       searchBoxOpen: false,
       modalLoginIsOpen: false,
       modalSignUpIsOpen: false
+
     };
   }
 
@@ -197,7 +198,9 @@ class HeaderComponent extends Component {
   }
 
   closeSignUpModal() {
-    this.setState({ modalSignUpIsOpen: false });
+    this.setState({ 
+      modalSignUpIsOpen: false 
+    });
   }
 
   drawerToggleClickHandler = () => {
