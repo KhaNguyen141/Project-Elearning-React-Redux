@@ -21,7 +21,7 @@ const Register = (props) => {
             matKhau: "",
             hoTen: "",
             soDT: "",
-            maNhom: "GP08",
+            maNhom: "GP09",
             email: "",
             
         }}
