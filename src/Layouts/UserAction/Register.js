@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {useDispatch} from 'react-redux';
 
 import { Formik, Field, Form } from 'formik';
@@ -21,7 +21,7 @@ const Register = (props) => {
             matKhau: "",
             hoTen: "",
             soDT: "",
-            maNhom: "GP01",
+            maNhom: "GP08",
             email: "",
             
         }}
