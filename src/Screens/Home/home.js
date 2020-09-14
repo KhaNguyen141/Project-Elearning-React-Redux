@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { fetchCourse } from "../../Redux/Action/Course/CourseAction";
 
 // import Component
-import CourseItemComponent from "../../Components/CourseItem/CourseItem";
+import CourseItemComponent from "../../Components/CourseItem/courseItem";
 
 // import SCSS
 import "../../App.scss";
